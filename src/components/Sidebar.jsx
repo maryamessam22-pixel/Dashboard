@@ -9,6 +9,8 @@ import profileIcon from '../assets/profile.png';
 import projectsIcon from '../assets/projects.png';
 import skillsIcon from '../assets/skills.png';
 import categoriesIcon from '../assets/categories.png';
+
+import logoutIcon from '../assets/logout.png';
 const Sidebar = () => {
   return (
     <div className="sidebar">
@@ -57,6 +59,7 @@ const Sidebar = () => {
       <div className="logout-section">
         <button className="logout-btn">
         
+        <img src={logoutIcon} alt="logout" />
           <span>Log out</span>
         </button>
       </div>
