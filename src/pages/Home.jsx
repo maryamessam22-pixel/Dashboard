@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Sidebar from '../components/Sidebar';
 import './Home.css';
 import SearchImg from "../assets/search.png";
-
+import BellImg from "../assets/bell.png";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
 const Home = () => {
 
