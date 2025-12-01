@@ -10,6 +10,7 @@ import projectsIcon from '../assets/projects.png';
 import skillsIcon from '../assets/skills.png';
 import categoriesIcon from '../assets/categories.png';
 import logoutIcon from '../assets/logout.png';
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = ({ sidebarOpen }) => {
   return (
@@ -30,10 +31,21 @@ const Sidebar = ({ sidebarOpen }) => {
             <img src={dashboardIcon} className="nav-icon" alt="Dashboard" />
             Dashboard
           </li>
-          <li className="nav-item">
+
+
+          {/* <li className="nav-item">
             <img src={msgIcon} className="nav-icon" alt="Messages" />
             Messages
-          </li>
+          </li> */}
+
+  <NavLink 
+    to="/messages" 
+    className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}
+  >
+    <img src={msgIcon} className="nav-icon" alt="Messages" />
+    Messages
+  </NavLink>
+
           <li className="nav-item">
             <img src={profileIcon} className="nav-icon" alt="Profile" />
             Profile

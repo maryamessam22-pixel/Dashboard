@@ -1,3 +1,7 @@
+a{
+  text-decoration: none;
+}
+
 .sidebar {
   width: 260px;
   background-color: #1a103c; /* Dark deep purple */
