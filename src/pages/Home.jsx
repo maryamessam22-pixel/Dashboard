@@ -133,9 +133,67 @@ const Home = () => {
       <Line type="monotone" dataKey="uv" stroke="#8884d8" />
       <Line type="monotone" dataKey="pv" stroke="#82ca9d" />
     </LineChart>
+      </section>
 
 
-       </section>
+        {/* Most Viewed Projects */}
+        <section className="projects-section">
+          <h2>Most Viewed Projects</h2>
+          <div className="projects-grid">
+            
+            {/* Project Card 1 */}
+            <div className="project-card purple-light">
+              <div className="card-header">
+                <span className="badge">Web Design</span>
+                <span className="date">📅 March 13</span>
+              </div>
+              <h4>Web Design "Horror Website" Process of full product</h4>
+              <div className="card-images">
+                <div className="img-placeholder"></div>
+                <div className="img-placeholder"></div>
+              </div>
+              <div className="card-footer">
+                <span>🕒 8 📎 4</span>
+                <div className="avatars">👥+3</div>
+              </div>
+            </div>
+
+            {/* Project Card 2 */}
+            <div className="project-card purple-medium">
+              <div className="card-header">
+                <span className="badge">UI/UX Design</span>
+                <span className="date">📅 August 12</span>
+              </div>
+              <h4>Overall UX Car Screen Process of full product for first version</h4>
+              <div className="card-images">
+                <div className="img-placeholder"></div>
+                <div className="img-placeholder"></div>
+              </div>
+              <div className="card-footer">
+                <span>🕒 8 📎 4</span>
+                <div className="avatars">👥+9</div>
+              </div>
+            </div>
+
+             {/* Project Card 3 */}
+             <div className="project-card purple-medium">
+              <div className="card-header">
+                <span className="badge">Mobile App</span>
+                <span className="date">📅 January 1</span>
+              </div>
+              <h4>Mobile App Process of full product for first version</h4>
+              <div className="card-images">
+                <div className="img-placeholder"></div>
+                <div className="img-placeholder"></div>
+              </div>
+              <div className="card-footer">
+                <span>🕒 8 📎 4</span>
+                <div className="avatars">👥+6</div>
+              </div>
+            </div>
+
+          </div>
+        </section>
 
 
   </main>
