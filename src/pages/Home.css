@@ -204,6 +204,66 @@ body {
   cursor: pointer;
 }
 
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.project-card {
+  background: #c084fc; 
+  border-radius: 15px;
+  padding: 15px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card.purple-light { background: #d8b4fe; } 
+.project-card.purple-medium { background: #c084fc; } 
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+}
+.badge {
+  background: rgba(255,255,255,0.4);
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.project-card h4 {
+  margin: 0 0 15px 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.card-images {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.img-placeholder {
+  width: 50%;
+  height: 60px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+
+
+
 /* Traffic Section */
 /* .traffic-section {
   background: #1e1633;
