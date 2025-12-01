@@ -63,7 +63,7 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Inbox Alert */}
+        
           <div className="inbox-alert">
              <div className="icon-box pink">✉</div>
              <div className="stat-info">
@@ -73,6 +73,20 @@ const Home = () => {
           </div>
         </section>
 
+
+
+        {/* Traffic Overview (Chart Placeholder) */}
+        <section className="traffic-section">
+          <div className="section-header">
+            <h2>Traffic overview</h2>
+            <div className="chart-legend">
+              <span className="dot green"></span> Organic Search
+              <span className="dot blue"></span> Direct
+              <span className="dot red"></span> Referral
+            </div>
+            <button className="date-filter">Last 30 Days</button>
+          </div>
+       </section>
 
 
   </main>
