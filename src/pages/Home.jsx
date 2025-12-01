@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Sidebar from '../components/Sidebar';
 import './Home.css';
-
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
 const Home = () => {
 
     return ( <>
@@ -86,6 +86,16 @@ const Home = () => {
             </div>
             <button className="date-filter">Last 30 Days</button>
           </div>
+
+     <LineChart style={{ width: '100%', aspectRatio: 1.618, maxWidth: 800, margin: 'auto' }} responsive data={data}>
+      <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+      <XAxis dataKey="name" />
+      <YAxis width="auto" />
+      <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+      <Line type="monotone" dataKey="pv" stroke="#82ca9d" />
+    </LineChart>
+
+
        </section>
 
 
