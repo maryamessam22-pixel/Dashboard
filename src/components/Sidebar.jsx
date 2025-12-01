@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './Sidebar.css';
-// Note: In a real app, import icons from react-icons (e.g., FiHome, FiMessageSquare)
-// For this code, I will use text placeholders or standard HTML elements for simplicity.
+
+// --- IMPORTS ---
+// Change '../assets/...' to the actual path where you saved your images
+import myProfilePic from '../assets/my_pic.png'; // Your profile picture
+
+
 
 const Sidebar = () => {
   return (
@@ -9,8 +13,8 @@ const Sidebar = () => {
       {/* Profile Section */}
       <div className="profile-section">
         <div className="profile-img-container">
-            {/* Replace src with your actual image */}
-            <img src="https://via.placeholder.com/80" alt="Profile" className="profile-img" />
+            {/* Using the imported variable for the image source */}
+            <img src={myProfilePic} alt="Profile" className="profile-img" />
         </div>
         <h3 className="profile-name">M.Farid</h3>
         <p className="profile-role">UI/UX Designer</p>
@@ -21,27 +25,27 @@ const Sidebar = () => {
       <nav className="nav-menu">
         <ul>
           <li className="nav-item active">
-            <span className="icon">dashboard</span>
+            <img src={dashboardIcon} className="nav-icon" alt="Dashboard" />
             Dashboard
           </li>
           <li className="nav-item">
-            <span className="icon">mail</span>
+            <img src={msgIcon} className="nav-icon" alt="Messages" />
             Messages
           </li>
           <li className="nav-item">
-            <span className="icon">person</span>
+            <img src={profileIcon} className="nav-icon" alt="Profile" />
             Profile
           </li>
           <li className="nav-item">
-            <span className="icon">folder</span>
+            <img src={projectsIcon} className="nav-icon" alt="Projects" />
             Projects
           </li>
           <li className="nav-item">
-            <span className="icon">star</span>
+            <img src={skillsIcon} className="nav-icon" alt="Skills" />
             Skills & Experience
           </li>
           <li className="nav-item">
-            <span className="icon">grid</span>
+            <img src={categoriesIcon} className="nav-icon" alt="Categories" />
             Categories & Pages
           </li>
         </ul>
@@ -50,6 +54,7 @@ const Sidebar = () => {
       {/* Logout Button */}
       <div className="logout-section">
         <button className="logout-btn">
+          {/* You can also use an image for the logout icon if you have one */}
           <span>Log out</span>
         </button>
       </div>
