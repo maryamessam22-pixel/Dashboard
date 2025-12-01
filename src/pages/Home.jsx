@@ -50,8 +50,7 @@ const Home = () => {
   </div>
 
   <div className="header-actions">
-
-    {/* Search Box */}
+    
     <div className="search-bar">
       <img 
         src={SearchImg} 
@@ -61,7 +60,6 @@ const Home = () => {
       <input type="text" placeholder="Search" />
     </div>
 
-    {/* Notification Bell */}
     <div className="notification-icon">
       <img 
         src={BellImg} 
