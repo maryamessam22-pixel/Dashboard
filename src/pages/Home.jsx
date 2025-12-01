@@ -114,7 +114,7 @@ const Home = () => {
 
 
 
-        {/* Traffic Overview (Chart Placeholder) */}
+        {/* Traffic Overview (Library "recharts") */}
         <section className="traffic-section">
           <div className="section-header">
             <h2>Traffic overview</h2>
