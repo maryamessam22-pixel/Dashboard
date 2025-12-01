@@ -264,6 +264,33 @@ body {
 }
 
 
+/* Mobile Toggle Button */
+.mobile-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: block;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: #a855f7;
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
 
 
 

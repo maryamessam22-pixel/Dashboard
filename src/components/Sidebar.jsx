@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Sidebar.css';
 
 import myProfilePic from '../assets/my_pic.png'; 
@@ -9,22 +9,20 @@ import profileIcon from '../assets/profile.png';
 import projectsIcon from '../assets/projects.png';
 import skillsIcon from '../assets/skills.png';
 import categoriesIcon from '../assets/categories.png';
-
 import logoutIcon from '../assets/logout.png';
-const Sidebar = () => {
+
+const Sidebar = ({ sidebarOpen }) => {
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
       
       <div className="profile-section">
         <div className="profile-img-container">
-       
             <img src={myProfilePic} alt="Profile" className="profile-img" />
         </div>
         <h3 className="profile-name">M.Farid</h3>
         <p className="profile-role">UI/UX Designer</p>
         <div className="divider"></div>
       </div>
-
 
       <nav className="nav-menu">
         <ul>
@@ -55,11 +53,9 @@ const Sidebar = () => {
         </ul>
       </nav>
 
-   
       <div className="logout-section">
         <button className="logout-btn">
-        
-        <img src={logoutIcon} alt="logout" />
+          <img src={logoutIcon} alt="logout" />
           <span>Log out</span>
         </button>
       </div>

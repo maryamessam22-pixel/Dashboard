@@ -118,3 +118,35 @@
 .nav-icon{
   margin-right: 5%;
 }
+
+/* --------------------------------------- */
+/* 📱 MOBILE SIDEBAR (max-width: 768px) */
+/* --------------------------------------- */
+
+/* Sidebar shrinks on mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 220px;
+    position: fixed;
+    height: 100vh;
+    left: -220px; /* hidden */
+    transition: left 0.3s ease;
+    z-index: 999;
+  }
+}
+
+/* When sidebar is open (you will add class "sidebar open") */
+@media (max-width: 768px) {
+  .sidebar.open {
+    left: 0;
+  }
+}
+
+/* Main content expands full width on mobile */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    padding: 20px;
+  }
+}
