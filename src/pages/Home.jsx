@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Sidebar from '../components/Sidebar';
 import './Home.css';
+import SearchImg from "../assets/search.png";
+
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
 const Home = () => {
 
@@ -42,17 +44,35 @@ const Home = () => {
 <div className="dashboard-layout">
 <Sidebar/>
   <main className="main-content">
- 
-        <header className="top-header">
-          <div className="breadcrumbs">Pages / <strong>Dashboard</strong></div>
-          <div className="header-actions">
-            <div className="search-bar">
-              <span className="search-icon">🔍</span>
-              <input type="text" placeholder="Search" />
-            </div>
-            <div className="notification-icon">🔔<div className="dot"></div></div>
-          </div>
-        </header>
+ <header className="top-header">
+  <div className="breadcrumbs">
+    Pages / <strong>Dashboard</strong>
+  </div>
+
+  <div className="header-actions">
+
+    {/* Search Box */}
+    <div className="search-bar">
+      <img 
+        src={SearchImg} 
+        alt="search icon" 
+        style={{ width: "16px", height: "16px" }} 
+      />
+      <input type="text" placeholder="Search" />
+    </div>
+
+    {/* Notification Bell */}
+    <div className="notification-icon">
+      <img 
+        src={BellImg} 
+        alt="bell icon" 
+        style={{ width: "20px", height: "20px" }} 
+      />
+      <div className="dot"></div>
+    </div>
+
+  </div>
+</header>
 
    
         <section className="welcome-banner">

@@ -1,7 +1,7 @@
-/* Layout Variables */
+
 :root {
-  --bg-dark: #201642; /* Main Background */
-  --bg-card: #2e2355; /* Card Background */
+  --bg-dark: #201642; 
+  --bg-card: #2e2355; 
   --text-primary: #ffffff;
   --text-secondary: #a3a3a3;
   --accent-purple: #a855f7;
@@ -19,9 +19,9 @@ body {
   min-height: 100vh;
 }
 
-/* Main Content Wrapper */
+
 .main-content {
-  margin-left: 260px; /* Width of sidebar */
+  margin-left: 260px; 
   width: calc(100% - 260px);
   padding: 30px 40px;
   box-sizing: border-box;
@@ -260,6 +260,16 @@ body {
   font-size: 0.8rem;
   font-weight: 600;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
