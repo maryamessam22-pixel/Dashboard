@@ -5,8 +5,12 @@ import './Sidebar.css';
 // Change '../assets/...' to the actual path where you saved your images
 import myProfilePic from '../assets/my_pic.png'; // Your profile picture
 
-
-
+import dashboardIcon from '../assets/dashboard.png';
+import msgIcon from '../assets/msg.png';
+import profileIcon from '../assets/profile.png';
+import projectsIcon from '../assets/projects.png';
+import skillsIcon from '../assets/skills.png';
+import categoriesIcon from '../assets/categories.png';
 const Sidebar = () => {
   return (
     <div className="sidebar">
