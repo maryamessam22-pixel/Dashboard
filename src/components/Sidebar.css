@@ -77,7 +77,7 @@
   color: #fff;
 }
 
-/* Active State (Purple Gradient) */
+
 .nav-item.active {
   background: linear-gradient(90deg, #a55eea, #d15bf6);
   color: #fff;
@@ -86,11 +86,10 @@
 
 .nav-item .icon {
   margin-right: 15px;
-  /* Font styling for Material Icons usage if loaded, else use SVG */
   font-size: 1.2rem;
 }
 
-/* Logout Button */
+
 .logout-section {
   margin-top: auto;
 }
