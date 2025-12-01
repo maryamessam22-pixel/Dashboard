@@ -8,7 +8,7 @@ const Home = () => {
 <div className="dashboard-layout">
 <Sidebar/>
   <main className="main-content">
-  {/* Top Header */}
+ 
         <header className="top-header">
           <div className="breadcrumbs">Pages / <strong>Dashboard</strong></div>
           <div className="header-actions">
@@ -20,6 +20,14 @@ const Home = () => {
           </div>
         </header>
 
+   
+        <section className="welcome-banner">
+          <div className="banner-content">
+            <p className="sub-text">Welcome back,</p>
+            <h1>Mariam Farid</h1>
+            <p className="desc">Here's an overview of your latest activities</p>
+          </div>
+        </section>
 
 
 
