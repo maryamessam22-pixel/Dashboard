@@ -6,41 +6,36 @@ const Home = () => {
 
     const data = [
   {
-    name: 'A',
+    name: 'Nov 1',
     uv: 400,
     pv: 240,
     amt: 2400,
   },
   {
-    name: 'B',
+    name: 'Nov 5',
     uv: 300,
     pv: 456,
     amt: 2400,
   },
   {
-    name: 'C',
+    name: 'Nov 6',
     uv: 300,
     pv: 139,
     amt: 2400,
   },
   {
-    name: 'D',
+    name: 'Nov 9',
     uv: 200,
     pv: 980,
     amt: 2400,
   },
   {
-    name: 'E',
+    name: 'Nov 11',
     uv: 278,
     pv: 390,
     amt: 2400,
   },
-  {
-    name: 'F',
-    uv: 189,
-    pv: 480,
-    amt: 2400,
-  },
+
 ];
 
     return ( <>
@@ -126,7 +121,7 @@ const Home = () => {
             <button className="date-filter">Last 30 Days</button>
           </div>
 
-     <LineChart style={{ width: '100%', aspectRatio: 1.618, maxWidth: 800, margin: 'auto' }} responsive data={data}>
+     <LineChart style={{ width: '100%', aspectRatio: 3, maxWidth: 1200, margin: 'auto' }} responsive data={data}>
       <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
       <XAxis dataKey="name" />
       <YAxis width="auto" />
