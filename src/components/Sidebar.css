@@ -1,0 +1,117 @@
+.sidebar {
+  width: 260px;
+  background-color: #1a103c; /* Dark deep purple */
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+/* Profile Styling */
+.profile-section {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.profile-img-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 10px;
+  border: 2px solid #5a4b81;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-name {
+  margin: 5px 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.profile-role {
+  font-size: 0.8rem;
+  color: #8f8f8f;
+  margin: 0;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #5a4b81, transparent);
+  margin-top: 20px;
+}
+
+/* Navigation Styling */
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  color: #c4c4c4;
+  font-size: 0.95rem;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+/* Active State (Purple Gradient) */
+.nav-item.active {
+  background: linear-gradient(90deg, #a55eea, #d15bf6);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(165, 94, 234, 0.4);
+}
+
+.nav-item .icon {
+  margin-right: 15px;
+  /* Font styling for Material Icons usage if loaded, else use SVG */
+  font-size: 1.2rem;
+}
+
+/* Logout Button */
+.logout-section {
+  margin-top: auto;
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 15px;
+  background: #c026d3; /* Fallback */
+  background: linear-gradient(90deg, #d946ef, #a855f7);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s;
+}
+
+.logout-btn:hover {
+  transform: scale(1.02);
+}
