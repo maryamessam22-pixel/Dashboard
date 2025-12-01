@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './Sidebar.css';
 
-// --- IMPORTS ---
-// Change '../assets/...' to the actual path where you saved your images
-import myProfilePic from '../assets/my_pic.png'; // Your profile picture
+import myProfilePic from '../assets/my_pic.png'; 
 
 import dashboardIcon from '../assets/dashboard.png';
 import msgIcon from '../assets/msg.png';
@@ -14,10 +12,10 @@ import categoriesIcon from '../assets/categories.png';
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      {/* Profile Section */}
+      
       <div className="profile-section">
         <div className="profile-img-container">
-            {/* Using the imported variable for the image source */}
+       
             <img src={myProfilePic} alt="Profile" className="profile-img" />
         </div>
         <h3 className="profile-name">M.Farid</h3>
@@ -25,7 +23,7 @@ const Sidebar = () => {
         <div className="divider"></div>
       </div>
 
-      {/* Navigation Menu */}
+
       <nav className="nav-menu">
         <ul>
           <li className="nav-item active">
@@ -55,10 +53,10 @@ const Sidebar = () => {
         </ul>
       </nav>
 
-      {/* Logout Button */}
+   
       <div className="logout-section">
         <button className="logout-btn">
-          {/* You can also use an image for the logout icon if you have one */}
+        
           <span>Log out</span>
         </button>
       </div>

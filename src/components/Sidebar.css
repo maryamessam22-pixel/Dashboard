@@ -115,3 +115,7 @@
 .logout-btn:hover {
   transform: scale(1.02);
 }
+
+.nav-icon{
+  margin-right: 5%;
+}
