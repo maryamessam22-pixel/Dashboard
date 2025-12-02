@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
-      {/* Overlay عند الموبايل */}
+     
       {sidebarOpen && <div className="overlay" onClick={() => setSidebarOpen(false)}></div>}
 
       {/* Main content */}
