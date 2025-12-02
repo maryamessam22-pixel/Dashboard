@@ -11,8 +11,9 @@ import Img3 from "../assets/3.png";
 import Img4 from "../assets/4.png";
 import Img5 from "../assets/5.png";
 import Img6 from "../assets/6.png";
-
+import Layout from "../layout/Layout";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis, Line as ReLine } from 'recharts';
+
 
 const Home = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -29,18 +30,18 @@ const Home = () => {
     <div className="dashboard-layout">
 
       {/* Sidebar */}
-      <Sidebar sidebarOpen={sidebarOpen} />
+   <Layout/>
 
       {/* Main Content */}
       <main className="main-content">
 
         {/* Mobile Toggle Button */}
-        <button 
+        {/* <button 
           className="mobile-toggle" 
           onClick={() => setSidebarOpen(!sidebarOpen)}
         >
           ☰
-        </button>
+        </button> */}
 
         {/* Header */}
         <header className="top-header">

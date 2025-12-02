@@ -2,9 +2,10 @@ a{
   text-decoration: none;
 }
 
+/* Sidebar — Desktop */
 .sidebar {
   width: 260px;
-  background-color: #1a103c; /* Dark deep purple */
+  background-color: #1a103c;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,6 +16,8 @@ a{
   position: fixed;
   left: 0;
   top: 0;
+  transition: left 0.3s ease;
+  z-index: 999;
 }
 
 /* Profile Styling */
@@ -23,7 +26,6 @@ a{
   margin-bottom: 30px;
   margin-top: 20px;
 }
-
 
 .profile-img-container {
   width: 80px;
@@ -58,7 +60,7 @@ a{
   margin-top: 20px;
 }
 
-/* Navigation Styling */
+/* Navigation */
 .nav-menu ul {
   list-style: none;
   padding: 0;
@@ -82,19 +84,17 @@ a{
   color: #fff;
 }
 
-
 .nav-item.active {
   background: linear-gradient(90deg, #a55eea, #d15bf6);
   color: #fff;
   box-shadow: 0 4px 15px rgba(165, 94, 234, 0.4);
 }
 
-.nav-item .icon {
-  margin-right: 15px;
-  font-size: 1.2rem;
+.nav-icon {
+  margin-right: 12px;
 }
 
-
+/* Logout */
 .logout-section {
   margin-top: auto;
 }
@@ -102,7 +102,6 @@ a{
 .logout-btn {
   width: 100%;
   padding: 15px;
-  background: #c026d3; /* Fallback */
   background: linear-gradient(90deg, #d946ef, #a855f7);
   border: none;
   border-radius: 12px;
@@ -120,38 +119,48 @@ a{
   transform: scale(1.02);
 }
 
-.nav-icon{
-  margin-right: 5%;
-}
-
-/* --------------------------------------- */
-/* 📱 MOBILE SIDEBAR (max-width: 768px) */
-/* --------------------------------------- */
-
-/* Sidebar shrinks on mobile */
+/* --------------------------- */
+/* Mobile: Sidebar Hidden */
+/* --------------------------- */
 @media (max-width: 768px) {
   .sidebar {
-    width: 220px;
-    position: fixed;
-    height: 100vh;
-    left: -220px; /* hidden */
-    transition: left 0.3s ease;
-    z-index: 999;
+    left: -260px; /* Hidden */
   }
-}
 
-/* When sidebar is open (you will add class "sidebar open") */
-@media (max-width: 768px) {
   .sidebar.open {
-    left: 0;
+    left: 0; /* Slide in */
   }
 }
 
-/* Main content expands full width on mobile */
+/* Black overlay when sidebar opens */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 998;
+}
+
+/* Burger Button */
+.mobile-toggle {
+  display: none;
+}
+
 @media (max-width: 768px) {
-  .main-content {
-    margin-left: 0 !important;
-    width: 100% !important;
-    padding: 20px;
+  .mobile-toggle {
+    display: block;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
+    background: #a855f7;
+    color: white;
+    border: none;
+    font-size: 24px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
   }
 }
