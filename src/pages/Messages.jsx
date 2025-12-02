@@ -55,7 +55,7 @@ const Messages = () => {
         {/* Messages Content */}
         <div className="messages-container" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
           
-          {/* Header */}
+         
           <header className="header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem 2rem" }}>
             <div className="header-left" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
               {/* <button className="menu-toggle" onClick={() => setShowSidebar(!showSidebar)}>
@@ -81,7 +81,7 @@ const Messages = () => {
             </div>
           </header>
 
-          {/* Messages Grid */}
+       
           <div className="messages-content" style={{ display: "flex", flex: 1, overflow: "hidden" }}>
             
             {/* Left Messages List */}
