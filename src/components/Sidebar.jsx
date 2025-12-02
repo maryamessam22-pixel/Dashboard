@@ -15,10 +15,10 @@ import { NavLink } from 'react-router-dom';
 const Sidebar = ({ sidebarOpen }) => {
   return (
     <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
-      
+
       <div className="profile-section">
         <div className="profile-img-container">
-            <img src={myProfilePic} alt="Profile" className="profile-img" />
+          <img src={myProfilePic} alt="Profile" className="profile-img" />
         </div>
         <h3 className="profile-name">M.Farid</h3>
         <p className="profile-role">UI/UX Designer</p>
@@ -27,40 +27,64 @@ const Sidebar = ({ sidebarOpen }) => {
 
       <nav className="nav-menu">
         <ul>
-          <li className="nav-item active">
-            <img src={dashboardIcon} className="nav-icon" alt="Dashboard" />
-            Dashboard
+          <li>
+            <NavLink 
+              to="/" 
+              className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}
+            >
+              <img src={dashboardIcon} className="nav-icon" alt="Dashboard" />
+              Dashboard
+            </NavLink>
           </li>
 
-
-          {/* <li className="nav-item">
-            <img src={msgIcon} className="nav-icon" alt="Messages" />
-            Messages
-          </li> */}
-
-  <NavLink 
-    to="/messages" 
-    className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}
-  >
-    <img src={msgIcon} className="nav-icon" alt="Messages" />
-    Messages
-  </NavLink>
-
-          <li className="nav-item">
-            <img src={profileIcon} className="nav-icon" alt="Profile" />
-            Profile
+          <li>
+            <NavLink 
+              to="/messages" 
+              className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}
+            >
+              <img src={msgIcon} className="nav-icon" alt="Messages" />
+              Messages
+            </NavLink>
           </li>
-          <li className="nav-item">
-            <img src={projectsIcon} className="nav-icon" alt="Projects" />
-            Projects
+
+          <li>
+            <NavLink 
+              to="/profile" 
+              className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}
+            >
+              <img src={profileIcon} className="nav-icon" alt="Profile" />
+              Profile
+            </NavLink>
           </li>
-          <li className="nav-item">
-            <img src={skillsIcon} className="nav-icon" alt="Skills" />
-            Skills & Experience
+
+          <li>
+            <NavLink 
+              to="/projects" 
+              className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}
+            >
+              <img src={projectsIcon} className="nav-icon" alt="Projects" />
+              Projects
+            </NavLink>
           </li>
-          <li className="nav-item">
-            <img src={categoriesIcon} className="nav-icon" alt="Categories" />
-            Categories & Pages
+
+          <li>
+            <NavLink 
+              to="/skills" 
+              className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}
+            >
+              <img src={skillsIcon} className="nav-icon" alt="Skills" />
+              Skills & Experience
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink 
+              to="/categories" 
+              className={({ isActive }) => isActive ? 'nav-item active' : 'nav-item'}
+            >
+              <img src={categoriesIcon} className="nav-icon" alt="Categories" />
+              Categories & Pages
+            </NavLink>
           </li>
         </ul>
       </nav>
@@ -76,3 +100,4 @@ const Sidebar = ({ sidebarOpen }) => {
 };
 
 export default Sidebar;
+
