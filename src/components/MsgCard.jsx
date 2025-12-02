@@ -12,11 +12,14 @@ const MsgCard = ({ msg, isActive, onClick }) => {
             <span className="msg-date">{msg.date}</span>
         </div>
         <h4 className="msg-role">{msg.role}</h4>
-        <p className="msg-preview">{msg.preview}</p> 
+        <p className="msg-preview">{msg.preview}</p>
+        
+        {/* Show unread dot if unread and not active */}
         {msg.unread && !isActive && (
             <div className="unread-dot"></div>
         )}
     </div>
   );
 };
+
 export default MsgCard;
