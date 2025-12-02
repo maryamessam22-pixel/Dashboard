@@ -1,6 +1,6 @@
 /* Main Container */
 .messages-container {
-margin-left: 100px;
+margin-left: 50px;
     width: calc(100% - 260px);
     padding: 30px 40px;
     box-sizing: border-box;
