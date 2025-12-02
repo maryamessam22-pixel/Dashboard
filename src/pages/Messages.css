@@ -1,5 +1,10 @@
 /* Main Container */
 .messages-container {
+margin-left: 100px;
+    width: calc(100% - 260px);
+    padding: 30px 40px;
+    box-sizing: border-box;
+
   display: flex;
   min-height: 100vh;
   background-color: #131129;
