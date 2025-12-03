@@ -7,6 +7,7 @@ import Messages from './Messages';
 import Profile from './Profile';
 import LoginPage from './LoginPage';
 import Projects from './Projects';
+import EditorPage from './EditorPage';
 
 const Routing = () => {
     return ( <>
@@ -21,6 +22,8 @@ const Routing = () => {
           <Route path="messages" element={<Messages />} />
           <Route path="profile" element={<Profile/>} />
           <Route path="projects" element={<Projects/>} />
+          <Route path="/edit/:id" element={<EditorPage/>} />
+
           {/* <Route path="*" element={<Errorpage />} /> */}
   </Routes>
  </BrowserRouter>
