@@ -222,7 +222,7 @@ body{
     
   .table-card {
     margin-left: 0;
-    padding: 16px;
+    padding-top: 10%;
   }
 
   .table-header, .project-row {
@@ -250,7 +250,7 @@ body{
 @media (max-width: 768px) {
   .table-card {
     margin-left: 0;
-    padding: 12px;
+    padding-top: 15%;
   }
 
   .table-header, .project-row {
@@ -292,7 +292,7 @@ body{
 
 @media (max-width: 480px) {
   .table-card {
-    padding: 8px;
+    padding-top: 15%;
   }
 
   .row-img {

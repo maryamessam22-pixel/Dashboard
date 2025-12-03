@@ -3,6 +3,7 @@ import { Edit2, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import './ProjectRow.css';
 
+
 const ProjectRow = ({ id, img, title, date, category, status, views, published }) => {
   const navigate = useNavigate();
 

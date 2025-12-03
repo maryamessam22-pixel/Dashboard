@@ -2,6 +2,7 @@ import React from "react";
 import { Mail } from "lucide-react";
 import "./MsgCard.css";
 
+
 const MsgCard = ({ msg, isActive, onClick }) => {
   return (
     <div 
