@@ -29,58 +29,7 @@ body {
   box-sizing: border-box;
 }
 
-/* Header */
-.top-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
 
-.breadcrumbs {
-  color: var(--text-secondary);
-}
-.breadcrumbs strong {
-  color: var(--text-primary);
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.search-bar {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 8px 15px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.search-bar input {
-  background: transparent;
-  border: none;
-  color: white;
-  margin-left: 10px;
-  outline: none;
-}
-
-.notification-icon {
-  position: relative;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-.notification-icon .dot {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 8px;
-  height: 8px;
-  background-color: red;
-  border-radius: 50%;
-}
 
 /* Welcome Banner */
 .welcome-banner {

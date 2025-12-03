@@ -13,7 +13,7 @@ import Img5 from "../assets/5.png";
 import Img6 from "../assets/6.png";
 import Layout from "../layout/Layout";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis, Line as ReLine } from 'recharts';
-import NavBar from '../components/NavBar';
+import Header from './../components/Header';
 
 
 const Home = () => {
@@ -45,7 +45,7 @@ const Home = () => {
         </button> */}
 
         {/* Header */}
-          <NavBar/>
+          <Header/>
         {/* Welcome Banner */}
         <section className="welcome-banner">
           <div className="banner-content">

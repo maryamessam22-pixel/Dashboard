@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-const NavBar = () => {
+const Header = () => {
     return ( <>
     
     
@@ -24,13 +24,7 @@ const NavBar = () => {
 
     
     
-    
-    
-    
-    
-    
-    
     </> );
 }
  
-export default NavBar;
+export default Header;
