@@ -5,11 +5,15 @@ import "./Projects.css";
 import Layout from "../layout/Layout";
 import Header from "../components/Header";
 
+import horrorImg from "../assets/horrorr.png"; 
+import miniImg from "../assets/miniii.png"; 
+import eventImg from "../assets/eventt.png"; 
+
 // Mock Data
 const projectsData = [
   {
     id: 1,
-    img: "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=100&h=100", 
+    img: horrorImg, 
     title: "Horror Website",
     date: "March 13",
     category: "Web Design",
@@ -19,7 +23,7 @@ const projectsData = [
   },
   {
     id: 2,
-    img: "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&q=80&w=100&h=100", 
+    img: miniImg, 
     title: "Mini Cooper car screens",
     date: "August 12",
     category: "UI/UX Design",
@@ -29,7 +33,7 @@ const projectsData = [
   },
   {
     id: 3,
-    img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=100&h=100", 
+    img: eventImg, 
     title: "Event Planner",
     date: "January 1",
     category: "Mobile App",
