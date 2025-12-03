@@ -9,6 +9,7 @@
 
 body {
   margin: 0;
+  padding: 0px !important;
   background-color: var(--bg-dark);
   overflow-x: hidden;
 }

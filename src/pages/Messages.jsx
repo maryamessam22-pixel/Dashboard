@@ -51,13 +51,13 @@ const Messages = () => {
     <>
       <div className="messages-page-wrapper">
         
-        {showSidebar && <Layout />}
+    {showSidebar && <Layout />}
 
         {/* Messages Content */}
         <div className="messages-container">
           
-           <Header title="Pages/ Messages" />
  
+           <Header title="Pages/ Messages" />
           <div className="messages-content">
             {/* Left msg*/}
             <div className="messages-sidebar">
