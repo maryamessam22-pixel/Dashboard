@@ -1,17 +1,16 @@
-/* Page Wrapper */
 .messages-page-wrapper {
   display: flex;
   min-height: 100vh;
 }
 
-/* Main Container */
+
 .messages-container {
   margin-left: 50px;
   width: calc(100% - 260px);
   padding: 30px 40px;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column; /* Updated to column based on your inline style */
+  flex-direction: column; 
   flex: 1;
   background-color: #131129;
   color: white;
@@ -19,7 +18,7 @@
 }
 
 
-/* Messages Content Area */
+
 .messages-content {
   display: flex;
   flex: 1;
@@ -28,7 +27,7 @@
   overflow: hidden;
 }
 
-/* Messages Sidebar (List) */
+
 .messages-sidebar {
   
   border-right: 1px solid #342f5c;
@@ -75,7 +74,7 @@
   overflow-y: auto;
 }
 
-/* Message Detail (Right Side) */
+
 .message-detail {
   flex: 1;
   background-color: #131129;
@@ -131,12 +130,12 @@
 
 .email-time {
   font-size: 0.875rem;
-  color: #9ca3af; /* Matched inline style */
+  color: #9ca3af; 
 }
 
 .detail-content {
   flex: 1;
-  padding: 1rem 0; /* Adjusted slightly for alignment */
+  padding: 1rem 0;
   overflow-y: auto;
   margin-bottom: 1rem;
 }
@@ -180,7 +179,7 @@
   box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
 }
 
-/* Empty State */
+
 .empty-state {
   display: flex;
   flex-direction: column;
@@ -194,7 +193,7 @@
 }
 
 .empty-icon {
-  background-color: #1A1731; /* Fallback if inline was removed */
+  background-color: #1A1731; 
   width: 80px;
   height: 80px;
   border-radius: 1rem;
@@ -225,7 +224,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Scrollbar Customization */
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -244,7 +243,7 @@
   background: #6B7280;
 }
 
-/* Responsive */
+
 @media (max-width: 1024px) {
   .messages-sidebar {
     width: 300px;
