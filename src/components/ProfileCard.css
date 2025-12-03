@@ -59,6 +59,7 @@
   transition: .2s ease;
 }
 
+
 .profile-save-btn:hover {
   transform: scale(1.05);
 }
