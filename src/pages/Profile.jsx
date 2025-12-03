@@ -14,7 +14,9 @@ const Profile = () => {
 
         <div className="profile-content">
       <Header title="Pages/ Profile" />
-           <ProfileCard/>
+      
+      <ProfileCard/>
+           
           <Sectionnn title="Profile settings">
             <input className="input-field" type="text" placeholder="Full Name" />
             <input className="input-field" type="text" placeholder="Job Title" />
