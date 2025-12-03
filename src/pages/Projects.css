@@ -68,20 +68,20 @@ body{
   z-index: 10;
 }
 
-/* --- Table Card --- */
+
 .table-card {
     margin-left: 290px;
   
-  /* border-radius: 30px; */
+
  padding: 30px 20px;
 
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Grid Layout for Header and Rows */
+
 .table-header, .project-row {
   display: grid;
-  /* Columns: Name(2.5) Category(1) Status(1) Views(1) Date(1.2) Actions(0.6) */
+
   grid-template-columns: 2.5fr 1fr 1fr 1fr 1.2fr 0.6fr;
   align-items: center;
 }
@@ -107,7 +107,6 @@ body{
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Row Specifics */
 .row-info {
   display: flex;
   align-items: center;
@@ -150,13 +149,13 @@ body{
     justify-content: center;
     display: flex;
     width: 80px;
-  color: #d8b4fe; /* Light Purple */
+  color: #d8b4fe; 
   background-color: rgba(168, 85, 247, 0.2);
   border: 1px solid rgba(168, 85, 247, 0.1);
 }
 
 .status-badge.published {
-  color: #34d399; /* Emerald */
+  color: #34d399; 
   background-color: rgba(52, 211, 153, 0.1);
 }
 
@@ -175,7 +174,7 @@ body{
   font-size: 14px;
   width: 90px;
   font-weight: 500;
-  color: #2dd4bf; /* Teal */
+  color: #2dd4bf; 
 }
 
 .row-actions {
@@ -218,7 +217,7 @@ body{
 }
 
 
-/* --- Responsive: Tablets --- */
+
 @media (max-width: 1024px) {
     
   .table-card {
@@ -227,7 +226,7 @@ body{
   }
 
   .table-header, .project-row {
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 0.8fr; /* slightly narrower columns */
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 0.8fr; 
   }
 
   .table-header {
@@ -247,7 +246,7 @@ body{
   }
 }
 
-/* --- Responsive: Mobile --- */
+
 @media (max-width: 768px) {
   .table-card {
     margin-left: 0;
@@ -255,12 +254,12 @@ body{
   }
 
   .table-header, .project-row {
-    grid-template-columns: 2fr 1fr 1fr; /* only Name, Category, Actions */
+    grid-template-columns: 2fr 1fr 1fr; 
   }
 
   .table-header .header-cell:nth-child(n+4),
   .project-row .row-cell:nth-child(n+4) {
-    display: none; /* hide Views, Status, Date */
+    display: none; 
   }
 
   .row-info {
@@ -290,7 +289,7 @@ body{
   }
 }
 
-/* --- Responsive: Small Mobile --- */
+
 @media (max-width: 480px) {
   .table-card {
     padding: 8px;
@@ -306,7 +305,7 @@ body{
   }
 
   .row-subtitle {
-    display: none; /* hide subtitle for very small screens */
+    display: none; 
   }
 
   .badge {
