@@ -4,6 +4,7 @@ import "./Messages.css";
 import MsgCard from '../components/MsgCard';
 import Layout from "../layout/Layout";
 import Header from "../components/Header";
+import Title from './../components/Title';
 
 //Data
 const messagesData = [
@@ -55,8 +56,8 @@ const Messages = () => {
         {/* Messages Content */}
         <div className="messages-container">
           
-           <Header/>
-
+           <Header title="Pages/ Messages" />
+ 
           <div className="messages-content">
             {/* Left Messages List */}
             <div className="messages-sidebar">

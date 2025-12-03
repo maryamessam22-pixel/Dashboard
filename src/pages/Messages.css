@@ -276,7 +276,7 @@
   }
   
   .messages-sidebar {
-    width: 80%;
+    width: 100%;
     border-right: none;
     border-bottom: 1px solid #342f5c;
     max-height: 300px;

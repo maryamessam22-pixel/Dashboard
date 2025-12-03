@@ -43,7 +43,8 @@ const Home = () => {
         </button> */}
 
         {/* Header */}
-          <Header/>
+          <Header title="Pages/ Dashboard" />
+
         {/* Welcome Banner */}
         <section className="welcome-banner">
           <div className="banner-content">

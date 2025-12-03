@@ -1,0 +1,6 @@
+.breadcrumbs {
+  color: var(--text-secondary);
+}
+.breadcrumbs strong {
+  color: var(--text-primary);
+}

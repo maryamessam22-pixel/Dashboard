@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import SearchImg from "../assets/search.png";
 import BellImg from "../assets/bell.png";
 import "./Header.css";
+import Title from './Title';
 
 
-const Header = () => {
+const Header = (props) => {
   return (
     <>
+    
       <header className="top-header">
-        <div className="breadcrumbs">
+        {/* <div className="breadcrumbs">
           Pages / <strong>Dashboard</strong>
-        </div>
+        </div> */}
+
+        <Title title={props.title} />
 
         <div className="header-actions">
           <div className="search-bar">
