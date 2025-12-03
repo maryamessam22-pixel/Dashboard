@@ -1,26 +1,25 @@
-/* Main BIG BOX */
 .profile-big-box {
     
   width: 100%;
   background: #1a103c;
-  padding: 25px 30px;
+  padding: 25px 25px;
   border-radius: 20px;
   display: flex;
-  justify-content: space-between; /* left & right */
+  justify-content: space-between; 
   align-items: center;
   margin-bottom: 35px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.4);
   border: 1px solid rgba(255,255,255,0.07);
 }
 
-/* Left content */
+
 .profile-left {
   display: flex;
   align-items: center;
   gap: 18px;
 }
 
-/* Small Image */
+
 .profile-small-img {
   width: 65px;
   height: 65px;
@@ -28,7 +27,7 @@
   border: 2px solid rgba(255,255,255,0.2);
 }
 
-/* Texts */
+
 .profile-texts {
   display: flex;
   flex-direction: column;
@@ -47,7 +46,7 @@
   color: #cfcfcf;
 }
 
-/* Save Button on the right */
+
 .profile-save-btn {
   background: linear-gradient(90deg, #d946ef, #a855f7);
   border: none;

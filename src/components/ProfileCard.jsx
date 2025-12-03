@@ -1,12 +1,12 @@
 import React from "react";
 import "./ProfileCard.css";
-import userPic from "../assets/my_pic.png"; // your small image
+import userPic from "../assets/my_pic.png";
 
 const ProfileCard = () => {
   return (
     <div className="profile-big-box">
 
-      {/* LEFT SIDE */}
+     
       <div className="profile-left">
         <img src={userPic} className="profile-small-img" alt="User" />
 
@@ -16,7 +16,7 @@ const ProfileCard = () => {
         </div>
       </div>
 
-      {/* RIGHT SIDE BUTTON */}
+    
       <button className="profile-save-btn">
         Save Changes
       </button>
