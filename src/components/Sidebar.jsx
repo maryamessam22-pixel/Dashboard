@@ -43,7 +43,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             
             <li>
               <NavLink
-                to="/"
+                to="/home"
                 className={({ isActive }) =>
                   isActive ? 'nav-item active' : 'nav-item'
                 }
