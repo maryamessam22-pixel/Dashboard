@@ -1,5 +1,6 @@
 /* Center card */
 .login-card {
+     font-family: 'Roboto', sans-serif;
   width: 420px;
   background: #1a103c;
   padding: 40px;
@@ -43,6 +44,7 @@
 /* Spacing */
 .form-group {
   margin-bottom: 18px;
+  width: 385px;
 }
 
 /* Remember + Forgot row */

@@ -1,7 +1,14 @@
 import React from "react";
 import "./Form.css";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/home"); // <-- goes to Home.jsx
+  };
+
   return (
     <div className="login-card">
       <h2 className="login-title">Welcome back</h2>
@@ -20,14 +27,15 @@ const Form = () => {
           <input type="checkbox" /> Remember me
         </label>
 
-        <a href="#" className="forgot-link">
-          Forgot password?
-        </a>
+        <a href="#" className="forgot-link">Forgot password?</a>
       </div>
 
-      <button className="login-btn">Login</button>
+      <button className="login-btn" onClick={handleLogin}>
+        Login
+      </button>
     </div>
   );
 };
 
 export default Form;
+
