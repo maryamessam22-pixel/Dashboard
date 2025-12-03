@@ -8,6 +8,7 @@ import Profile from './Profile';
 import LoginPage from './LoginPage';
 import Projects from './Projects';
 import EditorPage from './EditorPage';
+import AddNewProject from './AddNewProject';
 
 const Routing = () => {
     return ( <>
@@ -23,6 +24,7 @@ const Routing = () => {
           <Route path="profile" element={<Profile/>} />
           <Route path="projects" element={<Projects/>} />
           <Route path="/edit/:id" element={<EditorPage/>} />
+          <Route path="/add-new-project" element={<AddNewProject/>} />
 
           {/* <Route path="*" element={<Errorpage />} /> */}
   </Routes>

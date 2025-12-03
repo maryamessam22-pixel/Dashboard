@@ -1,5 +1,6 @@
 import React from "react";
 import { Edit2, Trash2, Plus, Search, Bell } from "lucide-react";
+import { useNavigate } from "react-router-dom"; // <-- import
 import ProjectRow from "../components/ProjectRow";
 import "./Projects.css"; 
 import Layout from "../layout/Layout";
@@ -44,6 +45,12 @@ const projectsData = [
 ];
 
 const Projects = () => {
+  const navigate = useNavigate(); // <-- hook
+
+  const handleAddNew = () => {
+    navigate("/add-new-project"); // <-- route to AddNewProject.jsx
+  };
+
   return (
     <div className="app-container">
       <div className="table-card">
@@ -51,7 +58,7 @@ const Projects = () => {
 
         {/* Add New Project Button */}
         <div className="add-new-container">
-          <button className="add-new-btn">
+          <button className="add-new-btn" onClick={handleAddNew}>
             <Plus size={16} style={{ marginRight: "8px" }} />
             Add New Project
           </button>
@@ -84,4 +91,5 @@ const Projects = () => {
 };
 
 export default Projects;
+
 
