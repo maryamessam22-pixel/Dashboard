@@ -7,7 +7,7 @@ import Layout from "../layout/Layout";
 import SearchImg from "../assets/search.png";
 import BellImg from "../assets/bell.png";
 
-// Mock Data
+//Data
 const messagesData = [
   {
     id: 1,
