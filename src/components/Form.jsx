@@ -10,13 +10,13 @@ const Form = () => {
   const [error, setError] = useState("");
 
   const handleLogin = () => {
-    // Validation: both required
+   
     if (!email || !password) {
       setError("Please enter both email and password.");
       return;
     }
 
-    // Optional: fixed login (you can remove this)
+  
     if (email !== "maryamessam22@gmail.com" || password !== "123456") {
       setError("Invalid email or password.");
       return;
