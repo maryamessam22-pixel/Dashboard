@@ -5,6 +5,7 @@ import MsgCard from '../components/MsgCard';
 
 import Layout from "../layout/Layout";
 
+
 // Mock Data
 const messagesData = [
   {
@@ -56,30 +57,23 @@ const Messages = () => {
         <div className="messages-container" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
           
          
-          <header className="header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem 2rem" }}>
-            <div className="header-left" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              {/* <button className="menu-toggle" onClick={() => setShowSidebar(!showSidebar)}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M3 12H21M3 6H21M9 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button> */}
-              <h1>Messages</h1>
-            </div>
-            <div className="header-right" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              <div className="search-bar" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                <Search size={18} />
-                <input type="text" placeholder="Search" />
-              </div>
-              <button className="notification-btn">
-                <Bell size={20} />
-                <span className="notification-dot"></span>
-              </button>
-              <div className="user-profile" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                <div className="avatar"><span>M</span></div>
-                <ChevronDown size={18} />
-              </div>
-            </div>
-          </header>
+         <header className="top-header">
+                   <div className="breadcrumbs">
+                     Pages / <strong>Dashboard</strong>
+                   </div>
+         
+                   <div className="header-actions">
+                     <div className="search-bar">
+                       <img src={SearchImg} alt="search icon" style={{ width: "16px", height: "16px" }} />
+                       <input type="text" placeholder="Search" />
+                     </div>
+         
+                     <div className="notification-icon">
+                       <img src={BellImg} alt="bell icon" style={{ width: "20px", height: "20px" }} />
+                       <div className="dot"></div>
+                     </div>
+                   </div>
+                 </header>
 
        
           <div className="messages-content" style={{ display: "flex", flex: 1, overflow: "hidden" }}>
