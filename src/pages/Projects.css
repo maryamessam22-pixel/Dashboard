@@ -1,8 +1,44 @@
-/* --- Global Reset & Layout --- */
+
 body{
     padding: 0px;
     margin: 0px;
 }
+
+
+.add-new-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.add-new-btn {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #8100fa, #c718b9);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-new-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(199, 24, 185, 0.4);
+}
+
+
+
+
+
+
+
+
+
+
 .app-container {
   background-color: #131129;
   color: white;
@@ -15,6 +51,7 @@ body{
   padding-top: 0px;
   padding-left: 0px;
 }
+
 
 
 .nav-item {

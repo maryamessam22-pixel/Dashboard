@@ -44,15 +44,22 @@ const projectsData = [
 ];
 
 const Projects = () => {
-  return (<>
-
-
+  return (
     <div className="app-container">
       <div className="table-card">
-   <Header title="Pages/ Projects" />
-        
+        <Header title="Pages/ Projects" />
+
+        {/* Add New Project Button */}
+        <div className="add-new-container">
+          <button className="add-new-btn">
+            <Plus size={16} style={{ marginRight: "8px" }} />
+            Add New Project
+          </button>
+        </div>
+
+        <Layout />
+
         {/* Table Header */}
-    <Layout/>
         <div className="table-header">
           <div className="header-cell pl-4">Project Name</div>
           <div className="header-cell">Category</div>
@@ -71,11 +78,10 @@ const Projects = () => {
             />
           ))}
         </div>
-
       </div>
     </div>
-    </>
   );
 };
 
 export default Projects;
+
