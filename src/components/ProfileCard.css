@@ -1,0 +1,65 @@
+/* Main BIG BOX */
+.profile-big-box {
+    
+  width: 100%;
+  background: #1a103c;
+  padding: 25px 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between; /* left & right */
+  align-items: center;
+  margin-bottom: 35px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+/* Left content */
+.profile-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Small Image */
+.profile-small-img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+/* Texts */
+.profile-texts {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name-text {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+.profile-job-text {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #cfcfcf;
+}
+
+/* Save Button on the right */
+.profile-save-btn {
+  background: linear-gradient(90deg, #d946ef, #a855f7);
+  border: none;
+  padding: 12px 26px;
+  font-size: 15px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.profile-save-btn:hover {
+  transform: scale(1.05);
+}

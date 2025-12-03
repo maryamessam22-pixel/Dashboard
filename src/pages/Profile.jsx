@@ -3,6 +3,7 @@ import "./Profile.css";
 import Header from './../components/Header';
 import Sectionnn from "../components/Sectionnn";
 import Layout from '../layout/Layout';
+import ProfileCard from '../components/ProfileCard';
 
 const Profile = () => {
   return (
@@ -13,12 +14,12 @@ const Profile = () => {
 
         <div className="profile-content">
       <Header title="Pages/ Profile" />
-
+           <ProfileCard/>
           <Sectionnn title="Profile settings">
             <input className="input-field" type="text" placeholder="Full Name" />
             <input className="input-field" type="text" placeholder="Job Title" />
             <input className="input-field" type="email" placeholder="Email Address" />
-            <button className="save-btn">Save Changes</button>
+            {/* <button className="save-btn">Save Changes</button> */}
           </Sectionnn>
 
           <Sectionnn title="Contact Information">
