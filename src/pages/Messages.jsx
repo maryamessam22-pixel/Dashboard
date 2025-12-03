@@ -4,7 +4,7 @@ import "./Messages.css";
 import MsgCard from '../components/MsgCard';
 import Layout from "../layout/Layout";
 import Header from "../components/Header";
-import Title from './../components/Title';
+// import Title from './../components/Title';
 
 //Data
 const messagesData = [
