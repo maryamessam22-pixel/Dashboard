@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import './Home.css';
 
-import SearchImg from "../assets/search.png";
-import BellImg from "../assets/bell.png";
 
 import Img1 from "../assets/1.png";
 import Img2 from "../assets/2.png";
