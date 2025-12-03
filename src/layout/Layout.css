@@ -1,0 +1,23 @@
+.layout-container{
+    margin-left: 30px;
+    padding-left: 0px;
+}
+
+@media (max-width: 768px) {
+  .layout-container {
+      margin-left: -30px;
+    padding-left: 0px;
+   
+ 
+  }
+}
+
+
+@media (max-width: 480px) {
+  .layout-container {
+      margin-left: -30px;
+    padding-left: 0px;
+   
+ 
+  }
+}

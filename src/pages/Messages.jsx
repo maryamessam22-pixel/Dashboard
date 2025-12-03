@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Mail, MessageSquare, Search, Bell, ChevronDown } from "lucide-react";
+import { Mail, MessageSquare } from "lucide-react";
 import "./Messages.css";
 import MsgCard from '../components/MsgCard';
-
 import Layout from "../layout/Layout";
 import SearchImg from "../assets/search.png";
 import BellImg from "../assets/bell.png";
@@ -50,17 +49,16 @@ const Messages = () => {
 
   return (
     <>
-      <div className="messages-page-wrapper" style={{ display: "flex", minHeight: "100vh" }}>
+      <div className="messages-page-wrapper">
         {/* Sidebar */}
         {showSidebar && <Layout />}
 
         {/* Messages Content */}
-        <div className="messages-container" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+        <div className="messages-container">
           
-         
-         <header className="top-header">
+          <header className="top-header">
                    <div className="breadcrumbs">
-                     Pages / <strong>Dashboard</strong>
+                     Pages / <strong>Messages</strong>
                    </div>
          
                    <div className="header-actions">
@@ -75,17 +73,14 @@ const Messages = () => {
                      </div>
                    </div>
                  </header>
-
-       
-          <div className="messages-content" style={{ display: "flex", flex: 1, overflow: "hidden" }}>
-            
+          <div className="messages-content">
             {/* Left Messages List */}
-            <div className="messages-sidebar" style={{ width: "350px", borderRight: "1px solid #342f5c", overflowY: "auto", padding: "1rem" }}>
-              <div className="messages-header" style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem" }}>
+            <div className="messages-sidebar">
+              <div className="messages-header">
                 <h2>Inbox</h2>
                 <span className="message-count">{messagesData.length} messages</span>
               </div>
-              <div className="messages-list" style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              <div className="messages-list">
                 {messagesData.map((msg) => (
                   <MsgCard
                     key={msg.id}
@@ -98,22 +93,22 @@ const Messages = () => {
             </div>
 
             {/* Right Message Detail */}
-            <div className="message-detail" style={{ flex: 1, padding: "1rem", overflowY: "auto" }}>
+            <div className="message-detail">
               {selectedMessage ? (
                 <div className="detail-container">
-                  <div className="detail-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "start", marginBottom: "1rem" }}>
-                    <div className="sender-info" style={{ display: "flex", gap: "1rem" }}>
+                  <div className="detail-header">
+                    <div className="sender-info">
                       <div className="avatar">{selectedMessage.sender.charAt(0)}</div>
                       <div>
                         <h2>{selectedMessage.sender}</h2>
-                        <div className="email-time" style={{ fontSize: "0.875rem", color: "#9ca3af" }}>
+                        <div className="email-time">
                           <span className="email">{selectedMessage.email}</span> • <span>{selectedMessage.date}, {selectedMessage.time}</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="detail-content" style={{ marginBottom: "1rem" }}>
+                  <div className="detail-content">
                     <h3>{selectedMessage.role}</h3>
                     <p>{selectedMessage.fullContent}</p>
                   </div>
@@ -125,8 +120,8 @@ const Messages = () => {
                   </div>
                 </div>
               ) : (
-                <div className="empty-state" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", opacity: 0.6 }}>
-                  <div className="empty-icon" style={{ marginBottom: "1rem" }}>
+                <div className="empty-state">
+                  <div className="empty-icon">
                     <MessageSquare size={48} />
                   </div>
                   <h3>Select a message to read</h3>
