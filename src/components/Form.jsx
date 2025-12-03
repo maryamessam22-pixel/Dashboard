@@ -17,7 +17,7 @@ const Form = () => {
     }
 
     // Optional: fixed login (you can remove this)
-    if (email !== "admin@gmail.com" || password !== "123456") {
+    if (email !== "maryamessam22@gmail.com" || password !== "123456") {
       setError("Invalid email or password.");
       return;
     }
