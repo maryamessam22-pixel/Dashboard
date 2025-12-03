@@ -1,0 +1,19 @@
+.section-box {
+  background: #1a103c;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.section-title {
+  color: white;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.section-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
