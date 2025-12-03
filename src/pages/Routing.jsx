@@ -6,7 +6,6 @@ import Home from './Home';
 import Messages from './Messages';
 import Profile from './Profile';
 import LoginPage from './LoginPage';
-import ProfileCard from '../components/ProfileCard';
 import Projects from './Projects';
 
 const Routing = () => {
