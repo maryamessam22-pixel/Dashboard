@@ -1,82 +1,185 @@
-/* Main container */
+/* =============================== */
+/* Main Profile Page Styling       */
+/* =============================== */
+.All{
+    display: flex;
+    flex-direction: column;
+}
 .profile-page {
-  width: 100%;
-  padding: 20px 40px;
-  background: #131129; /* dark background like your dashboard */
-  min-height: 100vh;
-  box-sizing: border-box;
+    flex-direction: column;
   display: flex;
-  flex-direction: row;
-  gap: 40px;
+  min-height: 100vh;
+  background-color: #121024; /* dark background */
+  color: white;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Right-side content */
+/* Right content area */
 .profile-content {
-  width: 100%;
+  flex: 1;
+  padding: 40px;
+  margin-left: 260px; /* width of your sidebar */
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  padding-top: 20px;
+  gap: 40px;
+  box-sizing: border-box;
 }
 
-/* Section Box */
+/* =============================== */
+/* Section Box                     */
+/* =============================== */
 .section-box {
-  background: #fff;
-  padding: 25px 30px;
-  border-radius: 14px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.08);
+  background: #1a103c;
+  padding: 30px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.section-box:hover {
+  transform: translateY(-3px);
+}
+
+/* Section Title */
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #f5f5f5;
+}
+
+/* Section Content */
+.section-content {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-/* Section Title */
-.section-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 5px;
-}
-
-/* Input Styling */
-.input-field {
-  width: 100%;
-  padding: 12px 15px;
-  border-radius: 10px;
-  border: 1px solid #dcdcdc;
-  background: #fafafa;
-  font-size: 14px;
-  outline: none;
-  transition: 0.2s;
-}
-
-.input-field:focus {
-  border-color: #8a4fff;
-  background: #fff;
-}
-
-/* Password Row (two inputs side by side) */
-.password-row {
-  display: flex;
-  gap: 15px;
-}
-
-/* Save Button */
-.save-btn {
-  width: fit-content;
-  padding: 12px 25px;
-  border-radius: 10px;
-  background: #8a4fff;
+/* =============================== */
+/* Inputs Styling                   */
+/* =============================== */
+.section-content input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 12px 18px;
+  border-radius: 12px;
   color: white;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  margin-top: 10px;
+  outline: none;
+  font-size: 15px;
   transition: 0.2s;
+}
+
+.section-content input:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.25);
+}
+
+/* =============================== */
+/* Save Button                     */
+/* =============================== */
+.save-btn {
+  background: linear-gradient(90deg, #d946ef, #a855f7);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: all 0.2s ease;
 }
 
 .save-btn:hover {
-  background: #733de0;
+  transform: scale(1.03);
 }
 
+/* =============================== */
+/* Security Row (New + Confirm)    */
+/* =============================== */
+.password-row {
+  display: flex;
+  gap: 20px;
+}
+
+.password-row input {
+  flex: 1; /* equal width for inputs */
+}
+
+/* =============================== */
+/* User Card (Profile Photo + Name)*/
+/* =============================== */
+.user-card {
+  background: #1a103c;
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.user-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-card-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.user-card-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #bbb;
+}
+
+/* =============================== */
+/* Add New User Button             */
+/* =============================== */
+.add-user-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 12px 20px;
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.2s;
+}
+
+.add-user-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* =============================== */
+/* Responsive                       */
+/* =============================== */
+@media (max-width: 1024px) {
+  .profile-content {
+    margin-left: 220px;
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .password-row {
+    flex-direction: column;
+  }
+}

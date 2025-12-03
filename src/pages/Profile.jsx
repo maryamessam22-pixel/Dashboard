@@ -6,8 +6,8 @@ import Layout from '../layout/Layout';
 
 const Profile = () => {
   return (
-    <>
-
+      <>
+<section className='All'>
       <div className="profile-page">
         <Layout />
 
@@ -37,6 +37,7 @@ const Profile = () => {
 
         </div>
       </div>
+      </section>
     </>
   );
 };
