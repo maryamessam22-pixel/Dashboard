@@ -40,3 +40,4 @@ const ProjectRow = ({ img, title, date, category, status, views, published }) =>
 };
 
 export default ProjectRow;
+
