@@ -12,6 +12,15 @@
   align-items: center;
   gap: 20px;
 }
+.breadcrumbs {
+  color: var(--text-secondary);
+   font-family: 'Roboto', sans-serif;
+}
+.breadcrumbs strong {
+  color: var(--text-primary);
+   font-family: 'Roboto', sans-serif;
+}
+
 
 .search-bar {
   background: rgba(255, 255, 255, 0.05);

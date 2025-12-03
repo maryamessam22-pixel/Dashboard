@@ -1,50 +1,45 @@
 import React from 'react';
-import Layout from '../layout/Layout';
+import "./Profile.css";
 import Header from './../components/Header';
-import Section from '../components/Sectionnn';
+import Sectionnn from "../components/Sectionnn";
+import Layout from '../layout/Layout';
 
 const Profile = () => {
   return (
     <>
-     
 
-      <Layout/>
+      <div className="profile-page">
+        <Layout />
 
-        {/* SECTION 1 */}
- <Header title="Pages/ Profile" />
-        <Section title="Profile settings">
-          <input type="text" placeholder="Full Name" />
-          <input type="text" placeholder="Job Title" />
-          <input type="email" placeholder="Email Address" />
+        <div className="profile-content">
+      <Header title="Pages/ Profile" />
 
-          <button className="save-btn">Save Changes</button>
+          <Sectionnn title="Profile settings">
+            <input className="input-field" type="text" placeholder="Full Name" />
+            <input className="input-field" type="text" placeholder="Job Title" />
+            <input className="input-field" type="email" placeholder="Email Address" />
+            <button className="save-btn">Save Changes</button>
+          </Sectionnn>
 
-        </Section>
+          <Sectionnn title="Contact Information">
+            <input className="input-field" type="text" placeholder="LinkedIn" />
+            <input className="input-field" type="text" placeholder="Behance" />
+            <input className="input-field" type="text" placeholder="Portfolio" />
+          </Sectionnn>
 
-        {/* SECTION 2 */}
-        <Section title="Contact Information">
+          <Sectionnn title="Security">
+            <input className="input-field" type="password" placeholder="Current password" />
+            <div className="password-row">
+              <input className="input-field" type="password" placeholder="New password" />
+              <input className="input-field" type="password" placeholder="Confirm password" />
+            </div>
+          </Sectionnn>
 
-          <input type="text" placeholder="LinkedIn" />
-          <input type="text" placeholder="Behance" />
-          <input type="text" placeholder="Portfolio" />
-
-        </Section>
-
-        {/* SECTION 3 */}
-        <Section title="Security">
-
-          <input type="password" placeholder="Current password" />
-
-          <div style={{ display: "flex", gap: "20px" }}>
-            <input type="password" placeholder="New password" />
-            <input type="password" placeholder="Confirm password" />
-          </div>
-
-        </Section>
-
- 
+        </div>
+      </div>
     </>
   );
 };
 
 export default Profile;
+

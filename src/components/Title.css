@@ -1,6 +1,9 @@
 .breadcrumbs {
-  color: var(--text-secondary);
+  
+   font-family: 'Roboto', sans-serif;
+     color: var(--text-secondary);
 }
 .breadcrumbs strong {
   color: var(--text-primary);
+   font-family: 'Roboto', sans-serif;
 }

@@ -1,0 +1,82 @@
+/* Main container */
+.profile-page {
+  width: 100%;
+  padding: 20px 40px;
+  background: #131129; /* dark background like your dashboard */
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+/* Right-side content */
+.profile-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-top: 20px;
+}
+
+/* Section Box */
+.section-box {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 14px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Input Styling */
+.input-field {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  background: #fafafa;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.input-field:focus {
+  border-color: #8a4fff;
+  background: #fff;
+}
+
+/* Password Row (two inputs side by side) */
+.password-row {
+  display: flex;
+  gap: 15px;
+}
+
+/* Save Button */
+.save-btn {
+  width: fit-content;
+  padding: 12px 25px;
+  border-radius: 10px;
+  background: #8a4fff;
+  color: white;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.save-btn:hover {
+  background: #733de0;
+}
+
