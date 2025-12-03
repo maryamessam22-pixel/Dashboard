@@ -1,6 +1,6 @@
 import React from "react";
 import { Edit2, Trash2, Plus, Search, Bell } from "lucide-react";
-import { useNavigate } from "react-router-dom"; // <-- import
+import { useNavigate } from "react-router-dom"; 
 import ProjectRow from "../components/ProjectRow";
 import "./Projects.css"; 
 import Layout from "../layout/Layout";
@@ -10,7 +10,7 @@ import horrorImg from "../assets/horrorr.png";
 import miniImg from "../assets/miniii.png"; 
 import eventImg from "../assets/eventt.png"; 
 
-// Mock Data
+// Data
 const projectsData = [
   {
     id: 1,
@@ -45,10 +45,10 @@ const projectsData = [
 ];
 
 const Projects = () => {
-  const navigate = useNavigate(); // <-- hook
+  const navigate = useNavigate(); 
 
   const handleAddNew = () => {
-    navigate("/add-new-project"); // <-- route to AddNewProject.jsx
+    navigate("/add-new-project"); 
   };
 
   return (

@@ -15,7 +15,7 @@ const EditorPage = () => {
     startDate: "",
     endDate: "",
     description: "",
-    tools: ["Figma", "VS Code"], // Pre-selected for demo
+    tools: ["Figma", "VS Code"], 
     slug: "",
     metaTitle: "",
     metaDescription: "",
@@ -224,7 +224,7 @@ const EditorPage = () => {
           </div>
         </div>
 
-        {/* Footer Buttons */}
+       
         <div className="footer-actions">
           <button className="btn-save">Save Draft</button>
           <button className="btn-publish">Publish Project</button>
