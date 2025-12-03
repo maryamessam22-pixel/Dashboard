@@ -18,7 +18,8 @@
 .profile-content {
   flex: 1;
   padding: 40px;
-  margin-left: 260px; /* width of your sidebar */
+  margin-left: 260px; 
+  margin-right: 50px;
   display: flex;
   flex-direction: column;
   gap: 40px;
