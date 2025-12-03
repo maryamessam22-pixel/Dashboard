@@ -11,9 +11,18 @@ import skillsIcon from '../assets/skills.png';
 import categoriesIcon from '../assets/categories.png';
 import logoutIcon from '../assets/logout.png';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
+
+  const navigate = useNavigate();   // <-- ADD THIS
+
+  // Logout function
+  const handleLogout = () => {
+    // if you want to clear anything later (like tokens), do it here
+    navigate("/");    // <-- navigate to LoginPage
+  };
+
   return (
     <>
       {/* Mobile Toggle Button */}
@@ -40,7 +49,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         {/* Nav Menu */}
         <nav className="nav-menu">
           <ul>
-            
             <li>
               <NavLink
                 to="/home"
@@ -112,13 +120,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 Categories & Pages
               </NavLink>
             </li>
-
           </ul>
         </nav>
 
         {/* Logout Button */}
         <div className="logout-section">
-          <button className="logout-btn">
+          <button className="logout-btn" onClick={handleLogout}>
             <img src={logoutIcon} alt="logout" />
             <span>Log out</span>
           </button>
@@ -130,3 +137,4 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 };
 
 export default Sidebar;
+
