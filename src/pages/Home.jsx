@@ -13,6 +13,7 @@ import Img5 from "../assets/5.png";
 import Img6 from "../assets/6.png";
 import Layout from "../layout/Layout";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis, Line as ReLine } from 'recharts';
+import NavBar from '../components/NavBar';
 
 
 const Home = () => {
@@ -44,24 +45,7 @@ const Home = () => {
         </button> */}
 
         {/* Header */}
-        <header className="top-header">
-          <div className="breadcrumbs">
-            Pages / <strong>Dashboard</strong>
-          </div>
-
-          <div className="header-actions">
-            <div className="search-bar">
-              <img src={SearchImg} alt="search icon" style={{ width: "16px", height: "16px" }} />
-              <input type="text" placeholder="Search" />
-            </div>
-
-            <div className="notification-icon">
-              <img src={BellImg} alt="bell icon" style={{ width: "20px", height: "20px" }} />
-              <div className="dot"></div>
-            </div>
-          </div>
-        </header>
-
+          <NavBar/>
         {/* Welcome Banner */}
         <section className="welcome-banner">
           <div className="banner-content">
