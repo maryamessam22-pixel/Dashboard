@@ -27,6 +27,7 @@ const Profile = () => {
             <input className="input-field" type="text" placeholder="Portfolio" />
           </Sectionnn>
 
+
           <Sectionnn title="Security">
             <input className="input-field" type="password" placeholder="Current password" />
             <div className="password-row">

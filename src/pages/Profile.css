@@ -1,6 +1,4 @@
-/* =============================== */
-/* Main Profile Page Styling       */
-/* =============================== */
+
 .All{
     display: flex;
     flex-direction: column;
@@ -9,12 +7,11 @@
     flex-direction: column;
   display: flex;
   min-height: 100vh;
-  background-color: #121024; /* dark background */
+  background-color: #121024;
   color: white;
   font-family: 'Poppins', sans-serif;
 }
 
-/* Right content area */
 .profile-content {
   flex: 1;
   padding: 40px;
@@ -26,9 +23,7 @@
   box-sizing: border-box;
 }
 
-/* =============================== */
-/* Section Box                     */
-/* =============================== */
+
 .section-box {
   background: #1a103c;
   padding: 30px;
@@ -44,7 +39,7 @@
   transform: translateY(-3px);
 }
 
-/* Section Title */
+
 .section-title {
   font-size: 22px;
   font-weight: 600;
@@ -52,16 +47,13 @@
   color: #f5f5f5;
 }
 
-/* Section Content */
 .section-content {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-/* =============================== */
-/* Inputs Styling                   */
-/* =============================== */
+
 .section-content input {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -78,9 +70,7 @@
   box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.25);
 }
 
-/* =============================== */
-/* Save Button                     */
-/* =============================== */
+
 .save-btn {
   background: linear-gradient(90deg, #d946ef, #a855f7);
   color: white;
@@ -98,21 +88,17 @@
   transform: scale(1.03);
 }
 
-/* =============================== */
-/* Security Row (New + Confirm)    */
-/* =============================== */
+
 .password-row {
   display: flex;
   gap: 20px;
 }
 
 .password-row input {
-  flex: 1; /* equal width for inputs */
+  flex: 1; 
 }
 
-/* =============================== */
-/* User Card (Profile Photo + Name)*/
-/* =============================== */
+
 .user-card {
   background: #1a103c;
   border-radius: 20px;
@@ -142,9 +128,7 @@
   color: #bbb;
 }
 
-/* =============================== */
-/* Add New User Button             */
-/* =============================== */
+
 .add-user-btn {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -164,9 +148,7 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* =============================== */
-/* Responsive                       */
-/* =============================== */
+
 @media (max-width: 1024px) {
   .profile-content {
     margin-left: 220px;
