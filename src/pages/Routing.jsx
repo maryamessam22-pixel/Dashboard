@@ -6,6 +6,8 @@ import Home from './Home';
 import Messages from './Messages';
 import Profile from './Profile';
 import LoginPage from './LoginPage';
+import ProfileCard from '../components/ProfileCard';
+import Projects from './Projects';
 
 const Routing = () => {
     return ( <>
@@ -19,7 +21,7 @@ const Routing = () => {
           <Route path="/home" element={<Home />} />
           <Route path="messages" element={<Messages />} />
           <Route path="profile" element={<Profile/>} />
- 
+          <Route path="projects" element={<Projects/>} />
           {/* <Route path="*" element={<Errorpage />} /> */}
   </Routes>
  </BrowserRouter>
