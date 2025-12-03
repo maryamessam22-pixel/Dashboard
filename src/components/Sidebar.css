@@ -2,7 +2,7 @@ a{
   text-decoration: none;
 }
 
-/* Sidebar — Desktop */
+
 .sidebar {
   width: 260px;
   background-color: #1a103c;
@@ -20,7 +20,7 @@ a{
   z-index: 999;
 }
 
-/* Profile Styling */
+
 .profile-section {
   text-align: center;
   margin-bottom: 30px;
@@ -60,7 +60,7 @@ a{
   margin-top: 20px;
 }
 
-/* Navigation */
+
 .nav-menu ul {
   list-style: none;
   padding: 0;
@@ -94,7 +94,7 @@ a{
   margin-right: 12px;
 }
 
-/* Logout */
+
 .logout-section {
   margin-top: auto;
 }
@@ -119,20 +119,18 @@ a{
   transform: scale(1.02);
 }
 
-/* --------------------------- */
-/* Mobile: Sidebar Hidden */
-/* --------------------------- */
+
 @media (max-width: 768px) {
   .sidebar {
-    left: -260px; /* Hidden */
+    left: -260px; 
   }
 
   .sidebar.open {
-    left: 0; /* Slide in */
+    left: 0;
   }
 }
 
-/* Black overlay when sidebar opens */
+
 .overlay {
   position: fixed;
   top: 0;
@@ -143,7 +141,6 @@ a{
   z-index: 998;
 }
 
-/* Burger Button */
 .mobile-toggle {
   display: none;
 }
