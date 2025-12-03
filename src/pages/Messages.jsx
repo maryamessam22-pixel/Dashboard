@@ -50,7 +50,7 @@ const Messages = () => {
   return (
     <>
       <div className="messages-page-wrapper">
-        {/* Sidebar */}
+        
         {showSidebar && <Layout />}
 
         {/* Messages Content */}
@@ -59,7 +59,7 @@ const Messages = () => {
            <Header title="Pages/ Messages" />
  
           <div className="messages-content">
-            {/* Left Messages List */}
+            {/* Left msg*/}
             <div className="messages-sidebar">
               <div className="messages-header">
                 <h2>Inbox</h2>
@@ -77,7 +77,7 @@ const Messages = () => {
               </div>
             </div>
 
-            {/* Right Message Detail */}
+            {/* Right dtailes msg */}
             <div className="message-detail">
               {selectedMessage ? (
                 <div className="detail-container">
