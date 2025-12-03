@@ -56,6 +56,7 @@ const Messages = () => {
         {/* Messages Content */}
         <div className="messages-container">
           
+         
           <header className="top-header">
                    <div className="breadcrumbs">
                      Pages / <strong>Messages</strong>
@@ -73,6 +74,8 @@ const Messages = () => {
                      </div>
                    </div>
                  </header>
+
+
           <div className="messages-content">
             {/* Left Messages List */}
             <div className="messages-sidebar">
