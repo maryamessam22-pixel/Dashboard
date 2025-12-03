@@ -1,9 +1,15 @@
 import React from "react";
 import { Edit2, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import './ProjectRow.css';
 
+const ProjectRow = ({ id, img, title, date, category, status, views, published }) => {
+  const navigate = useNavigate();
 
-const ProjectRow = ({ img, title, date, category, status, views, published }) => {
+  const handleEdit = () => {
+    navigate(`/edit/${id}`); // Navigate to editor page
+  };
+
   return (
     <div className="project-row">
       {/* IMAGE + TITLE + SUBTITLE */}
@@ -17,9 +23,7 @@ const ProjectRow = ({ img, title, date, category, status, views, published }) =>
 
       {/* CATEGORY */}
       <div className="row-cell">
-        <span className="badge category-badge">
-          {category}
-        </span>
+        <span className="badge category-badge">{category}</span>
       </div>
 
       {/* STATUS */}
@@ -30,22 +34,18 @@ const ProjectRow = ({ img, title, date, category, status, views, published }) =>
       </div>
 
       {/* VIEWS */}
-      <div className="row-cell views-text">
-        {views}
-      </div>
+      <div className="row-cell views-text">{views}</div>
 
       {/* PUBLISHED DATE */}
-      <div className="row-cell date-text">
-        {published}
-      </div>
+      <div className="row-cell date-text">{published}</div>
 
       {/* ACTIONS */}
       <div className="row-actions">
-        <button className="action-btn edit-btn">
-          <Edit2 size={16} />
+        <button className="action-btn edit-btn" onClick={handleEdit}>
+          <Edit2 size={16} /> Edit / تعديل
         </button>
         <button className="action-btn delete-btn">
-          <Trash2 size={16} />
+          <Trash2 size={16} /> Delete / حذف
         </button>
       </div>
     </div>
@@ -53,4 +53,5 @@ const ProjectRow = ({ img, title, date, category, status, views, published }) =>
 };
 
 export default ProjectRow;
+
 
