@@ -1,7 +1,7 @@
 import React from "react";
-import { Edit2, Trash2, Plus, Search, Bell } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom"; 
-import ProjectRow from "../components/ProjectRow";
+import BlogsRow from "../components/BlogsRow";   // ← UPDATED
 import "./Blogs.css"; 
 import Layout from "../layout/Layout";
 import Header from "../components/Header";
@@ -11,11 +11,11 @@ import miniImg from "../assets/miniii.png";
 import eventImg from "../assets/eventt.png"; 
 
 // Data
-const projectsData = [
+const blogsData = [
   {
     id: 1,
-    img: horrorImg, 
-    title: "Horror Website",
+    img: horrorImg,
+    title: "Blog: Horror Website",
     date: "March 13",
     category: "Web Design",
     status: "Published",
@@ -24,8 +24,8 @@ const projectsData = [
   },
   {
     id: 2,
-    img: miniImg, 
-    title: "Mini Cooper car screens",
+    img: miniImg,
+    title: "Blog: Mini Cooper",
     date: "August 12",
     category: "UI/UX Design",
     status: "Draft",
@@ -34,8 +34,8 @@ const projectsData = [
   },
   {
     id: 3,
-    img: eventImg, 
-    title: "Event Planner",
+    img: eventImg,
+    title: "Blog: Event Planner",
     date: "January 1",
     category: "Mobile App",
     status: "Published",
@@ -45,20 +45,15 @@ const projectsData = [
 ];
 
 const Blogs = () => {
-  const navigate = useNavigate(); 
-
-  const handleAddNew = () => {
-    navigate("/add-new-project"); 
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="app-container">
       <div className="table-card">
-        <Header title="Pages/ Blogs" />
+        <Header title="Pages / Blogs" />
 
-        {/* Add New Project Button */}
         <div className="add-new-container">
-          <button className="add-new-btn" onClick={handleAddNew}>
+          <button className="add-new-btn" onClick={() => navigate("/add-new-blog")}>
             <Plus size={16} style={{ marginRight: "8px" }} />
             Add New Blog
           </button>
@@ -66,9 +61,8 @@ const Blogs = () => {
 
         <Layout />
 
-        {/* Table Header */}
         <div className="table-header">
-          <div className="header-cell pl-4">Project Name</div>
+          <div className="header-cell pl-4">Blog Title</div>
           <div className="header-cell">Category</div>
           <div className="header-cell">Status</div>
           <div className="header-cell">Views</div>
@@ -76,13 +70,9 @@ const Blogs = () => {
           <div className="header-cell center">Actions</div>
         </div>
 
-        {/* Table Rows */}
         <div className="table-body">
-          {projectsData.map((project) => (
-            <ProjectRow 
-              key={project.id}
-              {...project}
-            />
+          {blogsData.map((blog) => (
+            <BlogsRow key={blog.id} {...blog} />
           ))}
         </div>
       </div>
