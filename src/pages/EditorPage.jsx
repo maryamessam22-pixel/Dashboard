@@ -8,7 +8,7 @@ const EditorPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // State
+
   const [projectEN, setProjectEN] = useState({
     title: "",
     type: "",
@@ -53,9 +53,8 @@ const EditorPage = () => {
           </button>
         </div>
 
-        {/* Top Section: Image + Info Grid */}
         <div className="top-layout">
-          {/* Image Upload Box */}
+          
           <div className="image-upload-section">
             <div className="upload-box">
               <div className="upload-icon">
@@ -65,7 +64,7 @@ const EditorPage = () => {
             </div>
           </div>
 
-          {/* Project Info Fields */}
+        
           <div className="project-info-grid">
             <div className="input-group">
               <label>Project Title (EN)</label>
@@ -126,7 +125,6 @@ const EditorPage = () => {
           </div>
         </div>
 
-        {/* Descriptions */}
         <div className="description-section">
           <div className="editor-group">
             <label>Project Description (EN)</label>
@@ -153,7 +151,7 @@ const EditorPage = () => {
           </div>
         </div>
 
-        {/* Tools Section */}
+      
         <div className="tools-section">
           <label>Select Tools Used</label>
           <div className="tools-list">
