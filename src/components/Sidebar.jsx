@@ -126,13 +126,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
 
 
-
-
-
-
-
-
-
             <li>
               <NavLink
                 to="/categories"
