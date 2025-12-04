@@ -387,3 +387,53 @@ input[type="date"] {
 .btn-publish:hover {
   background-color: #b90bd6;
 }
+
+
+
+@media (max-width: 900px) {
+  .project-info-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .input-group.right-align-label {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .top-layout {
+    flex-direction: column;
+  }
+
+  .image-upload-section {
+    flex: none;
+    width: 100%;
+  }
+
+  .upload-box {
+    height: 230px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .project-info-grid {
+    gap: 12px;
+  }
+
+  .input-group input {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  .editor-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .breadcrumb {
+    font-size: 1rem;
+  }
+}
