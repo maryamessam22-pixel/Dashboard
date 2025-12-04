@@ -99,17 +99,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             </li>
 
             <li>
-              <NavLink
-                to="/skills"
-                className={({ isActive }) =>
-                  isActive ? 'nav-item active' : 'nav-item'
-                }
-              >
-                <img src={skillsIcon} className="nav-icon" alt="Skills" />
-                Skills & Experience
-              </NavLink>
-            </li>
-
 
               <li>
               <NavLink
@@ -122,6 +111,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 Blogs
               </NavLink>
             </li>
+
+            
+              <NavLink
+                to="/skills"
+                className={({ isActive }) =>
+                  isActive ? 'nav-item active' : 'nav-item'
+                }
+              >
+                <img src={skillsIcon} className="nav-icon" alt="Skills" />
+                Skills & Experience
+              </NavLink>
+            </li>
+
+
 
 
 
