@@ -15,12 +15,12 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
-  const navigate = useNavigate();   // <-- ADD THIS
+  const navigate = useNavigate();   
 
   // Logout function
   const handleLogout = () => {
-    // if you want to clear anything later (like tokens), do it here
-    navigate("/");    // <-- navigate to LoginPage
+   
+    navigate("/");  
   };
 
   return (
@@ -33,10 +33,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         ☰
       </button>
 
-      {/* Sidebar */}
+    
       <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
 
-        {/* Profile Section */}
+        
         <div className="profile-section">
           <div className="profile-img-container">
             <img src={myProfilePic} alt="Profile" className="profile-img" />
