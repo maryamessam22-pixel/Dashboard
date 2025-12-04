@@ -117,7 +117,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   isActive ? 'nav-item active' : 'nav-item'
                 }
               >
-                <img src={skillsIcon} className="nav-icon" alt="blog" />
+                <img src={blogIcon} className="nav-icon" alt="blog" />
                 Blogs
               </NavLink>
             </li>
