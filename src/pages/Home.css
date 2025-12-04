@@ -23,6 +23,7 @@ body {
 
 
 .main-content {
+  background-color: #131129;
   margin-top: 0%;
   margin-left: 75px; 
   width: calc(100% - 260px);
