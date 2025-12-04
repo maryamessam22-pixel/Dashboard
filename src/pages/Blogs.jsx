@@ -1,7 +1,7 @@
 import React from "react";
 import { Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom"; 
-import BlogsRow from "../components/BlogsRow";   // ← UPDATED
+import BlogsRow from "../components/BlogsRow";  
 import "./Blogs.css"; 
 import Layout from "../layout/Layout";
 import Header from "../components/Header";
