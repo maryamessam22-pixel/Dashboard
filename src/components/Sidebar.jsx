@@ -125,6 +125,17 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
             </li>
 
 
+           <li>
+              <NavLink
+                to="/site_content"
+                className={({ isActive }) =>
+                  isActive ? 'nav-item active' : 'nav-item'
+                }
+              >
+                <img src={categoriesIcon} className="nav-icon" alt="Site_Content" />
+                Site Content
+              </NavLink>
+            </li>
 
 
 
@@ -137,7 +148,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 }
               >
                 <img src={categoriesIcon} className="nav-icon" alt="Categories" />
-                Categories & Pages
+                Categories
               </NavLink>
             </li>
           </ul>
