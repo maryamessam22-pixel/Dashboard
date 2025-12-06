@@ -10,6 +10,7 @@ import Projects from './Projects';
 import EditorPage from './EditorPage';
 import AddNewProject from './AddNewProject';
 import Blogs from './Blogs';
+import SiteContentPage from './SiteContentPage';
 
 const Routing = () => {
     return ( <>
@@ -27,6 +28,7 @@ const Routing = () => {
           <Route path="/edit/:id" element={<EditorPage/>} />
           <Route path="/add-new-project" element={<AddNewProject/>} />
           <Route path="/blogs" element={<Blogs/>} />
+          <Route path="/site-content" element={<SiteContentPage/>} />
 
           {/* <Route path="*" element={<Errorpage />} /> */}
   </Routes>
