@@ -11,6 +11,7 @@ import skillsIcon from '../assets/skills.png';
 import categoriesIcon from '../assets/categories.png';
 import logoutIcon from '../assets/logout.png';
 import blogsIcon from '../assets/blogs.png'
+import contentIcon from '../assets/content.png'
 
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -132,7 +133,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                   isActive ? 'nav-item active' : 'nav-item'
                 }
               >
-                <img src={categoriesIcon} className="nav-icon" alt="Site-Content" />
+                <img src={contentIcon} className="nav-icon" alt="Site-Content" />
                 Site Content
               </NavLink>
             </li>
