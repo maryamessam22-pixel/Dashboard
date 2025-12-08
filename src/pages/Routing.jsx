@@ -11,6 +11,7 @@ import EditorPage from './EditorPage';
 import AddNewProject from './AddNewProject';
 import Blogs from './Blogs';
 import SiteContentPage from './SiteContentPage';
+import SkillsExp from './SkillsExp';
 
 const Routing = () => {
     return ( <>
@@ -28,6 +29,7 @@ const Routing = () => {
           <Route path="/edit/:id" element={<EditorPage/>} />
           <Route path="/add-new-project" element={<AddNewProject/>} />
           <Route path="/blogs" element={<Blogs/>} />
+          <Route path="/skills-exp" element={<SkillsExp/>} />
           <Route path="/site-content" element={<SiteContentPage/>} />
 
           {/* <Route path="*" element={<Errorpage />} /> */}
