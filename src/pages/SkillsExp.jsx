@@ -1,12 +1,11 @@
-// SkillsExp.jsx
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import navigation hook
+import { useNavigate } from 'react-router-dom'; 
 import './SkillsExp.css'; 
 import Layout from '../layout/Layout';
 import Header from './../components/Header';
 
 const SkillsExp = () => {
-  const navigate = useNavigate(); // Initialize hook
+  const navigate = useNavigate(); 
 
   const experienceData = [
     {
@@ -57,17 +56,17 @@ const SkillsExp = () => {
          
             <Header title="Pages/ Skills & Experience" />
         <div className="page-header-row">
-           {/* Header Content */}
+         
         </div>
 
         <div className="content-grid">
            
-          {/* SKILLS COLUMN */}
+      
           <div className="card-container skills-col">
 
             <div className='ADD-NEW-SKILL'>      
                 <h3 className="card-header">Skills</h3>
-                {/* BUTTON FOR SKILL */}
+              
                 <button className="add-new-btn" onClick={() => navigate('/add-skill')}>
                     <span className="plus-icon">+</span> Add New Skill
                 </button>
@@ -106,11 +105,11 @@ const SkillsExp = () => {
             </div>
           </div>
 
-          {/* EXPERIENCE COLUMN */}
+         
           <div className="card-container experience-col">
               <div className='ADD-NEW-SKILL'>      
                 <h3 className="card-header">Experience</h3>
-                {/* BUTTON FOR EXPERIENCE */}
+                
                 <button className="add-new-btn" onClick={() => navigate('/add-experience')}>
                     <span className="plus-icon">+</span> Add New Experience
                 </button>
