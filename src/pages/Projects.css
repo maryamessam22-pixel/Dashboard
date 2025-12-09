@@ -30,15 +30,6 @@ body{
   box-shadow: 0 5px 15px rgba(199, 24, 185, 0.4);
 }
 
-
-
-
-
-
-
-
-
-
 .app-container {
   background-color: #131129;
   color: white;
@@ -51,8 +42,6 @@ body{
   padding-top: 0px;
   padding-left: 0px;
 }
-
-
 
 .nav-item {
   display: flex;
