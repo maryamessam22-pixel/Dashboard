@@ -11,28 +11,28 @@ const SkillsExp = () => {
       id: 1,
       company: "Vivid Studios",
       role: "Motion & Media Designer",
-      desc: "Produced Engaging Digital Visuals, Animations, And Social Media Reels.",
+      desc: "Produced engaging digital visuals, animations, and social media reels.",
       color: "#a855f7"
     },
     {
       id: 2,
       company: "Hany Saad Innovation",
       role: "Graphic Designer",
-      desc: "Created Visual Campaigns And Brand Materials Aligned With High-End Architectural Concepts.",
+      desc: "Graphic Designer at Hany Saad Innovations created visual campaigns and brand materials that aligned with high-end architectural concepts.",
        color: "#a855f7"
     },
     {
       id: 3,
-      company: "Freelance Designer",
-      role: "Self-Employed",
-      desc: "Delivered Complete Brand Identities, Logos, And Marketing Visuals For Various Clients.",
+      company: "KGoing Company",
+      role: "Graphic Designer",
+      desc: "Graphic Designer at Keep Going Company; created visual campaigns, logos, and brand materials that aligned with the energetic branding of the supplements and fitness equipment industry.",
        color: "#a855f7"
     },
     {
       id: 4,
       company: "Freelance Designer",
       role: "Self-Employed",
-      desc: "Delivered Complete Brand Identities, Logos, And Marketing Visuals For Various Clients.",
+      desc: "UI/UX Designer designing interactive mobile apps and websites, focusing on usability, accessibility, and visual harmony.",
        color: "#a855f7"
     }
   ];
@@ -67,7 +67,7 @@ const SkillsExp = () => {
           
           <div className="card-container skills-col">
             <h3 className="card-header">Skills</h3>
-
+            <h3 className="card-header">Add new skill</h3>
            
             <div className="info-box mb-20">
               <div className="info-text">

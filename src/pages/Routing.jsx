@@ -11,7 +11,7 @@ import AddNewProject from './AddNewProject';
 import Blogs from './Blogs';
 import SiteContentPage from './SiteContentPage';
 import SkillsExp from './SkillsExp';
-import AddSkillsExp from './AddSkillsExp'; // <--- 1. Import the new page here
+
 
 const Routing = () => {
     return (
@@ -31,8 +31,8 @@ const Routing = () => {
                     <Route path="/skills-exp" element={<SkillsExp />} />
 
                     {/* New Route for Adding Skills/Experience */}
-                    <Route path="/skills-exp/add" element={<AddSkillsExp />} /> 
-                    <Route path="/skills-exp/edit/:id" element={<AddSkillsExp />} />
+                    {/* <Route path="/skills-exp/add" element={<AddSkillsExp />} /> 
+                    <Route path="/skills-exp/edit/:id" element={<AddSkillsExp />} /> */}
 
                     <Route path="/site-content" element={<SiteContentPage />} />
                 </Routes>
