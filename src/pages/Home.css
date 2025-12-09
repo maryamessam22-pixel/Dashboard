@@ -35,7 +35,7 @@
   /* DESKTOP DEFAULT: Space for Sidebar */
   margin-left: 265px; 
   width: calc(100% - 265px);
-  padding: 30px 40px;
+  padding: 12px 40px;
   box-sizing: border-box;
   transition: margin-left 0.3s ease, width 0.3s ease, padding 0.3s ease;
 }

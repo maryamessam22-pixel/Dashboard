@@ -1,3 +1,184 @@
+.skills-exp-container {
+  margin-left: 260px;
+  padding: 40px;
+  background-color:#131129;
+  min-height: 100vh;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+
+.page-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.main-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.add-new-btn {
+  background-color: #a855f7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.3s;
+}
+
+.add-new-btn:hover {
+  background-color: #9333ea;
+}
+
+
+.content-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+
+.card-container {
+  flex: 1;
+  min-width: 350px;
+  background-color: #1F0D37; 
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #eee;
+}
+
+
+.info-box {
+  background: transparent;
+  border: 1px solid #4c1d95; 
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  transition: 0.3s;
+}
+
+.info-box:hover {
+  border-color: #a855f7; 
+  background: rgba(168, 85, 247, 0.05);
+}
+
+.large-box {
+  min-height: 150px;
+}
+
+
+.info-text strong {
+  color: #fff;
+  font-weight: bold;
+}
+
+.desc-text {
+  color: #bbb;
+  font-size: 14px;
+  line-height: 1.6;
+  width: 90%;
+}
+
+
+.action-icons {
+  display: flex;
+  gap: 10px;
+  color: #888;
+  cursor: pointer;
+}
+
+.action-icons i:hover {
+  color: #fff;
+}
+
+.top-right {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+
+.tools-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.glass-circle {
+  width: 50px;
+  height: 50px;
+  background: #2b2b40;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #3f3f5f;
+}
+
+.glass-circle img {
+  width: 25px;
+  height: 25px;
+}
+
+
+.exp-item {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.exp-content {
+  margin-bottom: 10px;
+}
+
+.exp-company {
+  font-size: 16px;
+  margin: 0 0 5px 0;
+  color: #fff;
+}
+
+.exp-role {
+  font-size: 13px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.exp-desc {
+  font-size: 13px;
+  color: #aaa;
+  margin: 0;
+}
+
+
+.exp-item .action-icons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+
+
+
 /* 
 .skills-exp-wrapper {
   display: flex;
@@ -43,183 +224,3 @@
 } */
 
 
-/* SkillsExp.css */
-
-/* 1. الكونتينر الرئيسي: يزق المحتوى بعيد عن السايد بار */
-.skills-exp-container {
-  margin-left: 260px; /* مسافة للسايد بار */
-  padding: 40px;
-  background-color: #151521; /* خلفية الصفحة الغامقة */
-  min-height: 100vh;
-  color: #ffffff;
-  font-family: 'Inter', sans-serif;
-}
-
-/* 2. الهيدر بتاع الصفحة وزرار Add New */
-.page-header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.main-title {
-  font-size: 24px;
-  font-weight: 600;
-}
-
-.add-new-btn {
-  background-color: #a855f7; /* لون زرار الإضافة البنفسجي */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  transition: 0.3s;
-}
-
-.add-new-btn:hover {
-  background-color: #9333ea;
-}
-
-/* 3. الشبكة اللي ماسكة العمودين (Grid System) */
-.content-grid {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap; /* عشان الموبايل */
-}
-
-/* 4. تصميم الكارت الكبير (العمود نفسه) */
-.card-container {
-  flex: 1; /* يخلي العمودين قد بعض */
-  min-width: 350px;
-  background-color: #1e1e2f; /* لون خلفية العمود */
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.card-header {
-  font-size: 20px;
-  margin-bottom: 20px;
-  font-weight: 500;
-  color: #eee;
-}
-
-/* 5. المربعات الصغيرة اللي جوه (Info Box) */
-.info-box {
-  background: transparent;
-  border: 1px solid #4c1d95; /* الحد البنفسجي الغامق */
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  position: relative;
-  transition: 0.3s;
-}
-
-.info-box:hover {
-  border-color: #a855f7; /* يلمع لما تقفي عليه */
-  background: rgba(168, 85, 247, 0.05);
-}
-
-.large-box {
-  min-height: 150px;
-}
-
-/* 6. النصوص داخل المربعات */
-.info-text strong {
-  color: #fff;
-  font-weight: bold;
-}
-
-.desc-text {
-  color: #bbb;
-  font-size: 14px;
-  line-height: 1.6;
-  width: 90%;
-}
-
-/* 7. أيقونات التعديل والحذف */
-.action-icons {
-  display: flex;
-  gap: 10px;
-  color: #888;
-  cursor: pointer;
-}
-
-.action-icons i:hover {
-  color: #fff;
-}
-
-.top-right {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-/* 8. أيقونات البرامج (Software Icons) */
-.tools-row {
-  display: flex;
-  gap: 15px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.glass-circle {
-  width: 50px;
-  height: 50px;
-  background: #2b2b40;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #3f3f5f;
-}
-
-.glass-circle img {
-  width: 25px;
-  height: 25px;
-}
-
-/* 9. تفاصيل الخبرة (Experience Items) */
-.exp-item {
-  flex-direction: column; /* نخلي الكلام تحت بعض */
-  align-items: stretch;
-}
-
-.exp-content {
-  margin-bottom: 10px;
-}
-
-.exp-company {
-  font-size: 16px;
-  margin: 0 0 5px 0;
-  color: #fff;
-}
-
-.exp-role {
-  font-size: 13px;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.exp-desc {
-  font-size: 13px;
-  color: #aaa;
-  margin: 0;
-}
-
-/* أيقونات التعديل في كارت الخبرة تكون فوق يمين */
-.exp-item .action-icons {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
