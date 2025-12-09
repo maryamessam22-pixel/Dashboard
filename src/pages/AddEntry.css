@@ -184,6 +184,7 @@
     width: 100px;
     height: 100px;
     background-color: #a855f7; 
+    
     border-radius: 12px;
     display: flex;
     flex-direction: column;
@@ -205,6 +206,9 @@
 
 .upload-text {
     font-size: 10px;
+     
+    justify-content: center;
+    display: flex;
 }
 
 
