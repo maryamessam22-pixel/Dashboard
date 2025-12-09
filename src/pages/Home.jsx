@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import './Home.css';
-
-
 import Img1 from "../assets/1.png";
 import Img2 from "../assets/2.png";
 import Img3 from "../assets/3.png";
