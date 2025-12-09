@@ -4,6 +4,7 @@ import Layout from '../layout/Layout';
 
 // لو عندك صور للأيقونات محملة local استخدميها، لو لا، اللينكات اللي تحت شغالة تمام
 // import reactIcon from '../assets/react.png'; 
+import Header from './../components/Header';
 
 const SkillsExp = () => {
   
@@ -57,8 +58,8 @@ const SkillsExp = () => {
       <div className="skills-exp-container">
         
         {/* Page Title Section */}
+           <Header title="Pages/ Skills & Experince" />
         <div className="page-header-row">
-          <h2 className="main-title">Skills & Experience</h2>
           <button className="add-new-btn">
             <span className="plus-icon">+</span> Add New
           </button>
