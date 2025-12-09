@@ -13,6 +13,7 @@ import SiteContentPage from './SiteContentPage';
 import SkillsExp from './SkillsExp';
 import AddExperience from './AddExperience';
 import AddSkill from './AddSkill';
+import Categories from './Categories';
 
 
 const Routing = () => {
@@ -33,10 +34,10 @@ const Routing = () => {
                     <Route path="/skills-exp" element={<SkillsExp />} />
                     <Route path="/add-skill" element={<AddSkill />} />
                     <Route path="/add-experience" element={<AddExperience />} />
-                    
-
-
                     <Route path="/site-content" element={<SiteContentPage />} />
+                    <Route path="/categories" element={<Categories />} />
+
+
                 </Routes>
             </BrowserRouter>
         </>
