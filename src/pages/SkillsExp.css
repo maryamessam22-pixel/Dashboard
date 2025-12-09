@@ -10,6 +10,19 @@
   margin-top: 0; 
 }
 
+.ADD-NEW-SKILL{
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: space-between;
+ margin-bottom: 5%;
+
+
+}
+
+
+
+
 .page-header-row {
   display: flex;
   justify-content: space-between;

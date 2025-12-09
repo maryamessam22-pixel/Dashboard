@@ -57,18 +57,24 @@ const SkillsExp = () => {
     
            <Header title="Pages/ Skills & Experience" />
         <div className="page-header-row">
-          <button className="add-new-btn">
+          {/* <button className="add-new-btn">
             <span className="plus-icon">+</span> Add New
-          </button>
+          </button> */}
         </div>
 
         <div className="content-grid">
           
           
           <div className="card-container skills-col">
+
+      <div className='ADD-NEW-SKILL'>     
             <h3 className="card-header">Skills</h3>
-            <h3 className="card-header">Add new skill</h3>
-           
+           <button className="add-new-btn">
+            <span className="plus-icon">+</span> Add New Skill
+          </button>
+      </div>  
+
+
             <div className="info-box mb-20">
               <div className="info-text">
                 <strong>Skills</strong> | A Comprehensive Overview Of My UI/UX Designer Skills
@@ -104,7 +110,13 @@ const SkillsExp = () => {
 
          
           <div className="card-container experience-col">
+              <div className='ADD-NEW-SKILL'>     
             <h3 className="card-header">Experience</h3>
+           <button className="add-new-btn">
+            <span className="plus-icon">+</span> Add New Experience
+          </button>
+      </div>  
+            
 
             <div className="experience-list">
               {experienceData.map((exp) => (
