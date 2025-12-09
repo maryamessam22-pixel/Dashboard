@@ -1,9 +1,7 @@
-// src/pages/Categories.jsx
 import React, { useState } from 'react';
 import './Categories.css'; 
 import Layout from '../layout/Layout'; 
 import Header from '../components/Header';
-// 1. استدعاء المحرر الجديد
 import RichTextEditor from '../components/common/RichTextEditor'; 
 
 const Categories = () => {
@@ -41,7 +39,7 @@ const Categories = () => {
 
         <div className="main-grid">
           
-          {/* LEFT COLUMN */}
+        
           <div className="left-column">
             
             <div className="tabs-row">
@@ -53,7 +51,7 @@ const Categories = () => {
             <div className="card-panel">
                 <h3 className="panel-title">Create category</h3>
                 
-                {/* Titles */}
+              
                 <div className="form-row">
                     <div className="form-group">
                         <label>Title (EN)</label>
@@ -77,21 +75,20 @@ const Categories = () => {
                     </div>
                 </div>
 
-                {/* 2. استبدال الـ Description (EN) بالمحرر الجديد */}
+                
                 <div className="form-group">
                     <label>Description (EN)</label>
                     <RichTextEditor
                         value={formData.descEn}
-                        // ملحوظة: ReactQuill بيبعت القيمة مباشرة مش event
+                       
                         onChange={(content) => setFormData({ ...formData, descEn: content })}
                         placeholder="Showcasing my creative journey through diverse UI/UX projects..."
                     />
                 </div>
 
-                {/* 3. استبدال الوصف العربي بالمحرر الجديد */}
                 <div className="form-group">
                     <label className="text-right">الوصف الوظيفي (AR)</label>
-                    <div dir="rtl"> {/* عشان التنسيق يبقى يمين */}
+                    <div dir="rtl"> 
                       <RichTextEditor
                           value={formData.descAr}
                           onChange={(content) => setFormData({ ...formData, descAr: content })}
@@ -163,7 +160,6 @@ const Categories = () => {
 
           </div>
 
-          {/* RIGHT COLUMN */}
           <div className="right-column">
              <div className="list-header">
                 <h3>Existing categories</h3>
