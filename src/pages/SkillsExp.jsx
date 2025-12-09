@@ -78,7 +78,8 @@ const SkillsExp = () => {
                 <strong>Skills</strong> | A Comprehensive Overview Of My UI/UX Designer Skills
               </div>
               <div className="action-icons">
-                <i className="icon-edit">✎</i>
+
+                <i className="icon-edit" onClick={() => navigate('/add-skill')}>✎</i>
                 <i className="icon-delete">🗑</i>
               </div>
             </div>
@@ -91,7 +92,7 @@ const SkillsExp = () => {
                 Using Digital Tools And Techniques, I Create Multifunctional Products, Tailored To The Needs Of The Target Audience.
               </p>
               <div className="action-icons top-right">
-                <i className="icon-edit">✎</i>
+                <i className="icon-edit" onClick={() => navigate('/add-skill')}>✎</i>
                 <i className="icon-delete">🗑</i>
               </div>
             </div>
@@ -124,7 +125,7 @@ const SkillsExp = () => {
                     <p className="exp-desc">{exp.desc}</p>
                   </div>
                   <div className="action-icons">
-                    <i className="icon-edit">✎</i>
+                    <i className="icon-edit" onClick={() => navigate('/add-experience')}>✎</i>
                     <i className="icon-delete">🗑</i>
                   </div>
                 </div>
