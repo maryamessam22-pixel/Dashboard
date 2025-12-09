@@ -77,7 +77,7 @@ const AddSkill = () => {
         {/* Image Uploads */}
         <div className="upload-grid">
            {[1,2,3,4,5,6].map(i => (
-             <div key={i} className="upload-box">
+             <div key={i} className="upload-box-mini">
                 <span className="camera-icon">📷</span>
                 <span className="upload-text">Upload Image</span>
              </div>
