@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import Home from './Home';
 import Messages from './Messages';
 import Profile from './Profile';
@@ -29,15 +28,11 @@ const Routing = () => {
                     <Route path="/edit/:id" element={<EditorPage />} />
                     <Route path="/add-new-project" element={<AddNewProject />} />
                     <Route path="/blogs" element={<Blogs />} />
-                    
-                    {/* Skills & Experience Main Page */}
                     <Route path="/skills-exp" element={<SkillsExp />} />
                     <Route path="/add-skill" element={<AddSkill />} />
                     <Route path="/add-experience" element={<AddExperience />} />
                     <Route path="/site-content" element={<SiteContentPage />} />
                     <Route path="/categories" element={<Categories />} />
-
-
                 </Routes>
             </BrowserRouter>
         </>
@@ -45,3 +40,6 @@ const Routing = () => {
 }
 
 export default Routing;
+                    
+                   
+
