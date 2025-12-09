@@ -1,12 +1,14 @@
 .skills-exp-container {
-  margin-left: 260px;
-  padding: 40px;
-  background-color:#131129;
+  margin-left: 260px; 
+  padding: 40px 20px;
+ 
+  background-color: #131129;
   min-height: 100vh;
   color: #ffffff;
   font-family: 'Inter', sans-serif;
+  transition: margin-left 0.3s ease, padding 0.3s ease; 
+  margin-top: 0; 
 }
-
 
 .page-header-row {
   display: flex;
@@ -38,18 +40,16 @@
   background-color: #9333ea;
 }
 
-
 .content-grid {
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
 }
 
-
 .card-container {
   flex: 1;
   min-width: 350px;
-  background-color: #1F0D37; 
+  background-color: #1F0D37;
   border-radius: 20px;
   padding: 25px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -62,10 +62,9 @@
   color: #eee;
 }
 
-
 .info-box {
   background: transparent;
-  border: 1px solid #4c1d95; 
+  border: 1px solid #4c1d95;
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 20px;
@@ -77,14 +76,13 @@
 }
 
 .info-box:hover {
-  border-color: #a855f7; 
+  border-color: #a855f7;
   background: rgba(168, 85, 247, 0.05);
 }
 
 .large-box {
   min-height: 150px;
 }
-
 
 .info-text strong {
   color: #fff;
@@ -95,9 +93,8 @@
   color: #bbb;
   font-size: 14px;
   line-height: 1.6;
-  width: 90%;
+  width: 90%; 
 }
-
 
 .action-icons {
   display: flex;
@@ -115,7 +112,6 @@
   top: 20px;
   right: 20px;
 }
-
 
 .tools-row {
   display: flex;
@@ -140,7 +136,6 @@
   height: 25px;
 }
 
-
 .exp-item {
   flex-direction: column;
   align-items: stretch;
@@ -148,6 +143,7 @@
 
 .exp-content {
   margin-bottom: 10px;
+  padding-right: 30px; 
 }
 
 .exp-company {
@@ -169,7 +165,6 @@
   margin: 0;
 }
 
-
 .exp-item .action-icons {
   position: absolute;
   top: 20px;
@@ -177,7 +172,72 @@
 }
 
 
+@media (max-width: 992px) {
+  .skills-exp-container {
+    margin-left: 0;
+    padding: 0 20px 20px 20px;
+  }
+  
+  .card-container {
+    min-width: 100%;
+  }
+}
 
+
+@media (max-width: 768px) {
+  .skills-exp-container {
+    margin-left: 0;
+     padding: 80px 20px;
+  }
+
+  .content-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .card-container {
+    min-width: unset; 
+    width: 100%;
+    padding: 20px;
+  }
+
+  .desc-text {
+    width: 100%;
+    margin-bottom: 30px; 
+  }
+  
+
+  .info-box {
+    flex-direction: column;
+  }
+  
+  .top-right {
+    position: relative;
+    top: auto;
+    right: auto;
+    align-self: flex-end;
+    margin-top: 10px;
+    margin-bottom: -10px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .page-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .add-new-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tools-row {
+    justify-content: center; 
+  }
+}
 
 /* 
 .skills-exp-wrapper {
