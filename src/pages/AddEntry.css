@@ -1,0 +1,219 @@
+.add-entry-container {
+    background-color: #131129;
+    min-height: 100vh;
+    color: white;
+    padding: 40px 60px;
+    font-family: 'Inter', sans-serif;
+    max-width:100%;
+    margin: 0 auto;
+}
+
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #2b2b40;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.save-btn {
+    background-color: #a855f7;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Tabs */
+.tabs-container {
+    display: flex;
+    gap: 25px;
+    border-bottom: 2px solid #2b2b40;
+    margin-bottom: 35px;
+    padding-bottom: 5px;
+}
+
+.tab {
+    padding: 12px 15px;
+    cursor: pointer;
+    color: #888;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: -2px;
+}
+
+.tab:hover {
+    color: #c4a8ff;
+    background: rgba(168, 85, 247, 0.1);
+}
+
+.tab.active {
+    color: #a855f7;
+    border-bottom: 3px solid #a855f7;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 25px;
+    background: rgba(43, 43, 64, 0.3);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #2b2b40;
+}
+
+/* Add some space between form sections */
+.form-section {
+    margin-bottom: 40px;
+}
+
+/* Style section headers */
+.section-header {
+    font-size: 18px;
+    font-weight: 600;
+    color: #a855f7;
+    margin: 30px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2b2b40;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-input, .form-select, .form-textarea {
+    background-color: #1e1a2f;
+    border: 1px solid #3f3f5f;
+    padding: 14px 16px;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: #a855f7;
+    box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
+}
+
+/* Style for textareas */
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.rich-text-container {
+    background-color: #2b2b40;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 1px solid #3f3f5f;
+}
+
+.editor-toolbar {
+    background-color: #363655;
+    padding: 10px;
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid #3f3f5f;
+    color: #ccc;
+}
+
+.editor-textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #bbb;
+    padding: 15px;
+    min-height: 100px;
+    resize: vertical;
+    outline: none;
+    font-family: inherit;
+    line-height: 1.5;
+}
+
+
+.upload-grid {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.upload-box {
+    width: 100px;
+    height: 100px;
+    background-color: #a855f7; 
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.upload-box:hover {
+    opacity: 1;
+}
+
+.camera-icon {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.upload-text {
+    font-size: 10px;
+}
+
+
+.text-right {
+    text-align: right;
+    direction: rtl;
+}
+
+@media (max-width: 992px) {
+    .add-entry-container { margin-left: 0; }
+    .form-row { grid-template-columns: 1fr; }
+}

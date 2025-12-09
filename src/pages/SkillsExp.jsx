@@ -1,11 +1,13 @@
+// SkillsExp.jsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import navigation hook
 import './SkillsExp.css'; 
 import Layout from '../layout/Layout';
 import Header from './../components/Header';
 
 const SkillsExp = () => {
-  
- 
+  const navigate = useNavigate(); // Initialize hook
+
   const experienceData = [
     {
       id: 1,
@@ -22,21 +24,20 @@ const SkillsExp = () => {
        color: "#a855f7"
     },
     {
-      id: 3,
-      company: "KGoing Company",
-      role: "Graphic Designer",
-      desc: "Graphic Designer at Keep Going Company; created visual campaigns, logos, and brand materials that aligned with the energetic branding of the supplements and fitness equipment industry.",
-       color: "#a855f7"
-    },
-    {
-      id: 4,
-      company: "Freelance Designer",
-      role: "Self-Employed",
-      desc: "UI/UX Designer designing interactive mobile apps and websites, focusing on usability, accessibility, and visual harmony.",
-       color: "#a855f7"
-    }
+        id: 3,
+        company: "KGoing Company",
+        role: "Graphic Designer",
+        desc: "Graphic Designer at Keep Going Company; created visual campaigns, logos, and brand materials that aligned with the energetic branding of the supplements and fitness equipment industry.",
+         color: "#a855f7"
+      },
+      {
+        id: 4,
+        company: "Freelance Designer",
+        role: "Self-Employed",
+        desc: "UI/UX Designer designing interactive mobile apps and websites, focusing on usability, accessibility, and visual harmony.",
+         color: "#a855f7"
+      }
   ];
-
 
   const softwareIcons = [
     { name: 'React', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
@@ -51,29 +52,26 @@ const SkillsExp = () => {
   return (
     <> 
       <Layout/>
-      
+       
       <div className="skills-exp-container">
-        
-    
-           <Header title="Pages/ Skills & Experience" />
+         
+            <Header title="Pages/ Skills & Experience" />
         <div className="page-header-row">
-          {/* <button className="add-new-btn">
-            <span className="plus-icon">+</span> Add New
-          </button> */}
+           {/* Header Content */}
         </div>
 
         <div className="content-grid">
-          
-          
+           
+          {/* SKILLS COLUMN */}
           <div className="card-container skills-col">
 
-      <div className='ADD-NEW-SKILL'>     
-            <h3 className="card-header">Skills</h3>
-           <button className="add-new-btn">
-            <span className="plus-icon">+</span> Add New Skill
-          </button>
-      </div>  
-
+            <div className='ADD-NEW-SKILL'>      
+                <h3 className="card-header">Skills</h3>
+                {/* BUTTON FOR SKILL */}
+                <button className="add-new-btn" onClick={() => navigate('/add-skill')}>
+                    <span className="plus-icon">+</span> Add New Skill
+                </button>
+            </div>  
 
             <div className="info-box mb-20">
               <div className="info-text">
@@ -98,7 +96,6 @@ const SkillsExp = () => {
               </div>
             </div>
 
-            
             <div className="tools-row">
               {softwareIcons.map((tool, index) => (
                 <div key={index} className="tool-icon glass-circle">
@@ -108,16 +105,16 @@ const SkillsExp = () => {
             </div>
           </div>
 
-         
+          {/* EXPERIENCE COLUMN */}
           <div className="card-container experience-col">
-              <div className='ADD-NEW-SKILL'>     
-            <h3 className="card-header">Experience</h3>
-           <button className="add-new-btn">
-            <span className="plus-icon">+</span> Add New Experience
-          </button>
-      </div>  
+              <div className='ADD-NEW-SKILL'>      
+                <h3 className="card-header">Experience</h3>
+                {/* BUTTON FOR EXPERIENCE */}
+                <button className="add-new-btn" onClick={() => navigate('/add-experience')}>
+                    <span className="plus-icon">+</span> Add New Experience
+                </button>
+            </div>  
             
-
             <div className="experience-list">
               {experienceData.map((exp) => (
                 <div key={exp.id} className="info-box exp-item">
