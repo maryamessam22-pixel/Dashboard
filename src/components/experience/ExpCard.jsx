@@ -1,23 +1,15 @@
-import React from "react";
-import "./Exp.css";
+// ExperienceCard.jsx
+import React from 'react';
+import './SkillsExp.css';
 
-import { FaEdit, FaTrash } from "react-icons/fa";
-
-const ExpCard = ({ data, onEdit }) => {
+const ExperienceCard = ({ date, title, place }) => {
   return (
-    <div className="exp-card">
-      <div className="exp-card-header">
-        <h4>{data.companyEN}</h4>
-        <button className="edit-btn" onClick={onEdit}>
-          <FaEdit />
-        </button>
-      </div>
-
-      <h5>{data.jobEN}</h5>
-
-      <div dangerouslySetInnerHTML={{ __html: data.descriptionEN }} />
+    <div className="experience-card">
+      <span className="exp-date">{date}</span>
+      <h3 className="exp-title">{title}</h3>
+      <p className="exp-place">{place}</p>
     </div>
   );
 };
 
-export default ExpCard;
+export default ExperienceCard;

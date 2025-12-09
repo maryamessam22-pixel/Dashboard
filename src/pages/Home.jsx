@@ -26,7 +26,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="dashboard-layout">
+    <div className="home-page dashboard-layout">
 
       {/* Sidebar */}
    <Layout/>

@@ -30,6 +30,8 @@ const ExpForm = ({ data, onSave }) => {
         className="save-btn"
         onClick={() =>
           onSave({
+             titleEN,
+            titleAR,
             companyEN,
             companyAR,
             jobEN,

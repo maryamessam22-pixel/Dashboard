@@ -1,20 +1,25 @@
-import React from "react";
-import "./Skills.css";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import React from 'react';
+import './Skills.css';
 
-const SkillsCard = ({ data, onEdit }) => {
+const SkillsCard = ({ title, description, onEdit, onDelete }) => {
   return (
-    <div className="skills-card">
-      <div className="skills-card-header">
-        <h4>{data.titleEN}</h4>
-        <button className="edit-btn" onClick={onEdit}>
-          <FaEdit />
-        </button>
+    <div className="info-box mb-20">
+      {/* If it's a title box (small) */}
+      {title && (
+         <div className="info-text">
+            <strong>{title}</strong> | {description}
+         </div>
+      )}
+
+      {/* If it's a description box (large text only) */}
+      {!title && (
+         <p className="desc-text">{description}</p>
+      )}
+
+      <div className={`action-icons ${!title ? 'top-right' : ''}`}>
+        <i className="icon-edit" onClick={onEdit}>✎</i>
+        <i className="icon-delete" onClick={onDelete}>🗑</i>
       </div>
-
-      <p>{data.subtitleEN}</p>
-
-      <div dangerouslySetInnerHTML={{ __html: data.descriptionEN }} />
     </div>
   );
 };

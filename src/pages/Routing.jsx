@@ -32,6 +32,7 @@ const Routing = () => {
 
                     {/* New Route for Adding Skills/Experience */}
                     <Route path="/skills-exp/add" element={<AddSkillsExp />} /> 
+                    <Route path="/skills-exp/edit/:id" element={<AddSkillsExp />} />
 
                     <Route path="/site-content" element={<SiteContentPage />} />
                 </Routes>
