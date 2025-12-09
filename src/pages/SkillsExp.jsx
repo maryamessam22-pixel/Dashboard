@@ -57,7 +57,7 @@ const SkillsExp = () => {
       
       <div className="skills-exp-container">
         
-        {/* Page Title Section */}
+    
            <Header title="Pages/ Skills & Experince" />
         <div className="page-header-row">
           <button className="add-new-btn">
@@ -67,11 +67,11 @@ const SkillsExp = () => {
 
         <div className="content-grid">
           
-          {/* LEFT COLUMN: SKILLS */}
+          
           <div className="card-container skills-col">
             <h3 className="card-header">Skills</h3>
 
-            {/* Skill Title Box */}
+           
             <div className="info-box mb-20">
               <div className="info-text">
                 <strong>Skills</strong> | A Comprehensive Overview Of My UI/UX Designer Skills
@@ -82,7 +82,6 @@ const SkillsExp = () => {
               </div>
             </div>
 
-            {/* Skill Description Box */}
             <div className="info-box large-box mb-20">
               <p className="desc-text">
                 My Core Expertise Lies In UI/UX Design, Encompassing Both User Experience And User Interface Methodologies. 
@@ -96,7 +95,7 @@ const SkillsExp = () => {
               </div>
             </div>
 
-            {/* Tools / Software Icons */}
+            
             <div className="tools-row">
               {softwareIcons.map((tool, index) => (
                 <div key={index} className="tool-icon glass-circle">
@@ -106,7 +105,7 @@ const SkillsExp = () => {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: EXPERIENCE */}
+         
           <div className="card-container experience-col">
             <h3 className="card-header">Experience</h3>
 
