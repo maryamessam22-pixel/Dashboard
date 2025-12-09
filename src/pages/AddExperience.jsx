@@ -1,4 +1,3 @@
-// AddExperience.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AddEntry.css';
@@ -10,7 +9,7 @@ const AddExperience = () => {
   return (
     <div className="add-entry-container">
       
-      {/* Header */}
+   
       <div className="entry-header">
         <div className="header-title">
           <button onClick={() => navigate(-1)} className="back-btn">❮</button> 
@@ -21,16 +20,15 @@ const AddExperience = () => {
         </button>
       </div>
 
-      {/* Tabs */}
+ 
       <div className="tabs-container">
         <span className="tab active">Experience</span>
         <span className="tab" onClick={() => navigate('/add-skill')}>Skills</span>
       </div>
 
-      {/* Form Content */}
+  
       <div className="form-content">
-        
-        {/* Row 1: Section Title */}
+  
         <div className="form-row">
           <div className="form-group">
             <label>Section Title (EN)</label>
@@ -42,7 +40,7 @@ const AddExperience = () => {
           </div>
         </div>
 
-        {/* Row 2: Section Subtitle */}
+    
         <div className="form-row">
           <div className="form-group">
             <label>Section subtitle (EN)</label>
@@ -54,7 +52,6 @@ const AddExperience = () => {
           </div>
         </div>
 
-        {/* Row 3: Company */}
         <div className="form-row">
            <div className="form-group">
             <label>Company (EN)</label>
@@ -66,7 +63,6 @@ const AddExperience = () => {
           </div>
         </div>
 
-        {/* Row 4: Job Title */}
          <div className="form-row">
            <div className="form-group">
             <label>Job Title (EN)</label>
