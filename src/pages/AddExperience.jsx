@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AddEntry.css';
+import RichTextEditor from './../components/common/RichTextEditor';
 
 const AddExperience = () => {
   const navigate = useNavigate();
@@ -98,6 +99,7 @@ const AddExperience = () => {
             <textarea className="editor-textarea text-right" defaultValue="عملت كمصممة جرافيك..." />
           </div>
         </div>
+        <RichTextEditor/>
 
       </div>
     </div>
