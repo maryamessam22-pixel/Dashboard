@@ -1,46 +1,43 @@
 import React from 'react';
 import './SkillsExp.css'; 
 import Layout from '../layout/Layout';
-
-// لو عندك صور للأيقونات محملة local استخدميها، لو لا، اللينكات اللي تحت شغالة تمام
-// import reactIcon from '../assets/react.png'; 
 import Header from './../components/Header';
 
 const SkillsExp = () => {
   
-  // داتا الخبرة (Experience)
+ 
   const experienceData = [
     {
       id: 1,
       company: "Vivid Studios",
       role: "Motion & Media Designer",
       desc: "Produced Engaging Digital Visuals, Animations, And Social Media Reels.",
-      color: "#a855f7" // Purple accent
+      color: "#a855f7"
     },
     {
       id: 2,
       company: "Hany Saad Innovation",
       role: "Graphic Designer",
       desc: "Created Visual Campaigns And Brand Materials Aligned With High-End Architectural Concepts.",
-      color: "#d946ef" // Pink accent
+       color: "#a855f7"
     },
     {
       id: 3,
       company: "Freelance Designer",
       role: "Self-Employed",
       desc: "Delivered Complete Brand Identities, Logos, And Marketing Visuals For Various Clients.",
-      color: "#fff"
+       color: "#a855f7"
     },
     {
       id: 4,
       company: "Freelance Designer",
       role: "Self-Employed",
       desc: "Delivered Complete Brand Identities, Logos, And Marketing Visuals For Various Clients.",
-      color: "#fff"
+       color: "#a855f7"
     }
   ];
 
-  // أيقونات البرامج (Software Icons)
+
   const softwareIcons = [
     { name: 'React', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
     { name: 'Ai', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg' },
@@ -58,7 +55,7 @@ const SkillsExp = () => {
       <div className="skills-exp-container">
         
     
-           <Header title="Pages/ Skills & Experince" />
+           <Header title="Pages/ Skills & Experience" />
         <div className="page-header-row">
           <button className="add-new-btn">
             <span className="plus-icon">+</span> Add New
