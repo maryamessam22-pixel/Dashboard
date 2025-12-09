@@ -1,0 +1,56 @@
+/* --- EXPERIENCE CARD --- */
+.exp-card {
+  background: #210042;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #5200a8;
+  margin-bottom: 15px;
+  transition: 0.2s ease-in-out;
+}
+
+.exp-card:hover {
+  border-color: #7a29ff;
+  box-shadow: 0px 0px 15px rgba(170, 0, 255, 0.25);
+}
+
+/* HEADER */
+.exp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exp-card-header h4 {
+  font-size: 18px;
+  color: #e5d3ff;
+}
+
+/* EDIT BUTTON */
+.edit-btn {
+  background: #7a29ff;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+.edit-btn:hover {
+  background: #b387ff;
+}
+
+/* FORM (Same as skills form to match design) */
+.form-wrapper input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: #2a005a;
+  border: 1px solid #6b00e6;
+  color: white;
+}
+
+.form-wrapper input::placeholder {
+  color: #c4b1ff;
+}

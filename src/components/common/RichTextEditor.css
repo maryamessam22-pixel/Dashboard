@@ -1,0 +1,43 @@
+.custom-editor {
+  width: 100%;
+  background: #1a1a3b;           /* same background as your design */
+  border: 1px solid #2d2d57;
+  border-radius: 14px;
+  padding: 8px;
+}
+
+.custom-editor .ql-toolbar {
+  background: #22224a;
+  border: none !important;
+  border-radius: 10px 10px 0 0;
+}
+
+.custom-editor .ql-container {
+  border: none !important;
+  background: #1a1a3b;
+  color: white;
+  border-radius: 0 0 10px 10px;
+  min-height: 120px;
+}
+
+.custom-editor .ql-editor {
+  color: white;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.custom-editor .ql-stroke {
+  stroke: white !important;
+}
+
+.custom-editor .ql-fill {
+  fill: white !important;
+}
+
+.custom-editor .ql-picker {
+  color: white !important;
+}
+
+.editor-input {
+  width: 100%;
+}

@@ -1,79 +1,87 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import SkillsCard from "../components/skills/SkillsCard";
 import SkillsForm from "../components/skills/SkillsForm";
+
 import ExpCard from "../components/experience/ExpCard";
 import ExpForm from "../components/experience/ExpForm";
 
-import skillsData from "../data/skillsData";
-import experienceData from "../data/experienceData";
+import skillsData from "../components/data/skillsData";
+import experienceData from "../components/data/experienceData";
+
+import "./SkillsExp.css"; // optional global
+import Layout from "../layout/Layout";
 
 const SkillsExp = () => {
-  const [activeForm, setActiveForm] = useState("experience");
-  const formRef = useRef(null);
+  const [skills, setSkills] = useState(skillsData);
+  const [experience, setExperience] = useState(experienceData);
 
-  const scrollToForm = () => {
-    setTimeout(() => {
-      formRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 150);
+  // track editing
+  const [editing, setEditing] = useState({
+    type: null, // "skill" or "exp"
+    index: null,
+  });
+
+  const saveSkill = (data) => {
+    const updated = [...skills];
+    updated[editing.index] = data;
+    setSkills(updated);
+    setEditing({ type: null, index: null });
   };
 
-  const handleEditSkill = (id) => {
-    setActiveForm("skills");
-    scrollToForm();
-  };
-
-  const handleEditExperience = (id) => {
-    setActiveForm("experience");
-    scrollToForm();
+  const saveExp = (data) => {
+    const updated = [...experience];
+    updated[editing.index] = data;
+    setExperience(updated);
+    setEditing({ type: null, index: null });
   };
 
   return (
-    <div className="skills-exp-container">
 
-      {/* ------------------ TOP CARDS SECTION ------------------ */}
-      <div className="cards-row">
-
-        {/* SKILLS */}
-        <div className="skills-section">
-          <h2>Skills</h2>
-          {skillsData.map((item) => (
-            <SkillsCard key={item.id} data={item} onEdit={() => handleEditSkill(item.id)} />
+  
+    <div className="skills-exp-wrapper">
+        <Layout/>
+      {/* LEFT SIDE LISTS */}
+      <div className="view-columns">
+        {/* SKILLS LIST */}
+        <div className="skills-column">
+          <h3>Skills</h3>
+          {skills.map((item, i) => (
+            <SkillsCard
+              key={i}
+              data={item}
+              onEdit={() => setEditing({ type: "skill", index: i })}
+            />
           ))}
         </div>
 
-        {/* EXPERIENCE */}
-        <div className="experience-section">
-          <h2>Experience</h2>
-          {experienceData.map((item) => (
-            <ExpCard key={item.id} data={item} onEdit={() => handleEditExperience(item.id)} />
+        {/* EXPERIENCE LIST */}
+        <div className="exp-column">
+          <h3>Experience</h3>
+          {experience.map((item, i) => (
+            <ExpCard
+              key={i}
+              data={item}
+              onEdit={() => setEditing({ type: "exp", index: i })}
+            />
           ))}
         </div>
-
       </div>
 
-      {/* ------------------ EDIT / ADD SECTION ------------------ */}
-      <div ref={formRef} className="add-section">
+      {/* RIGHT SIDE EDITOR AREA */}
+      <div className="editor-container">
+        {editing.type === "skill" && (
+          <SkillsForm
+            data={skills[editing.index]}
+            onSave={saveSkill}
+          />
+        )}
 
-        {/* Tabs */}
-        <div className="tabs">
-          <button
-            className={activeForm === "experience" ? "active" : ""}
-            onClick={() => setActiveForm("experience")}
-          >
-            Experience
-          </button>
-          <button
-            className={activeForm === "skills" ? "active" : ""}
-            onClick={() => setActiveForm("skills")}
-          >
-            Skills
-          </button>
-        </div>
-
-        {/* Form Content */}
-        {activeForm === "experience" && <ExpForm />}
-        {activeForm === "skills" && <SkillsForm />}
-
+        {editing.type === "exp" && (
+          <ExpForm
+            data={experience[editing.index]}
+            onSave={saveExp}
+          />
+        )}
       </div>
     </div>
   );

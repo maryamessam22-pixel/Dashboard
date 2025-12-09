@@ -115,7 +115,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
             
               <NavLink
-                to="/skills"
+                to="/skills-exp"
                 className={({ isActive }) =>
                   isActive ? 'nav-item active' : 'nav-item'
                 }
