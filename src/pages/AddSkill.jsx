@@ -1,4 +1,3 @@
-// AddSkill.jsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AddEntry.css';
@@ -8,7 +7,7 @@ const AddSkill = () => {
 
   return (
     <div className="add-entry-container">
-      {/* Header */}
+    
       <div className="entry-header">
         <div className="header-title">
           <button onClick={() => navigate(-1)} className="back-btn">❮</button> 
@@ -19,16 +18,15 @@ const AddSkill = () => {
         </button>
       </div>
 
-      {/* Tabs */}
       <div className="tabs-container">
         <span className="tab" onClick={() => navigate('/add-experience')}>Experience</span>
         <span className="tab active">Skills</span>
       </div>
 
-      {/* Form Content */}
+    
       <div className="form-content">
         
-        {/* Row 1: Title */}
+       
         <div className="form-row">
           <div className="form-group">
             <label>Title (EN)</label>
@@ -40,7 +38,7 @@ const AddSkill = () => {
           </div>
         </div>
 
-        {/* Row 2: Subtitle */}
+        
         <div className="form-row">
           <div className="form-group">
             <label>Subtitle (EN)</label>
@@ -52,7 +50,7 @@ const AddSkill = () => {
           </div>
         </div>
 
-        {/* Description EN */}
+       
         <div className="form-group">
           <label>Description (EN)</label>
           <div className="rich-text-container">
@@ -63,7 +61,7 @@ const AddSkill = () => {
           </div>
         </div>
 
-        {/* Description AR */}
+        
         <div className="form-group">
           <label className="text-right">الوصف الوظيفي (AR)</label>
           <div className="rich-text-container">
@@ -74,7 +72,7 @@ const AddSkill = () => {
           </div>
         </div>
 
-        {/* Image Uploads */}
+        
         <div className="upload-grid">
            {[1,2,3,4,5,6].map(i => (
              <div key={i} className="upload-box-mini">
