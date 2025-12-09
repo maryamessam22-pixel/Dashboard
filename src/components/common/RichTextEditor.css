@@ -1,43 +1,46 @@
-.custom-editor {
-  width: 100%;
-  background: #1a1a3b;           /* same background as your design */
-  border: 1px solid #2d2d57;
-  border-radius: 14px;
-  padding: 8px;
+/* src/components/common/RichTextEditor.css */
+
+/* الكونتينر الرئيسي */
+.custom-editor .quill {
+  background-color: #2b2b40; /* نفس لون الـ Input بتاعك */
+  border-radius: 8px;
+  border: 1px solid #3f3f5f;
+  overflow: hidden;
 }
 
+/* التولبار (الجزء اللي فيه الزراير فوق) */
 .custom-editor .ql-toolbar {
-  background: #22224a;
-  border: none !important;
-  border-radius: 10px 10px 0 0;
+  background-color: #363655;
+  border-bottom: 1px solid #3f3f5f !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
 }
 
+/* منطقة الكتابة */
 .custom-editor .ql-container {
   border: none !important;
-  background: #1a1a3b;
-  color: white;
-  border-radius: 0 0 10px 10px;
-  min-height: 120px;
+  min-height: 100px;
+  color: #fff; /* لون النص أبيض */
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
 }
 
-.custom-editor .ql-editor {
-  color: white;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
+/* تغيير لون الأيقونات في التولبار للأبيض */
 .custom-editor .ql-stroke {
-  stroke: white !important;
+  stroke: #ccc !important;
 }
-
 .custom-editor .ql-fill {
-  fill: white !important;
+  fill: #ccc !important;
 }
 
-.custom-editor .ql-picker {
-  color: white !important;
+/* لما تضغطي جوه المحرر (Focus) */
+.custom-editor .quill:focus-within {
+  border-color: #a855f7; /* حدود بنفسجي */
 }
 
-.editor-input {
-  width: 100%;
+/* تعديل الـ Placeholder */
+.custom-editor .ql-editor.ql-blank::before {
+  color: #aaa;
+  font-style: normal;
 }
