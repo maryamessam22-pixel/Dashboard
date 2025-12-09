@@ -99,7 +99,7 @@ const AddExperience = () => {
             <textarea className="editor-textarea text-right" defaultValue="عملت كمصممة جرافيك..." />
           </div>
         </div>
-        <RichTextEditor/>
+        
 
       </div>
     </div>

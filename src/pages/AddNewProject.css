@@ -131,10 +131,11 @@ body {
   text-align: right;
 
   display: flex;
-    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 .input-group input {
+      width: 100%;
   background-color: var(--input-bg);
   border: 1px solid transparent;
   border-radius: 8px;

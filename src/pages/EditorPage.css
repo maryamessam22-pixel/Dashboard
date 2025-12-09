@@ -129,7 +129,8 @@ body {
 
 .right-align-label {
   text-align: right;
-  align-items: flex-end;
+ display: flex;
+    align-items: flex-end;
 }
 
 .input-group input {
