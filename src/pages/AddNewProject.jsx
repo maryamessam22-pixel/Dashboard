@@ -8,7 +8,7 @@ const AddNewProject = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // State
+ 
   const [projectEN, setProjectEN] = useState({
     title: "",
     type: "",
@@ -53,7 +53,7 @@ const AddNewProject = () => {
           </button>
         </div>
 
-        {/* Top Section: Image + Info Grid */}
+   
         <div className="top-layout">
           {/* Image Upload Box */}
           <div className="image-upload-section">
