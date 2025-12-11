@@ -1,6 +1,3 @@
-/* src/components/site-content/GeneralSettings.css */
-
-/* الكونتينر الأساسي للفورم */
 .settings-form-container {
   width: 100%;
   max-width: 1100px;
@@ -8,7 +5,7 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* عناوين الأقسام */
+
 .section-title {
   font-size: 18px;
   font-weight: 600;
@@ -20,7 +17,7 @@
   margin-bottom: 40px;
 }
 
-/* --- 1. جزء الهوية (Logo & Names) --- */
+
 .identity-grid {
   display: flex;
   gap: 30px;
@@ -56,7 +53,7 @@
   margin-bottom: 5px;
 }
 
-/* ألوان بوكسات اللوجو من التصميم */
+
 .logo-upload-box.light-mode {
   background-color: #8A72B8; 
 }
@@ -75,10 +72,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 140px; /* عشان يبقى نفس طول اللوجو */
+  height: 140px; 
 }
 
-/* --- 2. التنسيقات العامة للحقول --- */
+
 .form-row {
   display: flex;
   gap: 25px;
@@ -92,7 +89,7 @@
   width: 100%;
 }
 
-/* تقسيم الأعمدة */
+
 .two-cols .form-group { width: 50%; }
 .three-cols .form-group { width: 33.33%; }
 .half-width { width: 50%; }
@@ -108,9 +105,9 @@ label {
   direction: rtl;
 }
 
-/* شكل الانبوت (Input) */
+
 .std-input {
-  background-color: #3B2E58; /* لون الخلفية الغامق */
+  background-color: #3B2E58; 
   border: 1px solid transparent;
   border-radius: 8px;
   padding: 14px 16px;
@@ -125,7 +122,7 @@ label {
   border-color: #a855f7;
 }
 
-/* --- 3. الأزرار (Cancel / Save) --- */
+
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -136,7 +133,7 @@ label {
 }
 
 .btn-cancel {
-  background-color: #d1d5db; /* رصاصي فاتح */
+  background-color: #d1d5db; 
   color: #374151;
   border: none;
   padding: 10px 25px;
@@ -146,7 +143,7 @@ label {
 }
 
 .btn-save {
-  background-color: #8b5cf6; /* بنفسجي */
+  background-color: #8b5cf6; 
   color: white;
   border: none;
   padding: 10px 25px;
@@ -160,7 +157,6 @@ label {
   background-color: #7c3aed;
 }
 
-/* --- موبايل --- */
 @media (max-width: 992px) {
   .identity-grid, .form-row {
     flex-direction: column;
