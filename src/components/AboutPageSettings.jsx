@@ -52,13 +52,13 @@ const AboutPageSettings = () => {
       <section className="form-section">
         <div className="form-group">
             <label>Bio (EN)</label>
-            <RichTextEditor placeholder="Write your bio here..." />
+            <RichTextEditor placeholder=" bio here..." />
         </div>
         
         <div className="form-group" style={{marginTop: '20px'}}>
             <label className="text-right">من أنا (AR)</label>
             <div dir="rtl">
-                <RichTextEditor placeholder="اكتب نبذة عنك..." />
+                <RichTextEditor placeholder=" نبذة عني..." />
             </div>
         </div>
       </section>
