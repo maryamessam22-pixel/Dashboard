@@ -1,6 +1,3 @@
-/* src/components/site-content/HomePageSettings.css */
-
-/* --- Hero Layout --- */
 .hero-grid {
   display: flex;
   gap: 30px;
@@ -8,7 +5,7 @@
 
 .hero-image-upload {
   flex: 1;
-  max-width: 300px; /* عرض الصورة */
+  max-width: 300px; 
   background-color: #7c68a7;
   border-radius: 12px;
   display: flex;
@@ -33,13 +30,12 @@
 }
 
 .hero-inputs {
-  flex: 2; /* ياخد مساحة أكبر */
+  flex: 2; 
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-/* --- About Layout --- */
 .about-grid {
   display: flex;
   gap: 30px;
@@ -53,10 +49,9 @@
 }
 
 .about-img-height {
-  height: auto; /* يطول براحته */
+  height: auto; 
 }
 
-/* زرار رفع الـ CV */
 .upload-cv-btn {
   background: transparent;
   border: 1px solid #a855f7;
@@ -77,9 +72,8 @@
   color: white;
 }
 
-/* --- Configuration Boxes (Dark Boxes) --- */
 .config-box {
-  background-color: rgba(20, 10, 30, 0.5); /* أغمق شوية */
+  background-color: rgba(20, 10, 30, 0.5); 
   border: 1px solid #3f3f5f;
   border-radius: 12px;
   padding: 20px;
@@ -127,7 +121,7 @@
   cursor: pointer;
 }
 
-/* --- Toggle Switch Styling --- */
+
 .switch {
   position: relative;
   display: inline-block;
@@ -163,14 +157,14 @@
 }
 
 input:checked + .slider {
-  background-color: #a855f7; /* لون التفعيل بنفسجي */
+  background-color: #a855f7; 
 }
 
 input:checked + .slider:before {
   transform: translateX(20px);
 }
 
-/* --- Responsive --- */
+
 @media (max-width: 992px) {
   .hero-grid, .about-grid {
     flex-direction: column;
@@ -181,6 +175,6 @@ input:checked + .slider:before {
     height: 200px;
   }
   .about-grid {
-    flex-direction: column-reverse; /* الصورة تطلع فوق في الموبايل */
+    flex-direction: column-reverse; 
   }
 }
