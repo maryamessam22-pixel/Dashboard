@@ -233,9 +233,9 @@ label {
 }
 
 .badge {
-  background-color: rgba(168, 45, 252, 0.2);
+ background-color: rgb(30 3 49 / 39%);
   border: 1px solid var(--neon-border);
-  color: #dcb0ff;
+  color: #ffffff;
   font-size: 0.75rem;
   padding: 2px 8px;
   border-radius: 4px;
