@@ -10,7 +10,7 @@ a{
   display: flex;
   flex-direction: column;
   color: #fff;
-  padding: 20px;
+    padding: 41px 20px;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   position: fixed;
