@@ -1,17 +1,16 @@
-// src/components/site-content/GeneralSettings.jsx
 import React from 'react';
-import './GeneralSettings.css'; // استدعاء الستايل الخاص بيه
+import './GeneralSettings.css';
 
 const GeneralSettings = () => {
   return (
     <div className="settings-form-container">
       
-      {/* 1. Site Identity */}
+ 
       <section className="form-section">
         <h3 className="section-title">Site Identity</h3>
         
         <div className="identity-grid">
-          {/* Upload Boxes */}
+        
           <div className="logos-wrapper">
             <div className="logo-upload-box light-mode">
               <div className="upload-icon">📷</div>
@@ -23,7 +22,7 @@ const GeneralSettings = () => {
             </div>
           </div>
 
-          {/* Website Names */}
+      
           <div className="site-names-wrapper">
             <div className="form-group">
               <label>Website Name (EN)</label>
@@ -37,7 +36,7 @@ const GeneralSettings = () => {
         </div>
       </section>
 
-      {/* 2. Footer Copyright */}
+    
       <section className="form-section">
         <div className="form-row">
           <div className="form-group half-width">
@@ -51,7 +50,7 @@ const GeneralSettings = () => {
         </div>
       </section>
 
-      {/* 3. Contact Information */}
+    
       <section className="form-section">
         <h3 className="section-title">Contact Information</h3>
         <div className="form-row three-cols">
@@ -70,7 +69,7 @@ const GeneralSettings = () => {
         </div>
       </section>
 
-      {/* 4. Social Media Links */}
+     
       <section className="form-section">
         <h3 className="section-title">Social Media Links</h3>
         <div className="form-row two-cols">
@@ -95,7 +94,7 @@ const GeneralSettings = () => {
         </div>
       </section>
 
-      {/* Buttons */}
+    
       <div className="form-actions">
         <button className="btn-cancel">Cancel</button>
         <button className="btn-save">Save changes</button>
