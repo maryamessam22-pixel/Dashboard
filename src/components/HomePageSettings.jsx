@@ -1,9 +1,12 @@
-// src/components/site-content/HomePageSettings.jsx
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // 1. Correct Import
 import './HomePageSettings.css'; 
-import RichTextEditor from '../common/RichTextEditor'; // استدعاء المحرر اللي عملناه
+import RichTextEditor from './common/RichTextEditor'; // Adjusted path based on previous structure
 
 const HomePageSettings = () => {
+  // 2. Initialize Navigation Hook
+  const navigate = useNavigate();
+
   // State for Toggles
   const [showCategories, setShowCategories] = useState(true);
   const [showSkills, setShowSkills] = useState(true);
@@ -124,7 +127,13 @@ const HomePageSettings = () => {
         </div>
         <div className="config-content">
             <p>To add or edit specific Category go to skills page.</p>
-            <button className="manage-btn">Manage Categories List ↗</button>
+            {/* 3. Added Navigation to Categories */}
+            <button 
+                className="manage-btn" 
+                onClick={() => navigate('/categories')}
+            >
+                Manage Categories List ↗
+            </button>
         </div>
       </section>
 
@@ -146,7 +155,13 @@ const HomePageSettings = () => {
         </div>
         <div className="config-content">
             <p>To add or edit specific Skill go to skills page.</p>
-            <button className="manage-btn">Manage Skills List ↗</button>
+            {/* 4. Added Navigation to Skills Exp */}
+            <button 
+                className="manage-btn" 
+                onClick={() => navigate('/skills-exp')}
+            >
+                Manage Skills List ↗
+            </button>
         </div>
       </section>
 
