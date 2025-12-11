@@ -1,5 +1,4 @@
-// src/pages/Projects.jsx
-import React from "react";
+import React, { Component } from 'react';
 import { Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom"; 
 import ProjectRow from "../components/ProjectRow";
@@ -7,21 +6,18 @@ import "./Projects.css";
 import Layout from "../layout/Layout";
 import Header from "../components/Header";
 
-// Import your images
+
 import gImg from "../assets/g.png"; 
 import horrorImg from "../assets/horrorr.png"; 
 import tImg from "../assets/t.png";
 import goImg from "../assets/go.png";
 import miniImg from "../assets/miniii.png"; 
 import eventImg from "../assets/eventt.png"; 
-// Note: You might need to add/import images for Giza Zoo and TV OS if you have them specific files. 
-// I reused existing images as placeholders for the new items.
 
-// Updated Data matching the design image
 const projectsData = [
   {
     id: 1,
-    img: gImg, // Replace with Giza Zoo image if available
+    img: gImg, 
     title: "Giza zoo website",
     date: "January 1",
     category: "UI/UX Design",
