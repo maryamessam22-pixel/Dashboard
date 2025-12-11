@@ -1,0 +1,172 @@
+/* src/components/site-content/GeneralSettings.css */
+
+/* الكونتينر الأساسي للفورم */
+.settings-form-container {
+  width: 100%;
+  max-width: 1100px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+/* عناوين الأقسام */
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.form-section {
+  margin-bottom: 40px;
+}
+
+/* --- 1. جزء الهوية (Logo & Names) --- */
+.identity-grid {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.logos-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.logo-upload-box {
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.3s;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.logo-upload-box span {
+  font-size: 11px;
+  margin-top: 10px;
+}
+
+.upload-icon {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+/* ألوان بوكسات اللوجو من التصميم */
+.logo-upload-box.light-mode {
+  background-color: #8A72B8; 
+}
+
+.logo-upload-box.dark-mode {
+  background-color: #7962A5;
+}
+
+.logo-upload-box:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+.site-names-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 140px; /* عشان يبقى نفس طول اللوجو */
+}
+
+/* --- 2. التنسيقات العامة للحقول --- */
+.form-row {
+  display: flex;
+  gap: 25px;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* تقسيم الأعمدة */
+.two-cols .form-group { width: 50%; }
+.three-cols .form-group { width: 33.33%; }
+.half-width { width: 50%; }
+
+label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #eee;
+}
+
+.text-right {
+  text-align: right;
+  direction: rtl;
+}
+
+/* شكل الانبوت (Input) */
+.std-input {
+  background-color: #3B2E58; /* لون الخلفية الغامق */
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.std-input:focus {
+  background-color: #443566;
+  border-color: #a855f7;
+}
+
+/* --- 3. الأزرار (Cancel / Save) --- */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 50px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-cancel {
+  background-color: #d1d5db; /* رصاصي فاتح */
+  color: #374151;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-save {
+  background-color: #8b5cf6; /* بنفسجي */
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-save:hover {
+  background-color: #7c3aed;
+}
+
+/* --- موبايل --- */
+@media (max-width: 992px) {
+  .identity-grid, .form-row {
+    flex-direction: column;
+    height: auto;
+  }
+  .site-names-wrapper { height: auto; gap: 20px;}
+  .logos-wrapper { justify-content: center; width: 100%; }
+  .two-cols .form-group, .three-cols .form-group, .half-width { width: 100%; }
+}

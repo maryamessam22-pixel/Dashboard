@@ -1,0 +1,51 @@
+/* src/pages/SiteContent.css */
+
+/* الصفحة كلها */
+.site-content-page {
+  margin-left: 260px; /* أهم سطر عشان السايد بار */
+  padding: 40px;
+  background-color: #131129; /* خلفية الصفحة كلها */
+  min-height: 100vh;
+  color: white;
+  box-sizing: border-box;
+}
+
+/* شريط التابات العلوي */
+.content-tabs {
+  display: flex;
+  justify-content: center; /* التابات في النص زي التصميم */
+  gap: 50px;
+  margin-bottom: 50px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #3f3f5f;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 10px 30px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+/* التاب النشط (لونه موف فاقع) */
+.tab-btn.active {
+  background: #a800e8; 
+  color: white;
+  box-shadow: 0 0 15px rgba(168, 0, 232, 0.4);
+  font-weight: bold;
+}
+
+.tab-btn:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* ريسبونسيف */
+@media (max-width: 992px) {
+  .site-content-page { margin-left: 0; padding: 20px; }
+  .content-tabs { gap: 10px; flex-wrap: wrap; }
+}
