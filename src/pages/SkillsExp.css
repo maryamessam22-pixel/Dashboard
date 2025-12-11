@@ -234,6 +234,16 @@
 
 
 @media (max-width: 480px) {
+
+.ADD-NEW-SKILL{
+
+ flex-direction: column;
+ 
+
+
+}
+
+
   .page-header-row {
     flex-direction: column;
     align-items: flex-start;
