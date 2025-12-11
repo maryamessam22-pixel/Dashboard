@@ -320,3 +320,43 @@ label {
     .left-column, .right-column { flex: 1; }
     .form-row { grid-template-columns: 1fr; }
 }
+
+
+
+.upload-grid2 {
+    display: flex;
+    gap: 15px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.upload-box-mini2 {
+    width: 100px;
+    height: 100px;
+    background-color: #a855f7; 
+    
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.upload-box2:hover {
+    opacity: 1;
+}
+
+.camera-icon2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.upload-text2 {
+    font-size: 10px;
+     
+    justify-content: center;
+    display: flex;
+}

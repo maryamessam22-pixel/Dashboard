@@ -64,7 +64,7 @@ const Categories = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label className="text-right">المسمى (AR)</label>
+                        <label className="text-right">العنوان (AR)</label>
                         <input 
                           type="text" 
                           className="std-input text-right" 
@@ -97,6 +97,21 @@ const Categories = () => {
                     </div>
                 </div>
             </div>
+
+
+        <div className="upload-grid2">
+           {[1,2,3,4,5,6].map(i => (
+             <div key={i} className="upload-box-mini2">
+                <span className="camera-icon2">📷</span>
+                <span className="upload-text2">Upload Image</span>
+             </div>
+           ))}
+        </div>
+
+
+
+
+
 
             {/* --- SEO Section --- */}
             <div className="seo-section">
