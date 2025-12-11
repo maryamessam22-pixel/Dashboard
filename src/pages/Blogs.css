@@ -118,7 +118,7 @@ grid-template-columns: 1.5fr 1fr 1fr 1fr 1.2fr 0.6fr;
 }
 
 .table-header {
-  padding: 0 16px 16px 16px;
+  padding: 20px 16px 16px 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   color: #9ca3af;
   font-size: 12px;
