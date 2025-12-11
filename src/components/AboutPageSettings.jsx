@@ -1,24 +1,23 @@
-// src/components/site-content/AboutPageSettings.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AboutPageSettings.css'; 
-import RichTextEditor from '../common/RichTextEditor'; 
+import RichTextEditor from './common/RichTextEditor';
 
 const AboutPageSettings = () => {
   const navigate = useNavigate();
   
-  // State for Toggle
+
   const [showExperience, setShowExperience] = useState(true);
 
   return (
     <div className="settings-form-container">
       
-      {/* ================= PERSONAL INFO SECTION ================= */}
+    
       <section className="form-section">
         <h3 className="section-title">Personal Info</h3>
         
         <div className="hero-grid">
-          {/* Left: Upload Image */}
+         
           <div className="hero-image-upload">
             <div className="upload-placeholder">
               <span className="camera-icon">📷</span>
@@ -26,7 +25,7 @@ const AboutPageSettings = () => {
             </div>
           </div>
 
-          {/* Right: Inputs */}
+       
           <div className="hero-inputs">
             <div className="form-group">
                 <label>Section Title (EN)</label>
@@ -49,7 +48,7 @@ const AboutPageSettings = () => {
         </div>
       </section>
 
-      {/* ================= BIO SECTION ================= */}
+    
       <section className="form-section">
         <div className="form-group">
             <label>Bio (EN)</label>
@@ -64,7 +63,7 @@ const AboutPageSettings = () => {
         </div>
       </section>
 
-      {/* ================= EDUCATION SECTION ================= */}
+  
       <section className="form-section">
         <h3 className="section-title">Education Section</h3>
         
@@ -92,7 +91,7 @@ const AboutPageSettings = () => {
         </div>
       </section>
 
-      {/* ================= EXPERIENCE CONFIGURATION ================= */}
+    
       <section className="config-box">
         <div className="config-header">
             <h4>Experience Section Configuration</h4>
@@ -110,7 +109,7 @@ const AboutPageSettings = () => {
         </div>
         <div className="config-content">
             <p>To add or edit specific Experience go to skills page.</p>
-            {/* Button navigates to Skills & Experience page */}
+          
             <button 
                 className="manage-btn" 
                 onClick={() => navigate('/skills-exp')}
@@ -120,7 +119,7 @@ const AboutPageSettings = () => {
         </div>
       </section>
 
-      {/* Buttons */}
+   
       <div className="form-actions">
         <button className="btn-cancel">Cancel</button>
         <button className="btn-save">Save changes</button>

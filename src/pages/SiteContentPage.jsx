@@ -3,21 +3,19 @@ import Layout from '../layout/Layout';
 import './SiteContentPage.css';
 import GeneralSettings from './../components/GeneralSettings';
 import HomePageSettings from './../components/HomePageSettings';
-import Header from '../components/Header';
+import AboutPageSettings from './../components/AboutPageSettings';
+
 
 const SiteContentPage = () => {
   const [activeTab, setActiveTab] = useState('General'); 
 
   return (
     <>
-    
       <Layout />
       <div className="site-content-page">
         
         {/* Tabs */}
-        
         <div className="content-tabs">
-            
           <button 
             className={`tab-btn ${activeTab === 'General' ? 'active' : ''}`}
             onClick={() => setActiveTab('General')}
@@ -43,19 +41,13 @@ const SiteContentPage = () => {
         {/* Content Area */}
         <div className="tab-content-area">
           
-          {/* عرض General Settings */}
-          {activeTab === 'General' && <GeneralSettings />}
+          {activeTab === 'General' && <GeneralSettings/>}
           
-          {/* عرض Home Page Settings (الجديد) */}
           {activeTab === 'Home' && <HomePageSettings />}
           
-          {/* About Placeholder */}
-          {activeTab === 'About' && (
-             <div style={{textAlign: 'center', marginTop: '50px', color: '#888'}}>
-              <h2>About Page Settings</h2>
-              <p>Coming Soon...</p>
-            </div>
-          )}
+          {/* 2. Render the About Component */}
+          {activeTab === 'About' && <AboutPageSettings />}
+          
         </div>
 
       </div>
