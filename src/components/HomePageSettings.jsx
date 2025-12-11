@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // 1. Correct Import
+import { useNavigate } from 'react-router-dom'; 
 import './HomePageSettings.css'; 
-import RichTextEditor from './common/RichTextEditor'; // Adjusted path based on previous structure
+import RichTextEditor from './common/RichTextEditor'; 
 
 const HomePageSettings = () => {
-  // 2. Initialize Navigation Hook
+
   const navigate = useNavigate();
 
-  // State for Toggles
+ 
   const [showCategories, setShowCategories] = useState(true);
   const [showSkills, setShowSkills] = useState(true);
 
   return (
     <div className="settings-form-container">
       
-      {/* ================= HERO SECTION ================= */}
+  
       <section className="form-section">
         <h3 className="section-title">Hero Section</h3>
         
         <div className="hero-grid">
-          {/* Left: Upload Image */}
+        
           <div className="hero-image-upload">
             <div className="upload-placeholder">
               <span className="camera-icon">📷</span>
@@ -27,7 +27,7 @@ const HomePageSettings = () => {
             </div>
           </div>
 
-          {/* Right: Inputs */}
+         
           <div className="hero-inputs">
             <div className="form-group">
                 <label>Greeting Text (EN)</label>
@@ -63,12 +63,11 @@ const HomePageSettings = () => {
         </div>
       </section>
 
-      {/* ================= ABOUT SECTION ================= */}
       <section className="form-section">
         <h3 className="section-title">About Section</h3>
         
         <div className="about-grid">
-            {/* Left: Content */}
+           
             <div className="about-inputs">
                 <div className="form-group">
                     <label>Title (EN)</label>
@@ -91,13 +90,13 @@ const HomePageSettings = () => {
                     </div>
                 </div>
 
-                {/* Upload CV Button */}
+               
                 <button className="upload-cv-btn">
                     <span>📄</span> Upload CV File (PDF)
                 </button>
             </div>
 
-            {/* Right: Image */}
+          
             <div className="hero-image-upload about-img-height">
                 <div className="upload-placeholder">
                     <span className="camera-icon">📷</span>
@@ -107,9 +106,9 @@ const HomePageSettings = () => {
         </div>
       </section>
 
-      {/* ================= CONFIGURATION ================= */}
+    
       
-      {/* Category Config */}
+     
       <section className="config-box">
         <div className="config-header">
             <h4>Category Section Configuration</h4>
@@ -127,7 +126,7 @@ const HomePageSettings = () => {
         </div>
         <div className="config-content">
             <p>To add or edit specific Category go to skills page.</p>
-            {/* 3. Added Navigation to Categories */}
+           
             <button 
                 className="manage-btn" 
                 onClick={() => navigate('/categories')}
@@ -137,7 +136,7 @@ const HomePageSettings = () => {
         </div>
       </section>
 
-      {/* Skills Config */}
+     
       <section className="config-box">
         <div className="config-header">
             <h4>Skills Section Configuration</h4>
@@ -155,7 +154,7 @@ const HomePageSettings = () => {
         </div>
         <div className="config-content">
             <p>To add or edit specific Skill go to skills page.</p>
-            {/* 4. Added Navigation to Skills Exp */}
+           
             <button 
                 className="manage-btn" 
                 onClick={() => navigate('/skills-exp')}
@@ -165,7 +164,7 @@ const HomePageSettings = () => {
         </div>
       </section>
 
-      {/* Buttons */}
+   
       <div className="form-actions">
         <button className="btn-cancel">Cancel</button>
         <button className="btn-save">Save changes</button>
