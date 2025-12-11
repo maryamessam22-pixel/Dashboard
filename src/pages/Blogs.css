@@ -33,11 +33,6 @@ body{
 
 
 
-
-
-
-
-
 .app-container {
   background-color: #131129;
   color: white;
@@ -286,7 +281,7 @@ grid-template-columns: 1.5fr 1fr 1fr 1fr 1.2fr 0.6fr;
 @media (max-width: 768px) {
   .table-card {
     margin-left: 0;
-    padding-top: 15%;
+    /* padding-top: 15%; */
   }
 
   .table-header, .project-row {
