@@ -4,6 +4,7 @@ import './SiteContentPage.css';
 import GeneralSettings from './../components/GeneralSettings';
 import HomePageSettings from './../components/HomePageSettings';
 import AboutPageSettings from './../components/AboutPageSettings';
+import Header from '../components/Header';
 
 
 const SiteContentPage = () => {
@@ -13,8 +14,8 @@ const SiteContentPage = () => {
     <>
       <Layout />
       <div className="site-content-page">
-        
-        {/* Tabs */}
+        <Header title="Pages/ Manage Site Content" />
+ 
         <div className="content-tabs">
           <button 
             className={`tab-btn ${activeTab === 'General' ? 'active' : ''}`}
@@ -38,14 +39,11 @@ const SiteContentPage = () => {
           </button>
         </div>
 
-        {/* Content Area */}
+      
         <div className="tab-content-area">
           
-          {activeTab === 'General' && <GeneralSettings/>}
-          
+          {activeTab === 'General' && <GeneralSettings/>} 
           {activeTab === 'Home' && <HomePageSettings />}
-          
-          {/* 2. Render the About Component */}
           {activeTab === 'About' && <AboutPageSettings />}
           
         </div>
