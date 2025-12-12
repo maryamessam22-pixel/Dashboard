@@ -68,6 +68,7 @@
 }
 
 .site-names-wrapper {
+     margin-bottom: 2%;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -162,7 +163,7 @@ label {
     flex-direction: column;
     height: auto;
   }
-  .site-names-wrapper { height: auto; gap: 20px;}
+  .site-names-wrapper { height: auto; gap: 20px; display: contents;}
   .logos-wrapper { justify-content: center; width: 100%; }
   .two-cols .form-group, .three-cols .form-group, .half-width { width: 100%; }
 }
