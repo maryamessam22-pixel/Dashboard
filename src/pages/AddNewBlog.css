@@ -183,7 +183,7 @@ label {
   font-size: 1.1rem;
   font-weight: 600;
 }
-
+/* 
 .badge {
   background-color: rgba(168, 45, 252, 0.2);
   border: 1px solid var(--neon-border);
@@ -191,7 +191,7 @@ label {
   font-size: 0.75rem;
   padding: 2px 8px;
   border-radius: 4px;
-}
+} */
 
 .seo-line {
   height: 1px;
