@@ -1,0 +1,257 @@
+/* src/pages/AddBlog.css */
+
+.add-blog-container {
+  margin-left: 260px; /* Sidebar Space */
+  padding: 30px 40px 100px 40px; /* Bottom padding for footer */
+  background-color: #131129;
+  min-height: 100vh;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+/* --- Header --- */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.breadcrumb {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close-icon-circle {
+    width: 30px;
+    height: 30px;
+    background-color: #f43f5e; /* Red Color */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* --- Top Section Grid --- */
+.top-section-grid {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.blog-image-upload {
+    width: 280px;
+    height: 280px;
+    background-color: #8A72B8; /* Light Purple from design */
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255,255,255,0.8);
+}
+
+.camera-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.basic-info-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-content: start;
+}
+
+/* --- Inputs General --- */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 13px;
+    color: #eee;
+    font-weight: 500;
+}
+
+.text-right {
+    text-align: right;
+    direction: rtl;
+}
+
+.std-input {
+    background-color: #3B2E58; /* Dark Purple Input */
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 12px 15px;
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+
+.std-input:focus {
+    border-color: #a855f7;
+}
+
+/* Date Field specific */
+.date-input-wrapper {
+    position: relative;
+}
+.date-field {
+    width: 100%;
+    box-sizing: border-box;
+    color: #aaa; /* Placeholder color */
+}
+
+/* --- Content Section --- */
+.form-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.half {
+    width: 50%;
+}
+
+/* --- SEO Box (The Big Purple One) --- */
+.blog-seo-box {
+    border: 2px solid #a855f7; /* Neon Purple Border */
+    background-color: rgba(20, 10, 30, 0.4);
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 40px;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
+}
+
+.seo-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.seo-title-row h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.badge {
+    background: rgba(168, 85, 247, 0.2);
+    border: 1px solid #a855f7;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #d8b4fe;
+}
+
+.seo-line {
+    height: 1px;
+    background-color: #a855f7;
+    opacity: 0.5;
+    margin-bottom: 25px;
+}
+
+.seo-label {
+    color: #d8b4fe; /* Light Pink/Purple text */
+}
+
+.slug-wrapper {
+    display: flex;
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #3f3f5f;
+}
+
+.prefix {
+    background-color: #2b2b40;
+    padding: 12px 15px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.slug-input {
+    background: transparent;
+    border: none;
+    flex: 1;
+    color: white;
+    padding: 10px;
+    outline: none;
+}
+
+.seo-input-field, .seo-textarea {
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid #3f3f5f; /* Slightly visible border */
+    border-radius: 8px;
+    padding: 12px;
+    color: white;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.seo-textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* --- Footer Actions --- */
+.footer-actions {
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn-draft {
+    background-color: #2b2b40;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-publish {
+    background-color: #c026d3; /* Magenta/Purple */
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(192, 38, 211, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .add-blog-container { margin-left: 0; padding: 20px; }
+    .top-section-grid { flex-direction: column; }
+    .blog-image-upload { width: 100%; height: 200px; }
+    .basic-info-grid { grid-template-columns: 1fr; }
+    .form-row { flex-direction: column; gap: 0; }
+    .half { width: 100%; }
+    .footer-actions { position: static; margin-top: 30px; justify-content: flex-end; }
+}
