@@ -1,15 +1,13 @@
-// src/pages/AddBlog.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X, Calendar } from 'lucide-react'; // Icons
-import RichTextEditor from '../components/common/RichTextEditor'; // Adjust path if needed
+import RichTextEditor from '../components/common/RichTextEditor'; 
 import './AddNewBlog.css';
 // import Layout from '../layout/Layout';
 
 const AddNewBlog = () => {
   const navigate = useNavigate();
 
-  // State for form data
   const [formData, setFormData] = useState({
     titleEn: '',
     titleAr: '',
@@ -38,7 +36,7 @@ const AddNewBlog = () => {
   return (
     <div className="add-blog-container">
       {/* <Layout/> */}
-      {/* --- Header --- */}
+     
       <div className="page-header">
         <span className="breadcrumb">Pages / Add New Blog</span>
         <button className="close-btn" onClick={() => navigate(-1)}>
@@ -48,10 +46,10 @@ const AddNewBlog = () => {
 
       <div className="blog-form-wrapper">
         
-        {/* --- Top Section: Image & Basic Info --- */}
+        
         <div className="top-section-grid">
             
-            {/* Left: Image Upload */}
+           
             <div className="blog-image-upload">
                 <div className="upload-content">
                     <span className="camera-icon">📷</span>
@@ -59,10 +57,10 @@ const AddNewBlog = () => {
                 </div>
             </div>
 
-            {/* Right: Inputs Grid */}
+           
             <div className="basic-info-grid">
                 
-                {/* Row 1 */}
+               
                 <div className="form-group">
                     <label>Blog Title (EN)</label>
                     <input 
@@ -78,7 +76,7 @@ const AddNewBlog = () => {
                     />
                 </div>
 
-                {/* Row 2 */}
+              
                 <div className="form-group">
                     <label>Blog Type (EN)</label>
                     <input 
@@ -94,12 +92,12 @@ const AddNewBlog = () => {
                     />
                 </div>
 
-                {/* Row 3: Dates */}
+                
                 <div className="form-group">
                     <label>Start date</label>
                     <div className="date-input-wrapper">
                         <input type="date" name="startDate" className="std-input date-field" onChange={handleChange} />
-                        {/* <Calendar size={16} className="calendar-icon"/> */}
+                        
                     </div>
                 </div>
                 <div className="form-group">
@@ -112,10 +110,10 @@ const AddNewBlog = () => {
             </div>
         </div>
 
-        {/* --- Middle Section: Content --- */}
+    
         <div className="content-section">
             
-            {/* Titles */}
+       
             <div className="form-row">
                 <div className="form-group half">
                     <label>Title (EN)</label>
@@ -127,7 +125,7 @@ const AddNewBlog = () => {
                 </div>
             </div>
 
-            {/* Subtitles */}
+        
             <div className="form-row">
                 <div className="form-group half">
                     <label>Subtitle (EN)</label>
@@ -139,7 +137,7 @@ const AddNewBlog = () => {
                 </div>
             </div>
 
-            {/* Description EN */}
+       
             <div className="form-group">
                 <label>Description (EN)</label>
                 <RichTextEditor 
@@ -149,7 +147,7 @@ const AddNewBlog = () => {
                 />
             </div>
 
-            {/* Description AR */}
+         
             <div className="form-group">
                 <label className="text-right">الوصف (AR)</label>
                 <div dir="rtl">
@@ -167,7 +165,7 @@ const AddNewBlog = () => {
         <div className="blog-seo-box">
             <div className="seo-header">
                 <div className="seo-title-row">
-                    <span className="search-icon">🔍</span>
+                    {/* <span className="search-icon">🔍</span> */}
                     <h3>Blog SEO</h3>
                     <span className="badge">Global Requirement</span>
                 </div>
@@ -200,7 +198,6 @@ const AddNewBlog = () => {
 
       </div>
 
-      {/* --- Footer Actions --- */}
       <div className="footer-actions">
          <button className="btn-draft">Save Draft</button>
          <button className="btn-publish">Publish Project</button>
