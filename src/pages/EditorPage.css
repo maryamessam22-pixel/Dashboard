@@ -29,7 +29,7 @@ body {
   justify-content: center;
   padding: 20px;
   width: 100%;
-  margin-bottom: 5%;
+  margin-bottom: 10%;
 }
 
 .editor-container {
@@ -401,6 +401,10 @@ input[type="date"] {
     text-align: left;
     align-items: flex-start;
   }
+  .editor-page-wrapper {
+  
+  margin-bottom: 20%;
+}
 }
 
 
@@ -417,6 +421,11 @@ input[type="date"] {
   .upload-box {
     height: 230px;
   }
+
+  .editor-page-wrapper {
+
+  margin-bottom: 20%;
+}
 }
 
 
@@ -438,4 +447,9 @@ input[type="date"] {
   .breadcrumb {
     font-size: 1rem;
   }
+
+  .editor-page-wrapper {
+
+  margin-bottom: 20%;
+}
 }
