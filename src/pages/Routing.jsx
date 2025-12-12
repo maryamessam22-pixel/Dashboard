@@ -14,7 +14,7 @@ import AddExperience from './AddExperience';
 import AddSkill from './AddSkill';
 import Categories from './Categories';
 import AddNewBlog from './AddNewBlog';
-
+import EditBlog from './EditBlog';
 
 const Routing = () => {
     return (
@@ -29,7 +29,8 @@ const Routing = () => {
                     <Route path="/edit/:id" element={<EditorPage />} />
                     <Route path="/add-new-project" element={<AddNewProject />} />
                     <Route path="/blogs" element={<Blogs />} />
-                    <Route path="//add-new-blog" element={<AddNewBlog />} />
+                    <Route path="/add-new-blog" element={<AddNewBlog />} />
+                    <Route path="/edit-blog" element={<EditBlog />} />
                     <Route path="/skills-exp" element={<SkillsExp />} />
                     <Route path="/add-skill" element={<AddSkill />} />
                     <Route path="/add-experience" element={<AddExperience />} />
