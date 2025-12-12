@@ -1,22 +1,22 @@
 import React from "react";
-import { Edit2, Trash2, Plus, Search, Bell } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom"; 
-import ProjectRow from "../components/ProjectRow";
+// ✅ CORRECT IMPORT: Importing BlogsRow instead of ProjectRow
+import BlogsRow from "../components/BlogsRow"; 
 import "./Blogs.css"; 
 import Layout from "../layout/Layout";
 import Header from "../components/Header";
 
-
- 
+// Import your images
 import blog1Img from "../assets/blog1.png"; 
 import blog2Img from "../assets/blog2.png"; 
 
 // Data
-const projectsData = [
+const blogsData = [
   {
     id: 1,
     img: blog1Img, 
-    title: " UI/UX Designer Do?",
+    title: "UI/UX Designer Do?",
     date: "March 13",
     category: "About UI/UX",
     status: "Draft",
@@ -47,7 +47,7 @@ const Blogs = () => {
       <div className="table-card">
         <Header title="Pages/ Blogs" />
 
-        {/* Add New Project Button */}
+        {/* Add New Blog Button */}
         <div className="add-new-container">
           <button className="add-new-btn" onClick={handleAddNew}>
             <Plus size={16} style={{ marginRight: "8px" }} />
@@ -69,10 +69,11 @@ const Blogs = () => {
 
         {/* Table Rows */}
         <div className="table-body">
-          {projectsData.map((project) => (
-            <ProjectRow 
-              key={project.id}
-              {...project}
+          {blogsData.map((blog) => (
+            // ✅ CORRECT USAGE: Using BlogsRow component
+            <BlogsRow 
+              key={blog.id}
+              {...blog}
             />
           ))}
         </div>
