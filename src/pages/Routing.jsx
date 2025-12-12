@@ -13,6 +13,7 @@ import SkillsExp from './SkillsExp';
 import AddExperience from './AddExperience';
 import AddSkill from './AddSkill';
 import Categories from './Categories';
+import AddNewBlog from './AddNewBlog';
 
 
 const Routing = () => {
@@ -28,6 +29,7 @@ const Routing = () => {
                     <Route path="/edit/:id" element={<EditorPage />} />
                     <Route path="/add-new-project" element={<AddNewProject />} />
                     <Route path="/blogs" element={<Blogs />} />
+                    <Route path="//add-new-blog" element={<AddNewBlog />} />
                     <Route path="/skills-exp" element={<SkillsExp />} />
                     <Route path="/add-skill" element={<AddSkill />} />
                     <Route path="/add-experience" element={<AddExperience />} />

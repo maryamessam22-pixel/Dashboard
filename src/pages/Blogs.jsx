@@ -39,7 +39,7 @@ const Blogs = () => {
   const navigate = useNavigate(); 
 
   const handleAddNew = () => {
-    navigate("/add-new-project"); 
+    navigate("/add-new-blog"); 
   };
 
   return (
