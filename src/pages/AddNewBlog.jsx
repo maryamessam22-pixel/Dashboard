@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { X, Calendar } from 'lucide-react'; // Icons
 import RichTextEditor from '../components/common/RichTextEditor'; // Adjust path if needed
 import './AddNewBlog.css';
+// import Layout from '../layout/Layout';
 
 const AddNewBlog = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const AddNewBlog = () => {
 
   return (
     <div className="add-blog-container">
-      
+      {/* <Layout/> */}
       {/* --- Header --- */}
       <div className="page-header">
         <span className="breadcrumb">Pages / Add New Blog</span>
