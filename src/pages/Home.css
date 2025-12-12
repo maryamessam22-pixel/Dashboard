@@ -89,6 +89,10 @@
   gap: 10px;
 }
 
+.projects-section{
+  margin-bottom: 5%;
+}
+
 .date-tag {
   background: #a855f7;
   font-size: 0.8rem;
