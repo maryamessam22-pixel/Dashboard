@@ -38,7 +38,7 @@ const EditBlog = () => {
       {/* <Layout/> */}
      
       <div className="page-header">
-        <span className="breadcrumb">Pages / Add New Blog</span>
+        <span className="breadcrumb">Pages / Edit Blog</span>
         <button className="close-btn" onClick={() => navigate(-1)}>
             <div className="close-icon-circle"><X size={18} /></div>
         </button>
