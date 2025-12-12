@@ -10,7 +10,7 @@
 .categories-container {
   margin-left: 260px; 
   padding: 30px 40px;
-  background-color: var(--bg-dark);
+      background-color: #131129;
   min-height: 100vh;
   color: var(--text-white);
   font-family: 'Inter', sans-serif;
