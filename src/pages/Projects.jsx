@@ -1,101 +1,83 @@
-import React, { Component } from 'react';
+import React, {useEffect, useState} from 'react';
 import { Plus } from "lucide-react";
-import { useNavigate } from "react-router-dom"; 
+// import { useNavigate } from "react-router-dom"; 
 import ProjectRow from "../components/ProjectRow";
 import "./Projects.css"; 
 import Layout from "../layout/Layout";
 import Header from "../components/Header";
 
+import { Link } from "react-router-dom";
+// import gImg from "../assets/g.png"; 
+// import horrorImg from "../assets/horrorr.png"; 
+// import tImg from "../assets/t.png";
+// import goImg from "../assets/go.png";
+// import miniImg from "../assets/miniii.png"; 
+// import eventImg from "../assets/eventt.png"; 
+import { supabase} from '../Supabase';
+ 
 
-import gImg from "../assets/g.png"; 
-import horrorImg from "../assets/horrorr.png"; 
-import tImg from "../assets/t.png";
-import goImg from "../assets/go.png";
-import miniImg from "../assets/miniii.png"; 
-import eventImg from "../assets/eventt.png"; 
 
-const projectsData = [
-  {
-    id: 1,
-    img: gImg, 
-    title: "Giza zoo website",
-    date: "January 1",
-    category: "UI/UX Design",
-    status: "Published",
-    views: "14.6k",
-    published: "Oct 20, 2024"
-  },
-  {
-    id: 2,
-    img: horrorImg, 
-    title: "Horror Website",
-    date: "March 13",
-    category: "UI/UX Design",
-    status: "Draft",
-    views: "24.7k",
-    published: "Oct 10, 2024"
-  },
-  {
-    id: 3,
-    img: tImg, 
-    title: "TV Operating System",
-    date: "January 1",
-    category: "UI/UX Design",
-    status: "Published",
-    views: "21.6k",
-    published: "Oct 23, 2024"
-  },
-  {
-    id: 4,
-    img: goImg, 
-    title: "Go Ride App",
-    date: "January 1",
-    category: "UI/UX Design",
-    status: "Published",
-    views: "21.6k",
-    published: "Oct 23, 2024"
-  },
-  {
-    id: 5,
-    img: miniImg, 
-    title: "Mini Cooper car screens",
-    date: "August 12",
-    category: "UI/UX Design",
-    status: "Published",
-    views: "28k",
-    published: "Oct 23, 2024"
-  },
-  {
-    id: 6,
-    img: eventImg, 
-    title: "Event Planner",
-    date: "January 1",
-    category: "UI/UX Design",
-    status: "Published",
-    views: "61.6k",
-    published: "Oct 23, 2024"
-  }
-];
+
+// const projectsData = []
+
+
+
+
 
 const Projects = () => {
-  const navigate = useNavigate(); 
+
+ const [loading, setLoading] = useState(true)
+ const [Projects, setProjects] = useState("")
+
+useEffect (()=>{
+  
+  
+  async function getAllProjectsAPI(){
+    const res = await supabase.from("Projects").select("*")
+    setProjects(res.data);
+    // console.log(res);
+    setLoading(false);
+}
+
+     getAllProjectsAPI()
+
+
+},[]);
+
+
+if (loading) return <p>Loading...</p>;
+
+
+
+
+
+  // const navigate = useNavigate(); 
 
   const handleAddNew = () => {
-    navigate("/add-new-project"); 
+    // navigate("/add-new-project"); 
   };
 
-  return (
+  return (<>
+
+
     <div className="app-container">
       <div className="table-card">
         <Header title="Pages/ Projects" />
 
         {/* Add New Project Button */}
         <div className="add-new-container">
-          <button className="add-new-btn" onClick={handleAddNew}>
+    <Link to="/add-new-project">
+  <button className="add-new-btn">+ Add New Project</button>
+</Link>
+
+{/*     
             <Plus size={16} style={{ marginRight: "8px" }} />
-            Add New Project
-          </button>
+            Add New Project */}
+      
         </div>
+
+
+
 
         <Layout />
 
@@ -111,15 +93,26 @@ const Projects = () => {
 
         {/* Table Rows */}
         <div className="table-body">
-          {projectsData.map((project) => (
-            <ProjectRow 
+
+          {
+ 
+
+}
+          {Projects.map((project) => (
+
+            <ProjectRow   img={project.cover_image}  title={project.project_name_EN} date={project.start_Date} category={project.category_outside}  status={project.status}
+
+                views={project.views}  published={project.puplished_date}
+
               key={project.id}
               {...project}
+              
             />
           ))}
         </div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -15,6 +15,7 @@ import AddSkill from './AddSkill';
 import Categories from './Categories';
 import AddNewBlog from './AddNewBlog';
 import EditBlog from './EditBlog';
+import ProjectsAPI from './ProjectsApi';
 
 const Routing = () => {
     return (
@@ -36,6 +37,7 @@ const Routing = () => {
                     <Route path="/add-experience" element={<AddExperience />} />
                     <Route path="/site-content" element={<SiteContentPage />} />
                     <Route path="/categories" element={<Categories />} />
+                    <Route path="/projects-api" element={<ProjectsAPI />} />
                 </Routes>
             </BrowserRouter>
         </>
