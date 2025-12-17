@@ -1,3 +1,14 @@
+.loading-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  color: #fff;
+  font-size: 18px;
+}
+
+
 .site-content-page {
   margin-left: 260px; 
   padding: 40px;
