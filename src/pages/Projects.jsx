@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Plus } from "lucide-react";
+// import { Plus } from "lucide-react";
 // import { useNavigate } from "react-router-dom"; 
 import ProjectRow from "../components/ProjectRow";
 import "./Projects.css"; 
@@ -53,9 +53,9 @@ if (loading) return <p>Loading...</p>;
 
   // const navigate = useNavigate(); 
 
-  const handleAddNew = () => {
-    // navigate("/add-new-project"); 
-  };
+  // const handleAddNew = () => {
+  //   navigate("/add-new-project"); 
+  // };
 
   return (<>
 
