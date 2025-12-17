@@ -14,7 +14,7 @@ const SkillsExp = () => {
   useEffect(() => {
     async function getSkillsAndExperience() {
       const skillsRes = await supabase.from('Skills').select('*')
-          .eq('type', 'icon'); // only get icon type;
+          .eq('type', 'icon'); 
       setSkills(skillsRes.data);
       
 
