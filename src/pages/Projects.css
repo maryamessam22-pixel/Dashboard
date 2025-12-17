@@ -1,3 +1,16 @@
+.loading-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #131129; /* نفس الخلفية */
+  color: #fff;
+  font-size: 18px;
+}
+
+
+
+
 body {
     padding: 0;
     margin: 0;
