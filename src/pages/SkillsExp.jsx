@@ -1,156 +1,105 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './SkillsExp.css';
+import React, { useEffect, useState } from 'react';
+import { supabase } from '../Supabase';
+import { Link } from 'react-router-dom';
 import Layout from '../layout/Layout';
-import Header from './../components/Header';
-
-/* ===== ICON IMPORTS ===== */
-import icon_1 from '../assets/icon_1.png';
-import icon_2 from '../assets/icon_2.png';
-import icon_3 from '../assets/icon_3.png';
-import icon_4 from '../assets/icon_4.png';
-import icon_5 from '../assets/icon_5.png';
-import icon_6 from '../assets/icon_6.png';
-import icon_7 from '../assets/icon_7.png';
+import Header from '../components/Header';
+import './SkillsExp.css';
 
 const SkillsExp = () => {
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+  const [skills, setSkills] = useState("");
+  const [experience, setExperience] = useState("");
+  const [skillsSection, setSkillsSection] = useState("");
 
-  /* ===== EXPERIENCE DATA ===== */
-  const experienceData = [
-    {
-      id: 1,
-      company: "Vivid Studios",
-      role: "Motion & Media Designer",
-      desc: "Produced engaging digital visuals, animations, and social media reels.",
-      color: "#a855f7"
-    },
-    {
-      id: 2,
-      company: "Hany Saad Innovation",
-      role: "Graphic Designer",
-      desc: "Graphic Designer at Hany Saad Innovations created visual campaigns and brand materials that aligned with high-end architectural concepts.",
-      color: "#a855f7"
-    },
-    {
-      id: 3,
-      company: "KGoing Company",
-      role: "Graphic Designer",
-      desc: "Graphic Designer at Keep Going Company; created visual campaigns, logos, and brand materials that aligned with the energetic branding of the supplements and fitness equipment industry.",
-      color: "#a855f7"
-    },
-    {
-      id: 4,
-      company: "Freelance Designer",
-      role: "Self-Employed",
-      desc: "UI/UX Designer designing interactive mobile apps and websites, focusing on usability, accessibility, and visual harmony.",
-      color: "#a855f7"
+  useEffect(() => {
+    async function getSkillsAndExperience() {
+      const skillsRes = await supabase.from('Skills').select('*')
+          .eq('type', 'icon'); // only get icon type;
+      setSkills(skillsRes.data);
+      
+
+      const expRes = await supabase.from('work_experience').select('*');
+      setExperience(expRes.data);
+
+      const sectionRes = await supabase
+        .from('page_sections')
+        .select('title, subtitle, description')
+        .eq('title', 'Skills')
+        .single();
+      setSkillsSection(sectionRes.data);
+
+      setLoading(false);
     }
-  ];
 
-  /* ===== SOFTWARE ICONS ===== */
-  const softwareIcons = [
-    { name: 'React', icon: icon_1 },
-    { name: 'Illustrator', icon: icon_2 },
-    { name: 'Photoshop', icon: icon_3 },
-    { name: 'Figma', icon: icon_4 },
-    { name: 'JavaScript', icon: icon_5 },
-    { name: 'After Effects', icon: icon_6 },
-    { name: 'Blender', icon: icon_7 },
-  ];
+    getSkillsAndExperience();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
-    <>
-      <Layout />
-
+    <Layout>
       <div className="skills-exp-container">
         <Header title="Pages / Skills & Experience" />
 
         <div className="content-grid">
-
-          {/* ================= SKILLS ================= */}
+          {/* ====== SKILLS CARD ====== */}
           <div className="card-container skills-col">
-
             <div className="ADD-NEW-SKILL">
-              <h3 className="card-header">Skills</h3>
-              <button
-                className="add-new-btn"
-                onClick={() => navigate('/add-skill')}
-              >
-                <span className="plus-icon">+</span> Add New Skill
-              </button>
+              <h3 className="card-header">{skillsSection.title}</h3>
+              <Link to="/add-skill">
+                <button className="add-new-btn">+ Add New Skill</button>
+              </Link>
+               {/* <Link to="/add-skill">
+                <button className="add-new-btn">Edit Skill</button>
+              </Link> */}
             </div>
 
             <div className="info-box mb-20">
               <div className="info-text">
-                <strong>Skills</strong> | A Comprehensive Overview Of My UI/UX Designer Skills
-              </div>
-              <div className="action-icons">
-                <i className="icon-edit" onClick={() => navigate('/add-skill')}>✎</i>
-                <i className="icon-delete">🗑</i>
+                <strong>{skillsSection.title}</strong> | {skillsSection.subtitle}
               </div>
             </div>
 
             <div className="info-box large-box mb-20">
-              <p className="desc-text">
-                My Core Expertise Lies In UI/UX Design, Encompassing Both User Experience And User Interface Methodologies.
-                This Deep Understanding Forms The Backbone Of My Design Process, Ensuring Usability, Creativity, And Impact In Every Project.
-                <br /><br />
-                Using Digital Tools And Techniques, I Create Multifunctional Products, Tailored To The Needs Of The Target Audience.
-              </p>
-              <div className="action-icons top-right">
-                <i className="icon-edit" onClick={() => navigate('/add-skill')}>✎</i>
-                <i className="icon-delete">🗑</i>
-              </div>
+              <p className="desc-text">{skillsSection.description}</p>
             </div>
 
             <div className="tools-row">
-              {softwareIcons.map((tool, index) => (
-                <div key={index} className="tool-icon glass-circle">
-                  <img src={tool.icon} alt={tool.name} />
+              {skills.map((skill) => (
+                <div className="tool-icon glass-circle">
+                  <img src={skill.icon_url} alt={skill.name} />
                 </div>
               ))}
             </div>
-
           </div>
 
-          {/* ================= EXPERIENCE ================= */}
+          {/* ====== EXPERIENCE CARD ====== */}
           <div className="card-container experience-col">
-
             <div className="ADD-NEW-SKILL">
               <h3 className="card-header">Experience</h3>
-              <button
-                className="add-new-btn"
-                onClick={() => navigate('/add-experience')}
-              >
-                <span className="plus-icon">+</span> Add New Experience
-              </button>
+              <Link to="/add-experience">
+                <button className="add-new-btn">+ Add New Experience</button>
+              </Link>
             </div>
 
             <div className="experience-list">
-              {experienceData.map((exp) => (
+              {experience.map((exp) => (
                 <div key={exp.id} className="info-box exp-item">
                   <div className="exp-content">
                     <h4 className="exp-company">{exp.company}</h4>
-                    <span className="exp-role" style={{ color: exp.color }}>
-                      {exp.role}
-                    </span>
-                    <p className="exp-desc">{exp.desc}</p>
-                  </div>
-                  <div className="action-icons">
-                    <i className="icon-edit" onClick={() => navigate('/add-experience')}>✎</i>
-                    <i className="icon-delete">🗑</i>
+                    <span className="exp-role">{exp.role}</span>
+                    <p className="exp-desc">{exp.description}</p>
                   </div>
                 </div>
               ))}
             </div>
-
           </div>
-
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 
 export default SkillsExp;
+
+
