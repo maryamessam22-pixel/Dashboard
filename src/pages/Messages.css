@@ -1,3 +1,13 @@
+.loading-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #131129; */
+  color: #fff;
+  font-size: 18px;
+}
+
 .messages-page-wrapper {
   display: flex;
   min-height: 100vh;
