@@ -67,7 +67,7 @@ const Blogs = () => {
       <div className="table-card">
         <Header title="Pages/ Blogs" />
 
-        {/* Add New Blog Button */}
+     
         <div className="add-new-container">
   <Link to="/add-new-blog" style={{ textDecoration: "none" }}>
   <button className="add-new-btn">
@@ -97,7 +97,7 @@ const Blogs = () => {
               img={blog.thumbnail_image} 
               title={blog.blog_title} 
                 date={blog.cover_image} 
-                category={blog.title} 
+                category={blog.category} 
                status={blog.status} 
                 views={blog.views} 
                published={blog.published_date} 
