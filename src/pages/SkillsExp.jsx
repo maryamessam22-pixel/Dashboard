@@ -34,7 +34,13 @@ const SkillsExp = () => {
     getSkillsAndExperience();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+if (loading) {
+  return (
+    <div className="loading-center">
+      <p>Loading...</p>
+    </div>
+  );
+}
 
   return (
     <Layout>
@@ -42,21 +48,19 @@ const SkillsExp = () => {
         <Header title="Pages / Skills & Experience" />
 
         <div className="content-grid">
-          {/* ====== SKILLS CARD ====== */}
+       
           <div className="card-container skills-col">
             <div className="ADD-NEW-SKILL">
               <h3 className="card-header">{skillsSection.title}</h3>
               <Link to="/add-skill">
                 <button className="add-new-btn">+ Add New Skill</button>
               </Link>
-               {/* <Link to="/add-skill">
-                <button className="add-new-btn">Edit Skill</button>
-              </Link> */}
+            
             </div>
 
             <div className="info-box mb-20">
               <div className="info-text">
-                <strong>{skillsSection.title}</strong> | {skillsSection.subtitle}
+                 {skillsSection.subtitle}
               </div>
             </div>
 
@@ -73,7 +77,7 @@ const SkillsExp = () => {
             </div>
           </div>
 
-          {/* ====== EXPERIENCE CARD ====== */}
+
           <div className="card-container experience-col">
             <div className="ADD-NEW-SKILL">
               <h3 className="card-header">Experience</h3>
