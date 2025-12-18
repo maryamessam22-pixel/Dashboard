@@ -33,19 +33,11 @@ const GeneralSettings = () => {
         <h3 className="section-title">Site Identity</h3>
         <div className="form-row">
           
-          <div className="form-group" style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+          <div className="form-group" >
             <label>Light Logo</label>
-            <div className="logo-upload-box light-mode" style={{
-              width:'150px',
-              height:'150px',
-              display:'flex',
-              alignItems:'center',
-              justifyContent:'center',
-              background:'#3B2E58',
-              borderRadius:'8px'
-            }}>
+            <div className="logo-upload-box light-mode">
               {settings.light_logo ? (
-                <img src={settings.light_logo} alt="Light Logo" style={{maxWidth:'100%', maxHeight:'100%'}} />
+                <img src={settings.light_logo} alt="Light Logo"  />
               ) : (
                 <span>Upload Light Logo</span>
               )}
@@ -53,19 +45,11 @@ const GeneralSettings = () => {
           </div>
 
           
-          <div className="form-group" style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+          <div className="form-group" >
             <label>Dark Logo</label>
-            <div className="logo-upload-box dark-mode" style={{
-              width:'150px',
-              height:'150px',
-              display:'flex',
-              alignItems:'center',
-              justifyContent:'center',
-              background:'#3B2E58',
-              borderRadius:'8px'
-            }}>
+            <div className="logo-upload-box dark-mode">
               {settings.dark_logo ? (
-                <img src={settings.dark_logo} alt="Dark Logo" style={{maxWidth:'100%', maxHeight:'100%'}} />
+                <img src={settings.dark_logo} alt="Dark Logo"  />
               ) : (
                 <span>Upload Dark Logo</span>
               )}
