@@ -3,6 +3,16 @@ body{
     margin: 0px;
 }
 
+.loading-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+}
+
+
 
 .add-new-container {
   display: flex;
