@@ -163,7 +163,14 @@ const Categories = () => {
     }
   };
 
-  if (loading) return <p style={{padding: "20px"}}>Loading Data...</p>;
+ if (loading) {
+  return (
+    <div className="loading-center">
+      <p>Loading...</p>
+    </div>
+  );
+}
+
 
   return (
     <>
