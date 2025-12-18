@@ -140,6 +140,7 @@ const Categories = () => {
           title: formData.titleEn,
           subtitle: formData.titleAr,
           description: formData.descEn,
+          description: formData.descAr,
           tags: updatedTags,
           images: validImages,
           
@@ -230,8 +231,10 @@ const Categories = () => {
                     <RichTextEditor
                       value={formData.descAr}
                       onChange={(content) => setFormData({ ...formData, descAr: content })}
-                      placeholder="لا يوجد وصف عربي"
-                    />
+                      placeholder="تكمن خبرتي الأساسية في تصميم واجهات المستخدم وتجربة المستخدم بما يشمل منهجيات تجربة المستخدم وواجهة المستخد يشكل هذا الفهم العميق الركيزة الأساسية لعملية التصميم التي أتبعها مما يضمن سهولة الاستخدام والإبداع والتأثير في كل مشروع
+
+باستخدام الأدوات والتقنيات الرقمية أقوم بإنشاء منتجات متعددة الوظائف مصممة خصيصًا لتلبية احتياجات الجمهور المستهدف مع التركيز دائمًا على سهولة الاستخدام والإبداع في تصميم واجهات المستخدم وتجربة المستخدم
+                   " />
                   </div>
               </div>
             </div>

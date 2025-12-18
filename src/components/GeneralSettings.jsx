@@ -68,7 +68,7 @@ const GeneralSettings = () => {
       </section>
 
 
-      <section className="form-section">
+      {/* <section className="form-section">
         <div className="form-row">
           <div className="form-group half-width">
             <label>Footer Text (EN)</label>
@@ -79,7 +79,7 @@ const GeneralSettings = () => {
             <input type="text" className="std-input text-right" value={settings.footer_text_ar}/>
           </div>
         </div>
-      </section>
+      </section> */}
 
     
       <section className="form-section">
