@@ -78,7 +78,7 @@ const GeneralSettings = () => {
           </div>
           <div className="form-group">
             <label>اسم الموقع (AR)</label>
-            <input type="text" className="std-input text-right" value={settings.website_name_ar}/>
+            <input type="text" className="std-input text-right" value={settings.website}/>
           </div>
         </div>
       </section>
