@@ -59,7 +59,14 @@ const Blogs = () => {
   },[]);
   
   
-  if (loading) return <p>Loading...</p>;
+ if (loading) {
+  return (
+    <div className="loading-center">
+      <p>Loading...</p>
+    </div>
+  );
+}
+
 
 
   return (
