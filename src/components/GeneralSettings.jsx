@@ -8,7 +8,7 @@ const GeneralSettings = () => {
 
   useEffect(() => {
     async function getSettings() {
-      const res = await supabase.from("page_sections").select("*")     .order('id', { ascending: true }) 
+      const res = await supabase.from("page_sections").select("*")  .order('id', { ascending: true }) 
         .limit(1)
         .single(); 
       setSettings(res.data);
