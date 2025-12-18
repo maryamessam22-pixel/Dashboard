@@ -169,6 +169,10 @@ label {
 }
 
 @media (max-width: 992px) {
+  .logo-upload-box {
+  width: 100%;
+
+}
   .identity-grid, .form-row {
     flex-direction: column;
     height: auto;
