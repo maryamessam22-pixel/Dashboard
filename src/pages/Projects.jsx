@@ -21,9 +21,6 @@ import { supabase} from '../Supabase';
 // const projectsData = []
 
 
-
-
-
 const Projects = () => {
 
  const [loading, setLoading] = useState(true)
@@ -105,7 +102,9 @@ if (loading) {
  
 
 }
-          {Projects.map((project) => (
+          {Projects.map((project) => {
+            let path = "/edit/"+project.id;
+            
 
             <ProjectRow   img={project.cover_image}  title={project.project_name_EN} date={project.start_Date} category={project.category_outside}  status={project.status}
 
@@ -115,7 +114,7 @@ if (loading) {
               {...project}
               
             />
-          ))}
+})}
         </div>
       </div>
     </div>

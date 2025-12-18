@@ -33,6 +33,7 @@ margin-left: 185px;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  align-items: flex-start
 }
 
 .messages-sidebar {

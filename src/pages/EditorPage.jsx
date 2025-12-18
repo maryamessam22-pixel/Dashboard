@@ -46,6 +46,8 @@ const EditorPage = () => {
       <div className="editor-container">
         
         {/* Header */}
+
+        {/* <P>ID: {id}</P> */}
         <div className="editor-header">
           <div className="breadcrumb">Pages / <strong>Edit At Project</strong></div>
           <button className="close-btn" onClick={() => navigate("/projects")}>

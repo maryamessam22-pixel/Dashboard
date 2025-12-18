@@ -8,7 +8,7 @@ import { supabase } from "../Supabase";
 const Messages = () => {
   const [loading, setLoading] = useState(true);
   const [Messages, setMessages] = useState(""); 
-  const [selectedMessage, setSelectedMessage] = useState(null); // <-- NEW
+  const [selectedMessage, setSelectedMessage] = useState(null);
 
   useEffect(() => {
     async function getAllMessagesAPI() {
@@ -49,7 +49,7 @@ if (loading) {
                 <MsgCard
                   key={msg.id}
                   msg={msg.message}
-                  sender={msg.full_name}
+                  sender={msg.name}
                   email={msg.email}
                   date={msg.date}
                   
