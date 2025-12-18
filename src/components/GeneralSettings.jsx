@@ -1,51 +1,98 @@
-import React from 'react';
-import './GeneralSettings.css';
+import React, { useEffect, useState } from "react";
+import { supabase } from "../Supabase";
+import "./GeneralSettings.css";
 
 const GeneralSettings = () => {
+  const [loading, setLoading] = useState(true);
+  const [settings, setSettings] = useState("");
+
+  useEffect(() => {
+    async function getSettings() {
+      const res = await supabase.from("page_sections").select("*")     .order('id', { ascending: true }) 
+        .limit(1)
+        .single(); 
+      setSettings(res.data);
+      setLoading(false);
+    }
+    getSettings();
+  }, []);
+
+  if (loading) {
+  return (
+    <div className="loading-center">
+      <p>Loading...</p>
+    </div>
+  );
+}
+
+
   return (
     <div className="settings-form-container">
       
- 
       <section className="form-section">
         <h3 className="section-title">Site Identity</h3>
-        
-        <div className="identity-grid">
-        
-          <div className="logos-wrapper">
-            <div className="logo-upload-box light-mode">
-              <div className="upload-icon">📷</div>
-              <span>Upload Logo (Light)</span>
-            </div>
-            <div className="logo-upload-box dark-mode">
-              <div className="upload-icon">📷</div>
-              <span>Upload Logo (Dark)</span>
+        <div className="form-row">
+          
+          <div className="form-group" style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+            <label>Light Logo</label>
+            <div className="logo-upload-box light-mode" style={{
+              width:'150px',
+              height:'150px',
+              display:'flex',
+              alignItems:'center',
+              justifyContent:'center',
+              background:'#3B2E58',
+              borderRadius:'8px'
+            }}>
+              {settings.light_logo ? (
+                <img src={settings.light_logo} alt="Light Logo" style={{maxWidth:'100%', maxHeight:'100%'}} />
+              ) : (
+                <span>Upload Light Logo</span>
+              )}
             </div>
           </div>
 
-      
-          <div className="site-names-wrapper">
-            <div className="form-group">
-              <label>Website Name (EN)</label>
-              <input type="text" className="std-input" placeholder="My Awesome Site" />
+          
+          <div className="form-group" style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+            <label>Dark Logo</label>
+            <div className="logo-upload-box dark-mode" style={{
+              width:'150px',
+              height:'150px',
+              display:'flex',
+              alignItems:'center',
+              justifyContent:'center',
+              background:'#3B2E58',
+              borderRadius:'8px'
+            }}>
+              {settings.dark_logo ? (
+                <img src={settings.dark_logo} alt="Dark Logo" style={{maxWidth:'100%', maxHeight:'100%'}} />
+              ) : (
+                <span>Upload Dark Logo</span>
+              )}
             </div>
-            <div className="form-group">
-              <label className="text-right">اسم الموقع (AR)</label>
-              <input type="text" className="std-input text-right" placeholder="موقعي الرائع" />
-            </div>
+          </div>
+
+          <div className="form-group">
+            <label>Website Name (EN)</label>
+            <input type="text" className="std-input" value={settings.title}/>
+          </div>
+          <div className="form-group">
+            <label>اسم الموقع (AR)</label>
+            <input type="text" className="std-input text-right" value={settings.site_name_ar}/>
           </div>
         </div>
       </section>
 
-    
+
       <section className="form-section">
         <div className="form-row">
           <div className="form-group half-width">
-            <label>Footer Copyright (EN)</label>
-            <input type="text" className="std-input" />
+            <label>Footer Text (EN)</label>
+            <input type="text" className="std-input" value={settings.footer_text_EN} />
           </div>
           <div className="form-group half-width">
-            <label className="text-right">حقوق الملكية (AR)</label>
-            <input type="text" className="std-input text-right" />
+            <label className="text-right">نص الفوتر (AR)</label>
+            <input type="text" className="std-input text-right" value={settings.footer_text_ar}/>
           </div>
         </div>
       </section>
@@ -55,53 +102,48 @@ const GeneralSettings = () => {
         <h3 className="section-title">Contact Information</h3>
         <div className="form-row three-cols">
           <div className="form-group">
-            <label>Contact Email</label>
-            <input type="email" className="std-input" />
+            <label>Email</label>
+            <input type="email" className="std-input" value={settings.contact_email}/>
           </div>
           <div className="form-group">
-            <label>Phone Number</label>
-            <input type="tel" className="std-input" />
+            <label>Phone</label>
+            <input type="text" className="std-input" value={settings.contact_phone }/>
           </div>
           <div className="form-group">
-            <label>WhatsApp Number</label>
-            <input type="tel" className="std-input" />
+            <label>WhatsApp</label>
+            <input type="text" className="std-input" value={settings.whatsApp_number} />
           </div>
         </div>
       </section>
 
-     
+   
       <section className="form-section">
         <h3 className="section-title">Social Media Links</h3>
         <div className="form-row two-cols">
           <div className="form-group">
-            <label>LinkedIn URL</label>
-            <input type="text" className="std-input" />
+            <label>LinkedIn</label>
+            <input type="text" className="std-input" value={settings.linkedin_url}/>
           </div>
           <div className="form-group">
-            <label>Behance URL</label>
-            <input type="text" className="std-input" />
+            <label>Behance</label>
+            <input type="text" className="std-input" value={settings.behance_url}/>
           </div>
         </div>
-        <div className="form-row two-cols" style={{marginTop: '20px'}}>
-           <div className="form-group">
-            <label>Instagram URL</label>
-            <input type="text" className="std-input" />
+        <div className="form-row two-cols">
+          <div className="form-group">
+            <label>Instagram</label>
+            <input type="text" className="std-input" value={settings.instagram_url}/>
           </div>
           <div className="form-group">
-            <label>Dribble URL</label>
-            <input type="text" className="std-input" />
+            <label>Facebook</label>
+            <input type="text" className="std-input" value={settings.facebook_url}/>
           </div>
         </div>
       </section>
-
-    
-      <div className="form-actions">
-        <button className="btn-cancel">Cancel</button>
-        <button className="btn-save">Save changes</button>
-      </div>
-
     </div>
   );
 };
 
 export default GeneralSettings;
+
+
