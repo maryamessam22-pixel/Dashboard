@@ -58,7 +58,7 @@ const GeneralSettings = () => {
 
           <div className="form-group">
             <label>Website Name (EN)</label>
-            <input type="text" className="std-input" value={settings.website_name_en}/>
+            <input type="text" className="std-input" value={settings.title}/>
           </div>
           <div className="form-group">
             <label>اسم الموقع (AR)</label>

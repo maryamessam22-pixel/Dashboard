@@ -13,7 +13,6 @@ const Categories = () => {
   const [images, setImages] = useState(Array(6).fill(null)); 
   const [uploadingImg, setUploadingImg] = useState(false);
 
-
   const [formData, setFormData] = useState({
     titleEn: "",
     titleAr: "",
@@ -31,43 +30,51 @@ const Categories = () => {
   useEffect(() => {
     async function getAllCategoriesAPI() {
       try {
-
+        
         const { data, error } = await supabase
           .from("page_sections")
           .select("*")
           .eq("page", "home")
-          .eq("section", "category")
+          .eq("section", "category_sec") 
           .single();
 
         if (error) {
             console.warn("No data found or error fetching:", error.message);
-           
         }
 
         if (data) {
-     
             const tagsArray = data.tags || [];
-            setCategories(tagsArray.map((tag, index) => ({
+
+            let parsedTags = tagsArray;
+            if (typeof tagsArray === 'string') {
+                try { parsedTags = JSON.parse(tagsArray); } catch(e) {}
+            }
+
+            setCategories(Array.isArray(parsedTags) ? parsedTags.map((tag, index) => ({
                 id: index,
                 name: tag,
-            })));
+            })) : []);
 
             setFormData({
                 titleEn: data.title || "",
                 titleAr: data.subtitle || "",
                 descEn: data.description || "",
-                descAr: "", 
+                descAr: data.description_ar || "", 
             });
-
    
-            if (data.images && Array.isArray(data.images)) {
-                const savedImages = data.images;
-             
-                const fullImages = [...savedImages, ...Array(6 - savedImages.length).fill(null)];
-                setImages(fullImages.slice(0, 6));
+            if (data.images) {
+                let savedImages = data.images;
+                // تأكد إن الصور مصفوفة
+                if (typeof savedImages === 'string') {
+                    try { savedImages = JSON.parse(savedImages); } catch(e) {}
+                }
+                
+                if (Array.isArray(savedImages)) {
+                    const fullImages = [...savedImages, ...Array(6 - savedImages.length).fill(null)];
+                    setImages(fullImages.slice(0, 6));
+                }
             }
 
-          
             setSeoData({
                 slug: data.slug || "",
                 metaTitle: data.meta_title || "",
@@ -93,19 +100,16 @@ const Categories = () => {
         if (!file) return;
         setUploadingImg(true);
 
-       
         const fileName = `cat-${Date.now()}-${file.name.replace(/\s/g, '')}`;
         const { error: uploadError } = await supabase.storage
             .from("portfolio")
             .upload(fileName, file);
 
         if (uploadError) throw uploadError;
-
        
         const { data: urlData } = supabase.storage
             .from("portfolio")
             .getPublicUrl(fileName);
-
        
         const newImages = [...images];
         newImages[index] = urlData.publicUrl;
@@ -130,28 +134,27 @@ const Categories = () => {
   const handleSave = async () => {
     try {
       const updatedTags = categories.map(c => c.name);
-    
       const validImages = images.filter(img => img !== null);
 
       const { error } = await supabase
         .from("page_sections")
         .update({
-        
           title: formData.titleEn,
           subtitle: formData.titleAr,
-          description: formData.descEn,
-          description: formData.descAr,
+          
+          description: formData.descEn,     
+          description_ar: formData.descAr,  
+          
           tags: updatedTags,
           images: validImages,
           
-   
           slug: seoData.slug,
           meta_title: seoData.metaTitle,
           meta_description: seoData.metaDescription,
           alt_text: seoData.imageAlt
         })
         .eq("page", "home")
-        .eq("section", "category");
+        .eq("section", "category_sec"); 
 
       if (!error) {
           alert("Saved successfully! 🎉");
@@ -182,7 +185,6 @@ const Categories = () => {
 
         <div className="main-grid">
           
-         
           <div className="left-column">
             
             <div className="tabs-row">
@@ -190,7 +192,6 @@ const Categories = () => {
                 <span className="tab">Tag</span>
                 <span className="tab">Static page</span>
             </div>
-
             
             <div className="card-panel">
               <h3 className="panel-title">Edit Category Section</h3>
@@ -231,10 +232,8 @@ const Categories = () => {
                     <RichTextEditor
                       value={formData.descAr}
                       onChange={(content) => setFormData({ ...formData, descAr: content })}
-                      placeholder="تكمن خبرتي الأساسية في تصميم واجهات المستخدم وتجربة المستخدم بما يشمل منهجيات تجربة المستخدم وواجهة المستخد يشكل هذا الفهم العميق الركيزة الأساسية لعملية التصميم التي أتبعها مما يضمن سهولة الاستخدام والإبداع والتأثير في كل مشروع
-
-باستخدام الأدوات والتقنيات الرقمية أقوم بإنشاء منتجات متعددة الوظائف مصممة خصيصًا لتلبية احتياجات الجمهور المستهدف مع التركيز دائمًا على سهولة الاستخدام والإبداع في تصميم واجهات المستخدم وتجربة المستخدم
-                   " />
+                      placeholder="وصف بالعربية..." 
+                    />
                   </div>
               </div>
             </div>
