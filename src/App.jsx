@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './Home';
-import Messages from './Messages';
-import Profile from './Profile';
-import LoginPage from './LoginPage';
-import Projects from './Projects';
-import EditorPage from './EditorPage';
-import AddNewProject from './AddNewProject';
-import Blogs from './Blogs';
-import SiteContentPage from './SiteContentPage';
-import SkillsExp from './SkillsExp';
-import AddExperience from './AddExperience';
-import AddSkill from './AddSkill';
-import Categories from './Categories';
-import AddNewBlog from './AddNewBlog';
-import EditBlog from './EditBlog';
-import ProjectsAPI from './ProjectsApi';
+import Home from './pages/dashboard/Home';
+import Messages from './pages/dashboard/Messages';
+import Profile from './pages/dashboard/Profile';
+import LoginPage from './pages/auth/LoginPage';
+import Projects from './pages/projects/Projects';
+import EditorPage from './pages/projects/EditorPage';
+import AddNewProject from './pages/projects/AddNewProject';
+import Blogs from './pages/blogs/Blogs';
+import SiteContentPage from './pages/dashboard/SiteContentPage';
+import SkillsExp from './pages/skills/SkillsExp';
+import AddExperience from './pages/experience/AddExperience';
+import AddSkill from './pages/skills/AddSkill';
+import Categories from './pages/blogs/Categories';
+import AddNewBlog from './pages/blogs/AddNewBlog';
+import EditBlog from './pages/blogs/EditBlog';
+import ProjectsAPI from './pages/projects/ProjectsApi';
 
-const Routing = () => {
+const App = () => {
     return (
         <>
             <BrowserRouter>
@@ -44,7 +44,6 @@ const Routing = () => {
     );
 }
 
-export default Routing;
+export default App;
                     
                    
-

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AboutPageSettings.css'; 
-import RichTextEditor from './common/RichTextEditor';
+import RichTextEditor from '../common/RichTextEditor';
 
 const AboutPageSettings = () => {
   const navigate = useNavigate();

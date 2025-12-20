@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../components/Title.css' ;
+import './Title.css'; // Updated path: now in the same directory (common)
+
 const Title = (props) => {
     return ( <>
 

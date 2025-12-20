@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { supabase } from "../Supabase";
+import { supabase } from "../../config/Supabase";
 import "./GeneralSettings.css";
 
 const GeneralSettings = () => {
@@ -8,7 +8,8 @@ const GeneralSettings = () => {
 
   useEffect(() => {
     async function getSettings() {
-      const res = await supabase.from("page_sections").select("*")  .order('id', { ascending: true }) 
+      const res = await supabase.from("page_sections").select("*")
+        .order('id', { ascending: true }) 
         .limit(1)
         .single(); 
       setSettings(res.data);
@@ -18,13 +19,12 @@ const GeneralSettings = () => {
   }, []);
 
   if (loading) {
-  return (
-    <div className="loading-center">
-      <p>Loading...</p>
-    </div>
-  );
-}
-
+    return (
+      <div className="loading-center">
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="settings-form-container">
@@ -67,21 +67,6 @@ const GeneralSettings = () => {
         </div>
       </section>
 
-
-      {/* <section className="form-section">
-        <div className="form-row">
-          <div className="form-group half-width">
-            <label>Footer Text (EN)</label>
-            <input type="text" className="std-input" value={settings.footer_text_EN} />
-          </div>
-          <div className="form-group half-width">
-            <label className="text-right">نص الفوتر (AR)</label>
-            <input type="text" className="std-input text-right" value={settings.footer_text_ar}/>
-          </div>
-        </div>
-      </section> */}
-
-    
       <section className="form-section">
         <h3 className="section-title">Contact Information</h3>
         <div className="form-row three-cols">
@@ -129,5 +114,3 @@ const GeneralSettings = () => {
 };
 
 export default GeneralSettings;
-
-

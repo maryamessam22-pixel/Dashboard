@@ -1,6 +1,6 @@
 import React from "react";
 import "./ProfileCard.css";
-import userPic from "../assets/my_pic.png";
+import userPic from "../../assets/my_pic.png"; // Updated path: needs to go up two levels from common
 
 const ProfileCard = () => {
   return (

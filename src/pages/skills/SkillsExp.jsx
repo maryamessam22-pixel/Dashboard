@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../Supabase';
+import { supabase } from '../../config/Supabase'; // Path is correct based on folder structure
 import { Link } from 'react-router-dom';
-import Layout from '../layout/Layout';
-import Header from '../components/Header';
+import Layout from '../../layouts/Layout'; // Updated path
+import Header from '../../layouts/Header'; // Updated path
 import './SkillsExp.css';
 
 const SkillsExp = () => {
@@ -105,5 +105,3 @@ if (loading) {
 };
 
 export default SkillsExp;
-
-

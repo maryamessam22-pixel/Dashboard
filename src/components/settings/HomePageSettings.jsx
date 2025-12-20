@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import './HomePageSettings.css'; 
-import RichTextEditor from './common/RichTextEditor'; 
+import RichTextEditor from '../common/RichTextEditor'; 
 
 const HomePageSettings = () => {
   const [showCategories, setShowCategories] = useState(true);

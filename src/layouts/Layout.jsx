@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "./Sidebar"; 
 import "./Layout.css";
 
 const Layout = ({ children }) => {

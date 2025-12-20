@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X, Calendar } from 'lucide-react'; // Icons
-import RichTextEditor from '../components/common/RichTextEditor'; 
-import './AddNewBlog.css';
+import RichTextEditor from '../../components/common/RichTextEditor'; 
+import './EditBlog.css';
 // import Layout from '../layout/Layout';
 
-const AddNewBlog = () => {
+const EditBlog = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -38,7 +38,7 @@ const AddNewBlog = () => {
       {/* <Layout/> */}
      
       <div className="page-header">
-        <span className="breadcrumb">Pages / Add New Blog</span>
+        <span className="breadcrumb">Pages / Edit At Blog</span>
         <button className="close-btn" onClick={() => navigate(-1)}>
             <div className="close-icon-circle"><X size={18} /></div>
         </button>
@@ -207,4 +207,4 @@ const AddNewBlog = () => {
   );
 };
 
-export default AddNewBlog;
+export default EditBlog;

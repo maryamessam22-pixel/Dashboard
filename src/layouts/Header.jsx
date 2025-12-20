@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SearchImg from "../assets/search.png";
 import BellImg from "../assets/bell.png";
 import "./Header.css";
-import Title from './Title';
+import Title from '../components/common/Title';
 
 
 const Header = (props) => {

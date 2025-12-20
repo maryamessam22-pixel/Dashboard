@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import Sidebar from '../components/Sidebar';
 import './Home.css';
-import Img1 from "../assets/1.png";
-import Img2 from "../assets/2.png";
-import Img3 from "../assets/3.png";
-import Img4 from "../assets/4.png";
-import Img5 from "../assets/5.png";
-import Img6 from "../assets/6.png";
-import Layout from "../layout/Layout";
-import { CartesianGrid, Line, LineChart, XAxis, YAxis, Line as ReLine } from 'recharts';
-import Header from './../components/Header';
+import Layout from "../../layouts/Layout";
+import Header from '../../layouts/Header';
+import { CartesianGrid, LineChart, XAxis, YAxis, Line as ReLine } from 'recharts';
+
+import Img1 from "../../assets/1.png";
+import Img2 from "../../assets/2.png";
+import Img3 from "../../assets/3.png";
+import Img4 from "../../assets/4.png";
+import Img5 from "../../assets/5.png";
+import Img6 from "../../assets/6.png";
 
 
 const Home = () => {
@@ -26,19 +26,9 @@ const Home = () => {
   return (
     <div className="home-page dashboard-layout">
 
-      {/* Sidebar */}
-   <Layout/>
-
-      {/* Main Content */}
-      <main className="main-content">
-
-        {/* Mobile Toggle Button */}
-        {/* <button 
-          className="mobile-toggle" 
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-        >
-          ☰
-        </button> */}
+      {/* Main Content wrapped in Layout */}
+      <Layout>
+      <main className="main-content-inner">
 
         {/* Header */}
           <Header title="Pages/ Dashboard" />
@@ -102,13 +92,17 @@ const Home = () => {
             <button className="date-filter">Last 30 Days</button>
           </div>
 
-          <LineChart style={{ width: '100%', aspectRatio: 3, maxWidth: 1200, margin: 'auto' }} data={data}>
-            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-            <XAxis dataKey="name" />
-            <YAxis width="auto" />
-            <ReLine type="monotone" dataKey="uv" stroke="#8884d8" />
-            <ReLine type="monotone" dataKey="pv" stroke="#82ca9d" />
-          </LineChart>
+          <div style={{ width: '100%', height: 300 }}>
+            <div style={{ width: '100%', height: '100%' }}>
+            <LineChart width={800} height={300} style={{ width: '100%', aspectRatio: 3, maxWidth: 1200, margin: 'auto' }} data={data}>
+                <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                <XAxis dataKey="name" />
+                <YAxis width={40} />
+                <ReLine type="monotone" dataKey="uv" stroke="#8884d8" />
+                <ReLine type="monotone" dataKey="pv" stroke="#82ca9d" />
+            </LineChart>
+            </div>
+          </div>
         </section>
 
         {/* Most Viewed Projects */}
@@ -171,6 +165,7 @@ const Home = () => {
         </section>
 
       </main>
+      </Layout>
     </div>
   );
 };

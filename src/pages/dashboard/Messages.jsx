@@ -1,34 +1,33 @@
 import React, { useEffect, useState } from "react";
 import "./Messages.css";
-import Layout from "../layout/Layout";
-import Header from "../components/Header";
-import MsgCard from "../components/MsgCard";
-import { supabase } from "../Supabase";
+import Layout from "../../layouts/Layout";
+import Header from "../../layouts/Header";
+import MsgCard from "../../components/common/MsgCard";
+import { supabase } from "../../config/Supabase";
 
 const Messages = () => {
   const [loading, setLoading] = useState(true);
-  const [Messages, setMessages] = useState(""); 
+  const [Messages, setMessages] = useState([]); 
   const [selectedMessage, setSelectedMessage] = useState(null);
 
   useEffect(() => {
     async function getAllMessagesAPI() {
       const res = await supabase.from("contact_messages").select("*");
-      setMessages(res.data);
-       // console.log(res);
+      setMessages(res.data || []);
       setLoading(false);
     }
 
     getAllMessagesAPI();
   }, []);
 
-  // if (loading) return <p>Loading...</p>;
-if (loading) {
-  return (
-    <div className="loading-center">
-      <p>Loading...</p>
-    </div>
-  );
-}
+  if (loading) {
+    return (
+      <div className="loading-center">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="messages-page-wrapper">
       <Layout />
@@ -52,9 +51,6 @@ if (loading) {
                   sender={msg.name}
                   email={msg.email}
                   date={msg.date}
-                  
-
-                  
                   isActive={selectedMessage?.id === msg.id} 
                   onClick={() => setSelectedMessage(msg)}  
                 />
@@ -62,8 +58,7 @@ if (loading) {
             </div>
           </div>
 
-        
- <div className="message-detail">     {/** Rightmessage */} 
+          <div className="message-detail">     {/** Rightmessage */} 
             {selectedMessage ? (
               <div className="detail-container">
                 <div className="detail-header">

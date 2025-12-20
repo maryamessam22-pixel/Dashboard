@@ -47,7 +47,7 @@
 
 
 .home-page .welcome-banner {
-  background-image: url('../assets/wel.png');
+  background-image: url('../../assets/wel.png');
   background-size: cover;
   background-position: center;
   background: linear-gradient(135deg, #7c3aed, #a855f7, #5b21b6);

@@ -1,7 +1,7 @@
 import React from "react";
-import "./Sectionnn.css";
+import "./DashboardSection.css";
 
-const Sectionnn = (props) => {
+const DashboardSection = (props) => {
   return (
     <div className="section-box">
       <h2 className="section-title">{props.title}</h2>
@@ -13,5 +13,5 @@ const Sectionnn = (props) => {
   );
 };
 
-export default Sectionnn;
+export default DashboardSection;
 

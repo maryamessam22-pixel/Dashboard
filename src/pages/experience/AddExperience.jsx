@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './AddEntry.css';
-import RichTextEditor from './../components/common/RichTextEditor';
+import '../skills/AddEntry.css'; // Updated path: located in skills folder
+import RichTextEditor from '../../components/common/RichTextEditor'; // Updated path
 
 const AddExperience = () => {
   const navigate = useNavigate();

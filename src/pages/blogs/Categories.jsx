@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Categories.css";
-import Layout from "../layout/Layout";
-import Header from "../components/Header";
-import RichTextEditor from "../components/common/RichTextEditor";
-import { supabase } from "../Supabase";
+import Layout from "../../layouts/Layout";
+import Header from "../../layouts/Header";
+import RichTextEditor from "../../components/common/RichTextEditor";
+import { supabase } from "../../config/Supabase";
 
 const Categories = () => {
   const [loading, setLoading] = useState(true);
@@ -64,7 +64,6 @@ const Categories = () => {
    
             if (data.images) {
                 let savedImages = data.images;
-                // تأكد إن الصور مصفوفة
                 if (typeof savedImages === 'string') {
                     try { savedImages = JSON.parse(savedImages); } catch(e) {}
                 }
@@ -178,7 +177,7 @@ const Categories = () => {
 
   return (
     <>
-      <Layout />
+      <Layout>
       <div className="categories-container">
         <Header title="Pages / Taxonomy" />
         <h2 className="page-main-title">Content Structure</h2>
@@ -221,7 +220,13 @@ const Categories = () => {
                 <label>Description (EN)</label>
                 <RichTextEditor
                   value={formData.descEn}
-                  onChange={(content) => setFormData({ ...formData, descEn: content })}
+                  onChange={(content) => {
+                    // Safety check: only update if changed
+                    setFormData(prev => {
+                      if (prev.descEn === content) return prev;
+                      return { ...prev, descEn: content };
+                    });
+                  }}
                   placeholder="Description..."
                 />
               </div>
@@ -231,7 +236,13 @@ const Categories = () => {
                   <div dir="rtl">
                     <RichTextEditor
                       value={formData.descAr}
-                      onChange={(content) => setFormData({ ...formData, descAr: content })}
+                      onChange={(content) => {
+                        // Safety check: only update if changed
+                        setFormData(prev => {
+                          if (prev.descAr === content) return prev;
+                          return { ...prev, descAr: content };
+                        });
+                      }}
                       placeholder="وصف بالعربية..." 
                     />
                   </div>
@@ -369,6 +380,7 @@ const Categories = () => {
 
         </div>
       </div>
+      </Layout>
     </>
   );
 };
