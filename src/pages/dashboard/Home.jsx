@@ -26,9 +26,19 @@ const Home = () => {
   return (
     <div className="home-page dashboard-layout">
 
-      {/* Main Content wrapped in Layout */}
-      <Layout>
-      <main className="main-content-inner">
+      {/* Sidebar */}
+   <Layout/>
+
+      {/* Main Content */}
+      <main className="main-content">
+
+        {/* Mobile Toggle Button */}
+        {/* <button 
+          className="mobile-toggle" 
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+        >
+          ☰
+        </button> */}
 
         {/* Header */}
           <Header title="Pages/ Dashboard" />
@@ -92,17 +102,13 @@ const Home = () => {
             <button className="date-filter">Last 30 Days</button>
           </div>
 
-          <div style={{ width: '100%', height: 300 }}>
-            <div style={{ width: '100%', height: '100%' }}>
-            <LineChart width={800} height={300} style={{ width: '100%', aspectRatio: 3, maxWidth: 1200, margin: 'auto' }} data={data}>
-                <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                <XAxis dataKey="name" />
-                <YAxis width={40} />
-                <ReLine type="monotone" dataKey="uv" stroke="#8884d8" />
-                <ReLine type="monotone" dataKey="pv" stroke="#82ca9d" />
-            </LineChart>
-            </div>
-          </div>
+          <LineChart style={{ width: '100%', aspectRatio: 3, maxWidth: 1200, margin: 'auto' }} data={data}>
+            <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+            <XAxis dataKey="name" />
+            <YAxis width="auto" />
+            <ReLine type="monotone" dataKey="uv" stroke="#8884d8" />
+            <ReLine type="monotone" dataKey="pv" stroke="#82ca9d" />
+          </LineChart>
         </section>
 
         {/* Most Viewed Projects */}
@@ -165,7 +171,6 @@ const Home = () => {
         </section>
 
       </main>
-      </Layout>
     </div>
   );
 };

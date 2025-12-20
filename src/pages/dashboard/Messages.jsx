@@ -7,27 +7,28 @@ import { supabase } from "../../config/Supabase";
 
 const Messages = () => {
   const [loading, setLoading] = useState(true);
-  const [Messages, setMessages] = useState([]); 
+  const [Messages, setMessages] = useState(""); 
   const [selectedMessage, setSelectedMessage] = useState(null);
 
   useEffect(() => {
     async function getAllMessagesAPI() {
       const res = await supabase.from("contact_messages").select("*");
-      setMessages(res.data || []);
+      setMessages(res.data);
+       // console.log(res);
       setLoading(false);
     }
 
     getAllMessagesAPI();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="loading-center">
-        <p>Loading...</p>
-      </div>
-    );
-  }
-
+  // if (loading) return <p>Loading...</p>;
+if (loading) {
+  return (
+    <div className="loading-center">
+      <p>Loading...</p>
+    </div>
+  );
+}
   return (
     <div className="messages-page-wrapper">
       <Layout />
@@ -51,6 +52,9 @@ const Messages = () => {
                   sender={msg.name}
                   email={msg.email}
                   date={msg.date}
+                  
+
+                  
                   isActive={selectedMessage?.id === msg.id} 
                   onClick={() => setSelectedMessage(msg)}  
                 />
@@ -58,7 +62,8 @@ const Messages = () => {
             </div>
           </div>
 
-          <div className="message-detail">     {/** Rightmessage */} 
+        
+ <div className="message-detail">     {/** Rightmessage */} 
             {selectedMessage ? (
               <div className="detail-container">
                 <div className="detail-header">

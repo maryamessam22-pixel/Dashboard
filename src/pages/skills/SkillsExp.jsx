@@ -5,6 +5,7 @@ import Layout from '../../layouts/Layout'; // Updated path
 import Header from '../../layouts/Header'; // Updated path
 import './SkillsExp.css';
 
+
 const SkillsExp = () => {
   const [loading, setLoading] = useState(true);
   const [skills, setSkills] = useState("");
@@ -105,3 +106,5 @@ if (loading) {
 };
 
 export default SkillsExp;
+
+
