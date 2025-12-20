@@ -4,7 +4,6 @@ import Layout from "../../layouts/Layout";
 import Header from "../../layouts/Header";
 import MsgCard from "../../components/common/MsgCard";
 import { supabase } from "../../config/Supabase";
-
 const Messages = () => {
   const [loading, setLoading] = useState(true);
   const [Messages, setMessages] = useState(""); 
