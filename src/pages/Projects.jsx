@@ -31,7 +31,7 @@ useEffect (()=>{
   
   async function getAllProjectsAPI(){
     const res = await supabase.from("Projects").select("*")
-    setProjects(res.data);
+    setProjects(res.data || []);
     // console.log(res);
     setLoading(false);
 }
@@ -102,19 +102,20 @@ if (loading) {
  
 
 }
-          {Projects.map((project) => {
-            let path = "/edit/"+project.id;
-            
-
-            <ProjectRow   img={project.cover_image}  title={project.project_name_EN} date={project.start_Date} category={project.category_outside}  status={project.status}
-
-                views={project.views}  published={project.puplished_date}
-
+          {Projects.map((project) => (
+            //  let path = "/edit/"+project.id;
+            <ProjectRow
               key={project.id}
+              img={project.cover_image}
+              title={project.project_name_EN}
+              date={project.start_Date}
+              category={project.category_outside}
+              status={project.status}
+              views={project.views}
+              published={project.puplished_date}
               {...project}
-              
             />
-})}
+          ))}
         </div>
       </div>
     </div>
@@ -123,5 +124,6 @@ if (loading) {
 };
 
 export default Projects;
+
 
 
