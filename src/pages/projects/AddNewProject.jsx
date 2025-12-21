@@ -81,7 +81,7 @@ const AddNewProject = () => {
       const finalStatus = publishStatus || project.status;
       const publishedDate = finalStatus === 'published' ? new Date().toISOString().split('T')[0] : null;
 
-      const { error } = await supabase.from('Projects').insert([
+      const res = await supabase.from('Projects').insert([
         {
           project_name_EN: project.title,
           slug: project.slug,
@@ -103,7 +103,7 @@ const AddNewProject = () => {
         }
       ]);
 
-      if (error) throw error;
+      if (res.error) throw res.error;
       alert("Project created successfully!");
       navigate("/projects");
     } catch (err) {

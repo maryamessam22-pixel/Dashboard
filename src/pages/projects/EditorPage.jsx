@@ -163,9 +163,9 @@ const EditorPage = () => {
         updateQuery = updateQuery.eq('slug', id);
       }
 
-      const { error: updateError } = await updateQuery;
+      const res = await updateQuery;
 
-      if (updateError) throw updateError;
+      if (res.error) throw res.error;
 
       alert("Project updated successfully!");
       navigate("/projects");
