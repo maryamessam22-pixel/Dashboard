@@ -79,6 +79,8 @@ const AddNewProject = () => {
     setLoading(true);
     try {
       const finalStatus = publishStatus || project.status;
+      const publishedDate = finalStatus === 'published' ? new Date().toISOString().split('T')[0] : null;
+
       const { error } = await supabase.from('Projects').insert([
         {
           project_name_EN: project.title,
@@ -95,7 +97,9 @@ const AddNewProject = () => {
           cover_image: project.coverImage,
           images: project.images,
           processSteps: project.processSteps,
-          tools: project.tools
+          tools: project.tools,
+          views: 0,
+          puplished_date: publishedDate
         }
       ]);
 
@@ -104,7 +108,7 @@ const AddNewProject = () => {
       navigate("/projects");
     } catch (err) {
       console.error("Error creating project:", err);
-      alert("Error creating project. Check console.");
+      alert(`Error creating project: ${err.message || JSON.stringify(err)}`);
     } finally {
       setLoading(false);
     }

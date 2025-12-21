@@ -1,29 +1,61 @@
 import React, { useEffect, useState } from 'react';
-import ProjectRow from "./ProjectRow"; // Same directory
+import ProjectRow from "./ProjectRow";
 import "./Projects.css";
-import Layout from "../../layouts/Layout"; // Updated path
-import Header from "../../layouts/Header"; // Updated path
+import Layout from "../../layouts/Layout";
+import Header from "../../layouts/Header";
 import { Link } from "react-router-dom";
-import { supabase } from '../../config/Supabase'; // Updated path
+import { supabase } from '../../config/Supabase';
 
 const Projects = () => {
   const [loading, setLoading] = useState(true);
-  const [Projects, setProjects] = useState([]);
+  const [projectsList, setProjectsList] = useState([]);
 
   useEffect(() => {
-    async function getAllProjectsAPI() {
-      const res = await supabase.from("Projects").select("*");
-      // Added || [] safety check from your old file to prevent errors if data is null
-      setProjects(res.data || []);
+    fetchProjects();
+  }, []);
+
+  async function fetchProjects() {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from("Projects")
+        .select("*")
+        .order('id', { ascending: false });
+
+      if (error) throw error;
+      setProjectsList(data || []);
+    } catch (err) {
+      console.error("Error fetching projects:", err);
+    } finally {
       setLoading(false);
     }
-    getAllProjectsAPI();
-  }, []);
+  }
+
+  const deleteProject = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this project? This action cannot be undone.")) {
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from('Projects')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+
+      setProjectsList(prev => prev.filter(p => p.id !== id));
+      alert("Project deleted successfully.");
+    } catch (err) {
+      console.error("Error deleting project:", err);
+      alert("Failed to delete project.");
+    }
+  };
 
   if (loading) {
     return (
       <div className="loading-center">
-        <p>Loading...</p>
+        <p>Loading Projects...</p>
       </div>
     );
   }
@@ -55,11 +87,13 @@ const Projects = () => {
 
           {/* Table Rows */}
           <div className="table-body">
-            {Projects.map((project) => {
-              // We are inside a code block {}, so we must explicitly RETURN the JSX
-              return (
+            {projectsList.length === 0 ? (
+              <div style={{ padding: '20px', textAlign: 'center', color: '#888' }}>No projects found.</div>
+            ) : (
+              projectsList.map((project) => (
                 <ProjectRow
                   key={project.id}
+                  id={project.id}
                   img={project.cover_image}
                   title={project.project_name_EN}
                   date={project.start_Date}
@@ -67,10 +101,10 @@ const Projects = () => {
                   status={project.status}
                   views={project.views}
                   published={project.puplished_date}
-                  {...project}
+                  onDelete={deleteProject}
                 />
-              );
-            })}
+              ))
+            )}
           </div>
         </div>
       </div>
