@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X, Plus, Trash2, ArrowLeft, Save, Upload } from 'lucide-react';
-import './AddNewBlog.css'; 
+import './AddNewBlog.css';
 import { supabase } from '../../config/Supabase';
 
 const AddNewBlog = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+    const [uploading, setUploading] = useState(false);
 
-    
+
     const [formData, setFormData] = useState({
         page_title: '',
         page_subtitle: '',
@@ -19,18 +20,39 @@ const AddNewBlog = () => {
         category: '',
         cover_img: '',
 
-      
+
         introTitle: '',
         introText: '',
         conclusionTitle: '',
         conclusionText: '',
         tableOfContents: [''],
-        sections: [] 
+        sections: []
     });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleImageUpload = async (e, field) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        setUploading(true);
+        try {
+            const fileExt = file.name.split('.').pop();
+            const fileName = `${Math.random()}.${fileExt}`;
+            const filePath = `${fileName}`;
+            // Bucket name: portfolio-assets
+            const { error: uploadError } = await supabase.storage.from('portfolio-assets').upload(filePath, file);
+            if (uploadError) throw uploadError;
+            const { data } = supabase.storage.from('portfolio-assets').getPublicUrl(filePath);
+            setFormData(prev => ({ ...prev, [field]: data.publicUrl }));
+        } catch (error) {
+            console.error('Error uploading image:', error);
+            alert('Error uploading image: ' + error.message);
+        } finally {
+            setUploading(false);
+        }
     };
 
     // --- Content Parsing Logic ---
@@ -66,7 +88,7 @@ const AddNewBlog = () => {
         try {
             const finalStatus = publishStatus || formData.status;
 
-       
+
             const contentJson = {
                 introduction: {
                     title: formData.introTitle,
@@ -106,7 +128,7 @@ const AddNewBlog = () => {
     };
 
     return (
-        <div className="add-blog-container"> 
+        <div className="add-blog-container">
             <div className="page-header">
                 <div className="breadcrumb-row">
                     <span className="breadcrumb">Pages / Add New Blog</span>
@@ -117,22 +139,47 @@ const AddNewBlog = () => {
             </div>
 
             <div className="split-layout">
-            
+
                 <div className="left-panel">
-                    <div className="panel-box image-box">
-                        <label>Cover Image (URL)</label>
-                        <div className="image-preview" style={{ backgroundImage: `url(${formData.cover_img})` }}>
-                            {!formData.cover_img && <div className="placeholder"><Upload size={24} /><span>Paste URL</span></div>}
+                    <div className="panel-box image-box" style={{ position: 'relative' }}>
+                        <label>Cover Image</label>
+                        <div
+                            className="image-preview"
+                            style={{
+                                backgroundImage: `url(${formData.cover_img})`,
+                                cursor: 'pointer',
+                                border: '2px dashed rgba(255,255,255,0.2)'
+                            }}
+                        >
+                            {!formData.cover_img && <div className="placeholder"><Upload size={24} /><span>Upload Cover</span></div>}
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => handleImageUpload(e, 'cover_img')}
+                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer' }}
+                            />
                         </div>
-                        <input type="text" name="cover_img" placeholder="https://..." value={formData.cover_img} onChange={handleChange} className="std-input small-input" />
                     </div>
 
-                    <div className="panel-box image-box mt-4">
-                        <label>Thumbnail (URL)</label>
-                        <div className="image-preview thumbnail" style={{ backgroundImage: `url(${formData.thumbnail_image})`, height: '150px' }}>
-                            {!formData.thumbnail_image && <div className="placeholder"><Upload size={20} /><span>Paste URL</span></div>}
+                    <div className="panel-box image-box mt-4" style={{ position: 'relative' }}>
+                        <label>Thumbnail</label>
+                        <div
+                            className="image-preview thumbnail"
+                            style={{
+                                backgroundImage: `url(${formData.thumbnail_image})`,
+                                height: '150px',
+                                cursor: 'pointer',
+                                border: '2px dashed rgba(255,255,255,0.2)'
+                            }}
+                        >
+                            {!formData.thumbnail_image && <div className="placeholder"><Upload size={20} /><span>Upload Thumbnail</span></div>}
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => handleImageUpload(e, 'thumbnail_image')}
+                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer' }}
+                            />
                         </div>
-                        <input type="text" name="thumbnail_image" placeholder="https://..." value={formData.thumbnail_image} onChange={handleChange} className="std-input small-input" />
                     </div>
 
                     <div className="panel-box mt-4">
@@ -149,10 +196,10 @@ const AddNewBlog = () => {
                     </div>
                 </div>
 
-    
+
                 <div className="right-panel">
 
-             
+
                     <div className="panel-box">
                         <div className="form-row">
                             <div className="form-group half">
@@ -179,14 +226,14 @@ const AddNewBlog = () => {
                     <div className="panel-box mt-4">
                         <h3>Content Builder</h3>
 
-      
+
                         <div className="builder-section">
                             <h4>Introduction</h4>
                             <input type="text" name="introTitle" value={formData.introTitle} onChange={handleChange} className="std-input mb-2" placeholder="Intro Title" />
                             <textarea name="introText" value={formData.introText} onChange={handleChange} className="std-textarea" rows={4} placeholder="Intro Text..." />
                         </div>
 
-             
+
                         <div className="builder-section mt-4">
                             <h4>Table of Contents</h4>
                             {formData.tableOfContents.map((item, idx) => (
@@ -198,7 +245,7 @@ const AddNewBlog = () => {
                             <button onClick={addTocItem} className="btn-secondary-small"><Plus size={14} /> Add Item</button>
                         </div>
 
-                 
+
                         <div className="builder-section mt-4">
                             <h4>Main Sections</h4>
                             {formData.sections.map((section, idx) => (
@@ -220,7 +267,7 @@ const AddNewBlog = () => {
                             <button onClick={addSection} className="btn-secondary-small"><Plus size={14} /> Add Section</button>
                         </div>
 
-               
+
                         <div className="builder-section mt-4">
                             <h4>Conclusion</h4>
                             <input type="text" name="conclusionTitle" value={formData.conclusionTitle} onChange={handleChange} className="std-input mb-2" placeholder="Conclusion Title" />

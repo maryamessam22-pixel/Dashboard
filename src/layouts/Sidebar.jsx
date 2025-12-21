@@ -75,17 +75,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               </NavLink>
             </li>
 
-            <li>
-              <NavLink
-                to="/profile"
-                className={({ isActive }) =>
-                  isActive ? 'nav-item active' : 'nav-item'
-                }
-              >
-                <img src={profileIcon} className="nav-icon" alt="Profile" />
-                Profile
-              </NavLink>
-            </li>
 
             <li>
               <NavLink
@@ -151,6 +140,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               </NavLink>
             </li>
           </ul>
+
+
+          <li>
+              <NavLink
+                to="/profile"
+                className={({ isActive }) =>
+                  isActive ? 'nav-item active' : 'nav-item'
+                }
+              >
+                <img src={profileIcon} className="nav-icon" alt="Profile" />
+                Profile
+              </NavLink>
+          </li>
+
         </nav>
 
         {/* Logout Button */}

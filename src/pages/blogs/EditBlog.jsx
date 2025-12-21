@@ -9,6 +9,7 @@ const EditBlog = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
+    const [uploading, setUploading] = useState(false);
 
     const [formData, setFormData] = useState({
         page_title: '',
@@ -78,6 +79,27 @@ const EditBlog = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleImageUpload = async (e, field) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        setUploading(true);
+        try {
+            const fileExt = file.name.split('.').pop();
+            const fileName = `${Math.random()}.${fileExt}`;
+            const filePath = `${fileName}`;
+            // Bucket name: portfolio-assets
+            const { error: uploadError } = await supabase.storage.from('portfolio-assets').upload(filePath, file);
+            if (uploadError) throw uploadError;
+            const { data } = supabase.storage.from('portfolio-assets').getPublicUrl(filePath);
+            setFormData(prev => ({ ...prev, [field]: data.publicUrl }));
+        } catch (error) {
+            console.error('Error uploading image:', error);
+            alert('Error uploading image: ' + error.message);
+        } finally {
+            setUploading(false);
+        }
     };
 
     // --- Content Logic ---
@@ -178,20 +200,45 @@ const EditBlog = () => {
             <div className="split-layout">
                 {/* Left Side - Sidebar style */}
                 <div className="left-panel">
-                    <div className="panel-box image-box">
-                        <label>Cover Image (URL)</label>
-                        <div className="image-preview" style={{ backgroundImage: `url(${formData.cover_img})` }}>
-                            {!formData.cover_img && <div className="placeholder"><Upload size={24} /><span>Paste URL</span></div>}
+                    <div className="panel-box image-box" style={{ position: 'relative' }}>
+                        <label>Cover Image</label>
+                        <div
+                            className="image-preview"
+                            style={{
+                                backgroundImage: `url(${formData.cover_img})`,
+                                cursor: 'pointer',
+                                border: '2px dashed rgba(255,255,255,0.2)'
+                            }}
+                        >
+                            {!formData.cover_img && <div className="placeholder"><Upload size={24} /><span>Upload Cover</span></div>}
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => handleImageUpload(e, 'cover_img')}
+                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer' }}
+                            />
                         </div>
-                        <input type="text" name="cover_img" placeholder="https://..." value={formData.cover_img} onChange={handleChange} className="std-input small-input" />
                     </div>
 
-                    <div className="panel-box image-box mt-4">
-                        <label>Thumbnail (URL)</label>
-                        <div className="image-preview thumbnail" style={{ backgroundImage: `url(${formData.thumbnail_image})`, height: '150px' }}>
-                            {!formData.thumbnail_image && <div className="placeholder"><Upload size={20} /><span>Paste URL</span></div>}
+                    <div className="panel-box image-box mt-4" style={{ position: 'relative' }}>
+                        <label>Thumbnail</label>
+                        <div
+                            className="image-preview thumbnail"
+                            style={{
+                                backgroundImage: `url(${formData.thumbnail_image})`,
+                                height: '150px',
+                                cursor: 'pointer',
+                                border: '2px dashed rgba(255,255,255,0.2)'
+                            }}
+                        >
+                            {!formData.thumbnail_image && <div className="placeholder"><Upload size={20} /><span>Upload Thumbnail</span></div>}
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => handleImageUpload(e, 'thumbnail_image')}
+                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer' }}
+                            />
                         </div>
-                        <input type="text" name="thumbnail_image" placeholder="https://..." value={formData.thumbnail_image} onChange={handleChange} className="std-input small-input" />
                     </div>
 
                     <div className="panel-box mt-4">

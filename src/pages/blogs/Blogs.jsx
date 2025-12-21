@@ -9,7 +9,7 @@ import { supabase } from '../../config/Supabase';
 
 const Blogs = () => {
   const [loading, setLoading] = useState(true)
-  const [Blogs, setBlogs] = useState([]) // Initialize as empty array
+  const [Blogs, setBlogs] = useState([]) 
 
   useEffect(() => {
     async function getAllBlogsAPI() {

@@ -10,25 +10,25 @@ const EditorPage = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
-  // Unified State matching Portfolio structure
   const [project, setProject] = useState({
-    title: "",        // project_name_EN
+    title: "",
     slug: "",
-    type: "",         // projectType
-    category: "",     // category_outside
-    role: "",         // Role
-    startDate: "",    // start_Date
-    endDate: "",      // end_Date
-    description: "",  // description_EN
-    subtitle: "",     // subtitle_out
-    metaTitle: "",    // Not explicitly in DB map but good to have
-    metaDescription: "", // meta_dscription
+    type: "",
+    category: "",
+    role: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    subtitle: "",
+    metaTitle: "",
+    metaDescription: "",
     status: "draft",
-    coverImage: "",   // cover_image
-    images: [],       // images (JSONB array)
-    processSteps: [], // processSteps (JSONB array)
-    tools: [],        // tools
+    coverImage: "",
+    images: [],
+    processSteps: [],
+    tools: [],
     imageAlt: ""
   });
 
@@ -71,7 +71,6 @@ const EditorPage = () => {
         });
       } else {
         console.error("Project not found or error:", res.error);
-        // Fallback for slug if needed, but sticking to requested style mainly
       }
       setLoading(false);
     }
@@ -91,7 +90,6 @@ const EditorPage = () => {
     }));
   };
 
-  // Process Steps Logic
   const addProcessStep = () => {
     setProject(prev => ({ ...prev, processSteps: [...prev.processSteps, ""] }));
   };
@@ -104,17 +102,52 @@ const EditorPage = () => {
     setProject(prev => ({ ...prev, processSteps: prev.processSteps.filter((_, i) => i !== index) }));
   };
 
-  // Images Logic (URLs for now)
-  const addImage = () => {
-    setProject(prev => ({ ...prev, images: [...prev.images, ""] }));
-  };
-  const updateImage = (index, val) => {
-    const newImages = [...project.images];
-    newImages[index] = val;
-    setProject(prev => ({ ...prev, images: newImages }));
-  };
   const removeImage = (index) => {
     setProject(prev => ({ ...prev, images: prev.images.filter((_, i) => i !== index) }));
+  };
+
+  const handleCoverUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `${fileName}`;
+      const { error: uploadError } = await supabase.storage.from('portfolio-assets').upload(filePath, file);
+      if (uploadError) throw uploadError;
+      const { data } = supabase.storage.from('portfolio-assets').getPublicUrl(filePath);
+      setProject(prev => ({ ...prev, coverImage: data.publicUrl }));
+    } catch (error) {
+      console.error('Error uploading cover:', error);
+      alert('Error uploading cover image: ' + error.message);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleGalleryUpload = async (e) => {
+    const files = Array.from(e.target.files);
+    if (files.length === 0) return;
+    setUploading(true);
+    try {
+      const newUrls = [];
+      for (const file of files) {
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Math.random()}.${fileExt}`;
+        const filePath = `${fileName}`;
+        const { error: uploadError } = await supabase.storage.from('portfolio-assets').upload(filePath, file);
+        if (uploadError) throw uploadError;
+        const { data } = supabase.storage.from('portfolio-assets').getPublicUrl(filePath);
+        newUrls.push(data.publicUrl);
+      }
+      setProject(prev => ({ ...prev, images: [...prev.images, ...newUrls] }));
+    } catch (error) {
+      console.error('Error uploading gallery images:', error);
+      alert('Error uploading images: ' + error.message);
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleSave = async (publishStatus) => {
@@ -142,26 +175,13 @@ const EditorPage = () => {
       const { error } = await supabase
         .from('Projects')
         .update(updates)
-        .eq('id', id); // We used basic ID fetch mostly, if we looked up by slug we'd need that ID. Ideally 'data' had ID.
-      // But wait, if we fetched by slug, 'id' param is the slug. We need the real ID for update usually or use slug. 
-      // Supabase update can filter by col.
-      // Let's rely on the URL param 'id' being the key, or if it was slug, we update by slug.
-      // A safer bet is to store the real ID in state if possible, but simplest is update by whatever we looked up by?
-      // Actually, if 'id' from useParams is used for fetch, we can use it for update.
-      // But if 'id' was a slug, we should eq('slug', id). 
-      // I'll optimistically update by ID first (assuming numeric ID in URL), or slug if ID is not numeric?
-      // Let's just use the 'id' param from URL for the .eq() logic and assume consistent usage.
+        .eq('id', id);
 
-      // Refined Update Logic:
-      // We know what we queried with.
+
 
       let updateQuery = supabase.from('Projects').update(updates);
-      // checking if id is numeric string
-      if (/^\d+$/.test(id)) {
-        updateQuery = updateQuery.eq('id', id);
-      } else {
-        updateQuery = updateQuery.eq('slug', id);
-      }
+
+      updateQuery = updateQuery.eq('id', id);
 
       const res = await updateQuery;
 
@@ -185,7 +205,6 @@ const EditorPage = () => {
     <div className="editor-page-wrapper">
       <div className="editor-container">
 
-        {/* Header */}
         <div className="editor-header">
           <div className="breadcrumb">Pages / <strong>Edit Project</strong></div>
           <button className="close-btn" onClick={() => navigate("/projects")}>
@@ -194,47 +213,99 @@ const EditorPage = () => {
         </div>
 
         <div className="top-layout">
-          {/* Left Column: Visuals */}
+
+
           <div className="left-column" style={{ flex: '0 0 350px' }}>
             <div className="section-card" style={{ background: 'rgba(255,255,255,0.05)', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
               <h3 style={{ marginTop: 0, marginBottom: '15px' }}>Cover Image</h3>
-              <div className="input-group">
-                <label>Image URL</label>
+
+              <div
+                className="upload-box"
+                style={{
+                  border: '2px dashed rgba(255,255,255,0.2)',
+                  borderRadius: '8px',
+                  padding: '20px',
+                  textAlign: 'center',
+                  position: 'relative',
+                  cursor: 'pointer',
+                  background: project.coverImage ? 'rgba(0,0,0,0.2)' : 'transparent',
+                  transition: 'border-color 0.2s'
+                }}
+              >
                 <input
-                  type="text"
-                  placeholder="https://..."
-                  value={project.coverImage}
-                  onChange={(e) => handleChange('coverImage', e.target.value)}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleCoverUpload}
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 5 }}
                 />
+
+                {uploading ? (
+                  <span style={{ color: '#aaa' }}>Uploading...</span>
+                ) : project.coverImage ? (
+                  <div style={{ position: 'relative' }}>
+                    <img src={project.coverImage} alt="Cover" style={{ width: '100%', borderRadius: '6px', display: 'block' }} />
+                    <div style={{ marginTop: '10px', color: '#4ade80', fontSize: '0.9rem' }}>Click or Drag to replace</div>
+                  </div>
+                ) : (
+                  <div style={{ color: '#ccc' }}>
+                    <div style={{ fontSize: '2rem', marginBottom: '10px' }}>🖼️</div>
+                    <p style={{ margin: 0, fontSize: '0.9rem' }}>Drag & drop or click to upload</p>
+                  </div>
+                )}
               </div>
-              {project.coverImage && (
-                <div className="image-preview" style={{ marginTop: '10px', borderRadius: '8px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <img src={project.coverImage} alt="Cover" style={{ width: '100%', height: 'auto', display: 'block' }} />
-                </div>
-              )}
             </div>
 
             <div className="section-card" style={{ marginTop: '20px', background: 'rgba(255,255,255,0.05)', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
               <h3 style={{ marginTop: 0, marginBottom: '15px' }}>Gallery Images</h3>
-              <div className="dynamic-list">
+
+              {/* Existing Images Grid */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))', gap: '10px', marginBottom: '15px' }}>
                 {project.images.map((img, i) => (
-                  <div key={i} className="list-item-row" style={{ display: 'flex', gap: '8px', marginBottom: '8px', alignItems: 'center' }}>
-                    <input
-                      type="text"
-                      value={img}
-                      onChange={(e) => updateImage(i, e.target.value)}
-                      placeholder="Image URL"
-                      style={{ flex: 1, padding: '8px', borderRadius: '4px', border: 'none', background: 'var(--input-bg)', color: 'white' }}
-                    />
-                    <button className="btn-remove" onClick={() => removeImage(i)} style={{ background: 'transparent', border: 'none', color: '#ff2b5e', cursor: 'pointer', fontSize: '1.2rem' }}>×</button>
+                  <div key={i} style={{ position: 'relative', aspectRatio: '1/1', borderRadius: '6px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <img src={img} alt={`Gallery ${i}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <button
+                      onClick={() => removeImage(i)}
+                      style={{
+                        position: 'absolute', top: '2px', right: '2px',
+                        background: 'rgba(0,0,0,0.6)', color: 'white',
+                        border: 'none', borderRadius: '50%', width: '20px', height: '20px',
+                        cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px'
+                      }}
+                    >×</button>
                   </div>
                 ))}
-                <button className="btn-add-small" onClick={addImage} style={{ width: '100%', padding: '8px', background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', borderRadius: '4px', cursor: 'pointer' }}>+ Add Image</button>
+              </div>
+
+              {/* Upload New Grid Item */}
+              <div
+                style={{
+                  border: '2px dashed rgba(255,255,255,0.2)',
+                  borderRadius: '8px',
+                  padding: '15px',
+                  textAlign: 'center',
+                  cursor: 'pointer',
+                  position: 'relative'
+                }}
+              >
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={handleGalleryUpload}
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 5 }}
+                />
+                {uploading ? (
+                  <span style={{ color: '#aaa', fontSize: '0.9rem' }}>Uploading...</span>
+                ) : (
+                  <div style={{ color: '#ccc', fontSize: '0.9rem' }}>
+                    <span>+ Add Images</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
 
-          {/* Right Column: Main Info */}
+
           <div className="right-column" style={{ flex: 1 }}>
             <div className="project-info-grid">
               <div className="input-group">
@@ -336,7 +407,7 @@ const EditorPage = () => {
               </div>
             </div>
 
-            {/* Tools Section */}
+
             <div className="tools-section">
               <label>Tools Used</label>
               <div className="tools-list">
@@ -352,7 +423,7 @@ const EditorPage = () => {
               </div>
             </div>
 
-            {/* Process Steps */}
+
             <div className="seo-section" style={{ marginBottom: '30px' }}>
               <div className="seo-header"><h3>Process Steps (Design Process)</h3></div>
               <div className="seo-divider"></div>
@@ -374,7 +445,7 @@ const EditorPage = () => {
               </div>
             </div>
 
-            {/* SEO */}
+
             <div className="seo-section">
               <div className="seo-header"><h3>SEO Meta</h3></div>
               <div className="seo-divider"></div>
