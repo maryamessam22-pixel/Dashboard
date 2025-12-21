@@ -39,66 +39,44 @@ const EditorPage = () => {
   ];
 
   useEffect(() => {
-    async function fetchProject() {
+    async function callRow() {
       if (!id) return;
       setLoading(true);
-      try {
-        // Try fetching by ID first
-        let { data, error } = await supabase
-          .from('Projects')
-          .select('*')
-          .eq('id', id)
-          .single();
 
-        // If not found by ID, maybe it's a slug, try that (optional, but robust)
-        if (error || !data) {
-          const { data: slugData, error: slugError } = await supabase
-            .from('Projects')
-            .select('*')
-            .eq('slug', id)
-            .single();
-          if (slugData) {
-            data = slugData;
-            error = null;
-          }
-        }
+      const res = await supabase
+        .from('Projects')
+        .select('*')
+        .eq('id', id);
 
-        if (error) {
-          console.error("Error fetching project:", error);
-          alert("Project not found!");
-          navigate("/projects");
-          return;
-        }
-
-        if (data) {
-          setProject({
-            title: data.project_name_EN || "",
-            slug: data.slug || "",
-            type: data.projectType || "",
-            category: data.category_outside || "",
-            role: data.Role || "",
-            startDate: data.start_Date || "",
-            endDate: data.end_Date || "",
-            description: data.description_EN || "",
-            subtitle: data.subtitle_out || "",
-            metaDescription: data.meta_dscription || "",
-            status: data.status || "draft",
-            coverImage: data.cover_image || "",
-            images: data.images || [],
-            processSteps: data.processSteps || [],
-            tools: data.tools || [],
-            metaTitle: "", // Add if mapped in future
-            imageAlt: ""
-          });
-        }
-      } catch (err) {
-        console.error("Unexpected error:", err);
-      } finally {
-        setLoading(false);
+      if (res.data && res.data[0]) {
+        const data = res.data[0];
+        setProject({
+          title: data.project_name_EN || "",
+          slug: data.slug || "",
+          type: data.projectType || "",
+          category: data.category_outside || "",
+          role: data.Role || "",
+          startDate: data.start_Date || "",
+          endDate: data.end_Date || "",
+          description: data.description_EN || "",
+          subtitle: data.subtitle_out || "",
+          metaDescription: data.meta_dscription || "",
+          status: data.status || "draft",
+          coverImage: data.cover_image || "",
+          images: data.images || [],
+          processSteps: data.processSteps || [],
+          tools: data.tools || [],
+          metaTitle: "",
+          imageAlt: ""
+        });
+      } else {
+        console.error("Project not found or error:", res.error);
+        // Fallback for slug if needed, but sticking to requested style mainly
       }
+      setLoading(false);
     }
-    fetchProject();
-  }, [id, navigate]);
+    callRow();
+  }, [id]);
 
   const handleChange = (field, value) => {
     setProject(prev => ({ ...prev, [field]: value }));

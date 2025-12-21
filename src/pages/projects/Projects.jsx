@@ -11,25 +11,22 @@ const Projects = () => {
   const [projectsList, setProjectsList] = useState([]);
 
   useEffect(() => {
-    fetchProjects();
-  }, []);
-
-  async function fetchProjects() {
-    setLoading(true);
-    try {
-      const { data, error } = await supabase
+    async function getProjects() {
+      setLoading(true);
+      const res = await supabase
         .from("Projects")
         .select("*")
         .order('id', { ascending: false });
 
-      if (error) throw error;
-      setProjectsList(data || []);
-    } catch (err) {
-      console.error("Error fetching projects:", err);
-    } finally {
+      if (res.data) {
+        setProjectsList(res.data);
+      } else {
+        console.error(res.error);
+      }
       setLoading(false);
     }
-  }
+    getProjects();
+  }, []);
 
   const deleteProject = async (id) => {
     if (!window.confirm("Are you sure you want to delete this project? This action cannot be undone.")) {
@@ -66,7 +63,6 @@ const Projects = () => {
         <div className="table-card">
           <Header title="Pages/ Projects" />
 
-          {/* Add New Project Button */}
           <div className="add-new-container">
             <Link to="/add-new-project">
               <button className="add-new-btn">+ Add New Project</button>
@@ -75,7 +71,7 @@ const Projects = () => {
 
           <Layout />
 
-          {/* Table Header */}
+     
           <div className="table-header">
             <div className="header-cell pl-4">Project Name</div>
             <div className="header-cell">Category</div>
@@ -85,7 +81,7 @@ const Projects = () => {
             <div className="header-cell center">Actions</div>
           </div>
 
-          {/* Table Rows */}
+
           <div className="table-body">
             {projectsList.length === 0 ? (
               <div style={{ padding: '20px', textAlign: 'center', color: '#888' }}>No projects found.</div>
