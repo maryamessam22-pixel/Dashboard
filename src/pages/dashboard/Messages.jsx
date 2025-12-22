@@ -62,7 +62,7 @@ if (loading) {
           </div>
 
         
- <div className="message-detail">     {/** Rightmessage */} 
+ <div className="message-detail">    
             {selectedMessage ? (
               <div className="detail-container">
                 <div className="detail-header">
