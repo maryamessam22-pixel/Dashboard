@@ -5,7 +5,7 @@
 
 .hero-image-upload {
   flex: 1;
-  max-width: 300px; 
+  max-width: 300px;
   background-color: #7c68a7;
   border-radius: 12px;
   display: flex;
@@ -13,8 +13,12 @@
   justify-content: center;
   min-height: 250px;
   cursor: pointer;
-  border: 2px dashed rgba(255,255,255,0.3);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
   transition: 0.3s;
+  position: relative;
+  /* Contain the absolute input */
+  overflow: hidden;
+  /* Ensure input doesn't spill out */
 }
 
 .hero-image-upload:hover {
@@ -30,7 +34,7 @@
 }
 
 .hero-inputs {
-  flex: 2; 
+  flex: 2;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -49,7 +53,7 @@
 }
 
 .about-img-height {
-  height: auto; 
+  height: auto;
 }
 
 .upload-cv-btn {
@@ -73,7 +77,7 @@
 }
 
 .config-box {
-  background-color: rgba(20, 10, 30, 0.5); 
+  background-color: rgba(20, 10, 30, 0.5);
   border: 1px solid #3f3f5f;
   border-radius: 12px;
   padding: 20px;
@@ -138,7 +142,10 @@
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: #ccc;
   transition: .4s;
   border-radius: 34px;
@@ -156,25 +163,29 @@
   border-radius: 50%;
 }
 
-input:checked + .slider {
-  background-color: #a855f7; 
+input:checked+.slider {
+  background-color: #a855f7;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   transform: translateX(20px);
 }
 
 
 @media (max-width: 992px) {
-  .hero-grid, .about-grid {
+
+  .hero-grid,
+  .about-grid {
     flex-direction: column;
   }
+
   .hero-image-upload {
     max-width: 100%;
     width: 100%;
     height: 200px;
   }
+
   .about-grid {
-    flex-direction: column-reverse; 
+    flex-direction: column-reverse;
   }
 }
