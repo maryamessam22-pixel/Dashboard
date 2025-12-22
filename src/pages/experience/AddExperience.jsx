@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import '../skills/AddEntry.css'; // Shared CSS
+import '../skills/AddEntry.css';
 import { supabase } from '../../config/Supabase';
 import RichTextEditor from '../../components/common/RichTextEditor';
 
@@ -10,7 +10,7 @@ const AddExperience = () => {
   const [loading, setLoading] = useState(false);
   const [id, setId] = useState(null);
 
-  // Initial state matching Supabase columns: company, role, description
+  
   const [experienceData, setExperienceData] = useState({
     company: '',
     role: '',
@@ -21,7 +21,7 @@ const AddExperience = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        // Fetch Experience Data if ID exists (Edit Mode)
+      
         if (location.state?.id) {
           setId(location.state.id);
           const { data: exp, error: expError } = await supabase
@@ -58,7 +58,7 @@ const AddExperience = () => {
   const handleSave = async () => {
     setLoading(true);
     try {
-      // Save the Work Experience entry matching table columns
+ 
       const experiencePayload = {
         company: experienceData.company,
         role: experienceData.role,
