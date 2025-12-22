@@ -8,13 +8,13 @@ const HomePageSettings = () => {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
 
-  // Section States
+ 
   const [hero, setHero] = useState({ title: '', subtitle: '', images: [] });
   const [about, setAbout] = useState({ title: '', description: '', images: [] });
   const [categories, setCategories] = useState({ title: '', description: '', visible: true });
   const [skills, setSkills] = useState({ title: '', subtitle: '', description: '', visible: true });
 
-  // Store raw IDs if needed for updates
+ 
   const [ids, setIds] = useState({});
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const HomePageSettings = () => {
 
       if (error) throw error;
 
-      // Map to state
+     
       const heroSec = data.find(s => s.section === 'hero');
       const aboutSec = data.find(s => s.section === 'about_sec');
       const catSec = data.find(s => s.section === 'category_sec');
@@ -130,7 +130,7 @@ const HomePageSettings = () => {
       }
 
       alert('Home settings saved successfully!');
-      fetchHomeData(); // Refresh IDs
+      fetchHomeData(); 
     } catch (err) {
       console.error("Error saving settings:", err);
       alert('Error saving settings: ' + err.message);
@@ -177,7 +177,7 @@ const HomePageSettings = () => {
   return (
     <div className="settings-form-container">
 
-      {/* 1. Hero Section */}
+    
       <section className="form-section">
         <h3 className="section-title">Hero Section</h3>
         <div className="hero-grid" style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
@@ -230,7 +230,7 @@ const HomePageSettings = () => {
         </div>
       </section>
 
-      {/* 2. About Section */}
+   
       <section className="form-section">
         <h3 className="section-title">About Section</h3>
         <div className="about-grid">
@@ -269,7 +269,7 @@ const HomePageSettings = () => {
         </div>
       </section>
 
-      {/* 3. Category Config */}
+
       <section className="config-box">
         <div className="config-header">
           <h4>Category Section Configuration</h4>
@@ -313,7 +313,7 @@ const HomePageSettings = () => {
         </div>
       </section>
 
-      {/* 4. Skills Config */}
+      
       <section className="config-box">
         <div className="config-header">
           <h4>Skills Section Configuration</h4>
