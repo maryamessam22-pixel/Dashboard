@@ -6,14 +6,6 @@ const ProjectsAPI = () => {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
     </> );
 }
  
