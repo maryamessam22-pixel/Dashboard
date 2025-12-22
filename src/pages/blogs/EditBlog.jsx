@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { X, Plus, Trash2, Save, Upload } from 'lucide-react';
-import './EditBlog.css'; // Will be updated to match AddNewBlog styling
+import './EditBlog.css';
 import { supabase } from '../../config/Supabase';
 
 const EditBlog = () => {
@@ -21,7 +21,7 @@ const EditBlog = () => {
         category: '',
         cover_img: '',
 
-        // Content Builder State (maps to 'content' JSON)
+
         introTitle: '',
         introText: '',
         conclusionTitle: '',
@@ -43,7 +43,7 @@ const EditBlog = () => {
             if (res.data && res.data[0]) {
                 const data = res.data[0];
 
-                // Parse content JSON
+
                 const content = data.content || {};
                 const intro = content.introduction || {};
                 const conclusion = typeof content.conclusion === 'object' ? content.conclusion : { text: content.conclusion, title: 'Conclusion' };
@@ -60,7 +60,7 @@ const EditBlog = () => {
                     category: data.category || '',
                     cover_img: data.cover_img || '',
 
-                    // Mapped Content
+
                     introTitle: intro.title || '',
                     introText: intro.text || '',
                     conclusionTitle: conclusion.title || '',
@@ -89,7 +89,7 @@ const EditBlog = () => {
             const fileExt = file.name.split('.').pop();
             const fileName = `${Math.random()}.${fileExt}`;
             const filePath = `${fileName}`;
-            // Bucket name: portfolio-assets
+            // I Edit Bucket name: portfolio-assets
             const { error: uploadError } = await supabase.storage.from('portfolio-assets').upload(filePath, file);
             if (uploadError) throw uploadError;
             const { data } = supabase.storage.from('portfolio-assets').getPublicUrl(filePath);
@@ -102,7 +102,7 @@ const EditBlog = () => {
         }
     };
 
-    // --- Content Logic ---
+
     const handleTocChange = (index, value) => {
         const newToc = [...formData.tableOfContents];
         newToc[index] = value;
@@ -135,7 +135,7 @@ const EditBlog = () => {
         try {
             const finalStatus = publishStatus || formData.status;
 
-            // JSON Structure
+
             const contentJson = {
                 introduction: {
                     title: formData.introTitle,
@@ -161,13 +161,7 @@ const EditBlog = () => {
                 content: contentJson
             };
 
-            let updateQuery = supabase.from('Blogs').update(updates);
-            if (/^\d+$/.test(id)) {
-                updateQuery = updateQuery.eq('id', id);
-            } else {
-                // Fallback if looking up by slug, though typically we use ID now
-                updateQuery = updateQuery.eq('slug', id);
-            }
+            let updateQuery = supabase.from('Blogs').update(updates).eq('id', id);
 
             const res = await updateQuery;
 
