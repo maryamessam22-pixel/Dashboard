@@ -2,7 +2,7 @@ a{
   text-decoration: none;
 }
 
-/* ------- SIDEBAR MAIN ------- */
+
 .sidebar {
   width: 260px;
   background-color: #1a103c;
@@ -21,7 +21,7 @@ a{
 }
 
 
-/* ------- PROFILE SECTION (FIXED) ------- */
+
 .profile-section {
   text-align: center;
   /* margin-bottom: 20px; */
@@ -68,7 +68,7 @@ a{
 }
 
 
-/* ------- NAV MENU (SCROLLABLE) ------- */
+
 .nav-menu {
   flex: 1; 
   overflow-y: auto;
@@ -121,7 +121,7 @@ a{
 }
 
 
-/* ------- LOGOUT SECTION ------- */
+
 .logout-section {
   margin-top: 20px;
 }
@@ -147,7 +147,7 @@ a{
 }
 
 
-/* ------- MOBILE VIEW ------- */
+
 @media (max-width: 768px) {
   .sidebar {
     left: -260px;
