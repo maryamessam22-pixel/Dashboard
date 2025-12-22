@@ -77,9 +77,7 @@ if (loading) {
 {/*     
             <Plus size={16} style={{ marginRight: "8px" }} />
             Add New Project */}
-      
         </div>
-
 
 
 
