@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import '../skills/AddEntry.css'; // Shared CSS
 import { supabase } from '../../config/Supabase';
+import RichTextEditor from '../../components/common/RichTextEditor';
 
 const AddSkill = () => {
   const navigate = useNavigate();
@@ -18,7 +19,6 @@ const AddSkill = () => {
 
   // Skill Data State
   const [skillData, setSkillData] = useState({
-    title_en: '',
     icon_url: ''
   });
 
@@ -53,7 +53,6 @@ const AddSkill = () => {
 
           if (skill) {
             setSkillData({
-              title_en: skill.title_EN || '',
               icon_url: skill.icon_url || ''
             });
           }
@@ -69,7 +68,7 @@ const AddSkill = () => {
     fetchData();
   }, [location.state]);
 
-  // Handlers
+  // HANDLERS
   const handlePageChange = (e) => {
     const { name, value } = e.target;
     setPageContent(prev => ({ ...prev, [name]: value }));
@@ -80,7 +79,6 @@ const AddSkill = () => {
     setSkillData(prev => ({ ...prev, [name]: value }));
   };
 
-  // Image Upload Handler
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -90,7 +88,6 @@ const AddSkill = () => {
       const fileExt = file.name.split('.').pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
-
       // Bucket name: portfolio-assets
       const { error: uploadError } = await supabase.storage
         .from('portfolio-assets')
@@ -99,7 +96,6 @@ const AddSkill = () => {
       if (uploadError) throw uploadError;
 
       const { data } = supabase.storage.from('portfolio-assets').getPublicUrl(filePath);
-
       setSkillData(prev => ({ ...prev, icon_url: data.publicUrl }));
     } catch (error) {
       console.error('Error uploading image:', error);
@@ -109,10 +105,10 @@ const AddSkill = () => {
     }
   };
 
-  const handleSave = async () => {
+  // SEPARATE SAVE FUNCTION: PAGE SETTINGS
+  const savePageSettings = async () => {
     setLoading(true);
     try {
-      // A. Update Page Section (Title & Description)
       const { error: pageError } = await supabase
         .from('page_sections')
         .update({
@@ -121,11 +117,21 @@ const AddSkill = () => {
         })
         .eq('title', 'Skills');
 
-      if (pageError) console.warn("Page section update failed:", pageError);
+      if (pageError) throw pageError;
+      alert("Page Header updated successfully!");
+    } catch (err) {
+      console.error("Error updating page:", err);
+      alert(`Error updating page: ${err.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-      // B. Save/Update Skill
+  // SEPARATE SAVE FUNCTION: SKILL ENTRY
+  const saveSkill = async () => {
+    setLoading(true);
+    try {
       const skillPayload = {
-        title_EN: skillData.title_en,
         icon_url: skillData.icon_url,
         type: 'icon'
       };
@@ -146,16 +152,15 @@ const AddSkill = () => {
 
       if (skillError) throw skillError;
 
-      alert(`Saved successfully!`);
+      alert(`Skill saved successfully!`);
       if (!id) {
-        setSkillData({ title_en: '', icon_url: '' });
+        setSkillData({ icon_url: '' });
       } else {
         navigate('/skills-exp');
       }
-
     } catch (err) {
-      console.error("Error saving:", err);
-      alert(`Error saving: ${err.message}`);
+      console.error("Error saving skill:", err);
+      alert(`Error saving skill: ${err.message}`);
     } finally {
       setLoading(false);
     }
@@ -183,9 +188,6 @@ const AddSkill = () => {
         </div>
         <div>
           {id && <button className="delete-btn" onClick={handleDelete} disabled={loading} style={{ marginRight: '10px', background: '#ff2b5e', border: 'none', color: 'white', padding: '8px 16px', borderRadius: '6px', cursor: 'pointer' }}>Delete</button>}
-          <button className="save-btn" onClick={handleSave} disabled={loading}>
-            {loading ? "Saving..." : "💾 Save Changes"}
-          </button>
         </div>
       </div>
 
@@ -197,26 +199,38 @@ const AddSkill = () => {
       <div className="form-content">
 
         {/* Section 1: Page Content */}
-        <h3 style={{ color: 'white', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '10px' }}>Page Header (Page Sections)</h3>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '10px', marginBottom: '20px' }}>
+          <h3 style={{ color: 'white', margin: 0 }}>Page Header (Page Sections)</h3>
+          <button onClick={savePageSettings} disabled={loading} style={{ background: '#2563eb', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '6px', cursor: 'pointer', fontSize: '0.9rem' }}>
+            Update Page Info
+          </button>
+        </div>
+
         <div className="form-row">
           <div className="form-group" style={{ flex: 1 }}>
             <label>Screen Title</label>
-            <input type="text" name="title" className="form-input" placeholder="Skills" value={pageContent.title} onChange={handlePageChange} />
+            <input
+              type="text"
+              name="title"
+              className="form-input"
+              placeholder="Skills"
+              value={pageContent.title}
+              onChange={handlePageChange}
+              style={{ padding: '12px', background: '#1e1a2f', color: 'white', border: '1px solid #3f3f5f', borderRadius: '8px', width: '100%' }}
+            />
           </div>
         </div>
         <div className="form-group">
-          <label>Description</label>
-          <textarea name="description" className="editor-textarea" rows={3} value={pageContent.description} onChange={handlePageChange} />
+          <label>Description (Page)</label>
+          <RichTextEditor
+            value={pageContent.description}
+            onChange={(html) => setPageContent(prev => ({ ...prev, description: html }))}
+          />
         </div>
 
 
         {/* Section 2: Skill Entry */}
-        <h3 style={{ color: 'white', marginTop: '40px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '10px' }}>Skill Entry (Icon)</h3>
-
-        <div className="form-group">
-          <label>Skill Title</label>
-          <input type="text" name="title_en" className="form-input" placeholder="e.g. FIGMA" value={skillData.title_en} onChange={handleSkillChange} />
-        </div>
+        <h3 style={{ color: 'white', marginTop: '60px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '10px' }}>Skill Entry (Icon)</h3>
 
         <div className="form-group">
           <label>Drag & Drop Icon / Click to Upload</label>
@@ -263,6 +277,12 @@ const AddSkill = () => {
               </div>
             )}
           </div>
+        </div>
+
+        <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'flex-end' }}>
+          <button onClick={saveSkill} disabled={loading} style={{ background: '#a855f7', color: 'white', border: 'none', padding: '12px 30px', borderRadius: '8px', cursor: 'pointer', fontSize: '1rem', fontWeight: 'bold' }}>
+            {id ? "Update Skill" : "Add Skill"}
+          </button>
         </div>
 
       </div>

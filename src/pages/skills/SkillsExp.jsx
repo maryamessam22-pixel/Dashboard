@@ -1,33 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../../config/Supabase'; // Path is correct based on folder structure
+import { supabase } from '../../config/Supabase';
 import { Link } from 'react-router-dom';
-import Layout from '../../layouts/Layout'; // Updated path
-import Header from '../../layouts/Header'; // Updated path
+import Layout from '../../layouts/Layout';
+import Header from '../../layouts/Header';
 import './SkillsExp.css';
-
 
 const SkillsExp = () => {
   const [loading, setLoading] = useState(true);
-  const [skills, setSkills] = useState("");
-  const [experience, setExperience] = useState("");
-  const [skillsSection, setSkillsSection] = useState("");
+  const [skills, setSkills] = useState([]);
+  const [experience, setExperience] = useState([]);
+  const [skillsSection, setSkillsSection] = useState({});
 
   useEffect(() => {
     async function getSkillsAndExperience() {
-      const skillsRes = await supabase.from('Skills').select('*')
-        .eq('type', 'icon');
-      setSkills(skillsRes.data);
+      // Fetch Skills (Icons)
+      const skillsRes = await supabase.from('Skills').select('*').eq('type', 'icon');
+      setSkills(skillsRes.data || []);
 
-
+      // Fetch Experience
       const expRes = await supabase.from('work_experience').select('*');
-      setExperience(expRes.data);
+      setExperience(expRes.data || []);
 
+      // Fetch Page Section Info (Title, Description)
       const sectionRes = await supabase
         .from('page_sections')
-        .select('title, subtitle, description')
-        .eq('title', 'Skills')
+        .select('*')
+        .eq('id', 4)
         .single();
-      setSkillsSection(sectionRes.data);
+
+      if (sectionRes.data) {
+        setSkillsSection(sectionRes.data);
+      }
 
       setLoading(false);
     }
@@ -50,32 +53,47 @@ const SkillsExp = () => {
 
         <div className="content-grid">
 
+          {/* SKILLS COLUMN */}
           <div className="card-container skills-col">
             <div className="ADD-NEW-SKILL">
-              <h3 className="card-header">{skillsSection.title}</h3>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <h3 className="card-header">{skillsSection?.title || 'Skills'}</h3>
+                {/* Button to Edit the Section Text (Title/Description) */}
+                <Link
+                  to="/add-skill"
+                  state={{ section: skillsSection }}
+                  style={{ fontSize: '0.8rem', color: '#9d4edd', textDecoration: 'none', fontWeight: 'bold' }}
+                >
+                  Edit ✎
+                </Link>
+              </div>
               <Link to="/add-skill">
                 <button className="add-new-btn">+ Add New Skill</button>
               </Link>
-
             </div>
 
             <div className="info-box mb-20">
               <div className="info-text">
-                {skillsSection.subtitle}
+                {skillsSection?.subtitle || ''}
               </div>
             </div>
 
             <div className="info-box large-box mb-20">
-              <p className="desc-text">{skillsSection.description}</p>
+              <div className="desc-text" dangerouslySetInnerHTML={{ __html: skillsSection?.description || '' }}></div>
             </div>
 
             <div className="tools-row">
               {skills.map((skill) => (
                 <div key={skill.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', marginBottom: '15px' }}>
                   <div className="tool-icon glass-circle">
-                    <img src={skill.icon_url} alt={skill.title_EN || 'Skill'} />
+                    <img src={skill.icon_url} alt="Skill" />
                   </div>
-                  <Link to="/add-skill" state={{ id: skill.id }} style={{ color: '#9d4edd', fontSize: '0.8rem', textDecoration: 'none', fontWeight: 'bold' }}>
+                  {/* PASS FULL SKILL OBJECT HERE so inputs can be filled */}
+                  <Link
+                    to="/add-skill"
+                    state={{ id: skill.id, skillData: skill }}
+                    style={{ color: '#9d4edd', fontSize: '0.8rem', textDecoration: 'none', fontWeight: 'bold' }}
+                  >
                     Edit ✎
                   </Link>
                 </div>
@@ -84,6 +102,7 @@ const SkillsExp = () => {
           </div>
 
 
+          {/* EXPERIENCE COLUMN */}
           <div className="card-container experience-col">
             <div className="ADD-NEW-SKILL">
               <h3 className="card-header">Experience</h3>
@@ -100,7 +119,13 @@ const SkillsExp = () => {
                     <span className="exp-role">{exp.role}</span>
                     <div className="exp-desc" dangerouslySetInnerHTML={{ __html: exp.description }}></div>
                   </div>
-                  <Link to="/add-experience" state={{ id: exp.id }} className="edit-btn-small" style={{ marginLeft: 'auto', color: '#9d4edd', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.8rem' }}>
+                  {/* PASS FULL EXPERIENCE OBJECT HERE */}
+                  <Link
+                    to="/add-experience"
+                    state={{ id: exp.id, expData: exp }}
+                    className="edit-btn-small"
+                    style={{ marginLeft: 'auto', color: '#9d4edd', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.8rem' }}
+                  >
                     Edit ✎
                   </Link>
                 </div>
@@ -114,5 +139,3 @@ const SkillsExp = () => {
 };
 
 export default SkillsExp;
-
-

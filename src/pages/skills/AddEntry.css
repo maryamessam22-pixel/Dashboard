@@ -4,7 +4,7 @@
     color: white;
     padding: 40px 60px;
     font-family: 'Inter', sans-serif;
-    max-width:100%;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -89,7 +89,7 @@
     background: rgba(43, 43, 64, 0.3);
     padding: 25px;
     border-radius: 12px;
-        border: 1px solid #d90dfc;
+    border: 1px solid #d90dfc;
     background-color: #4f4f68;
 }
 
@@ -121,7 +121,9 @@
     font-weight: bold;
 }
 
-.form-input, .form-select, .form-textarea {
+.form-input,
+.form-select,
+.form-textarea {
     background-color: #1e1a2f;
     border: 1px solid #3f3f5f;
     padding: 14px 16px;
@@ -133,7 +135,9 @@
     width: 100%;
 }
 
-.form-input:focus, .form-select:focus, .form-textarea:focus {
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
     border-color: #a855f7;
     box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
 }
@@ -185,8 +189,8 @@
 .upload-box-mini {
     width: 100px;
     height: 100px;
-    background-color: #a855f7; 
-    
+    background-color: #a855f7;
+
     border-radius: 12px;
     display: flex;
     flex-direction: column;
@@ -208,7 +212,7 @@
 
 .upload-text {
     font-size: 10px;
-     
+
     justify-content: center;
     display: flex;
 }
@@ -221,15 +225,20 @@
 
 @media (max-width: 992px) {
 
-    .add-entry-container { margin-left: 0; }
-    .form-row { grid-template-columns: 1fr; }
+    .add-entry-container {
+        margin-left: 0;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 768px) {
-    
-   .upload-text {
-    font-size: 10px;
-         width: 20px;
 
-}
+    .upload-text {
+        font-size: 10px;
+        width: 20px;
+
+    }
 }
