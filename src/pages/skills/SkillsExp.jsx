@@ -13,15 +13,15 @@ const SkillsExp = () => {
 
   useEffect(() => {
     async function getSkillsAndExperience() {
-      // Fetch Skills (Icons)
+      
       const skillsRes = await supabase.from('Skills').select('*').eq('type', 'icon');
       setSkills(skillsRes.data || []);
 
-      // Fetch Experience
+    
       const expRes = await supabase.from('work_experience').select('*');
       setExperience(expRes.data || []);
 
-      // Fetch Page Section Info (Title, Description)
+   
       const sectionRes = await supabase
         .from('page_sections')
         .select('*')
@@ -53,12 +53,12 @@ const SkillsExp = () => {
 
         <div className="content-grid">
 
-          {/* SKILLS COLUMN */}
+        
           <div className="card-container skills-col">
             <div className="ADD-NEW-SKILL">
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <h3 className="card-header">{skillsSection?.title || 'Skills'}</h3>
-                {/* Button to Edit the Section Text (Title/Description) */}
+              
                 <Link
                   to="/add-skill"
                   state={{ section: skillsSection }}
@@ -88,7 +88,7 @@ const SkillsExp = () => {
                   <div className="tool-icon glass-circle">
                     <img src={skill.icon_url} alt="Skill" />
                   </div>
-                  {/* PASS FULL SKILL OBJECT HERE so inputs can be filled */}
+                 
                   <Link
                     to="/add-skill"
                     state={{ id: skill.id, skillData: skill }}
@@ -102,7 +102,6 @@ const SkillsExp = () => {
           </div>
 
 
-          {/* EXPERIENCE COLUMN */}
           <div className="card-container experience-col">
             <div className="ADD-NEW-SKILL">
               <h3 className="card-header">Experience</h3>
@@ -119,7 +118,7 @@ const SkillsExp = () => {
                     <span className="exp-role">{exp.role}</span>
                     <div className="exp-desc" dangerouslySetInnerHTML={{ __html: exp.description }}></div>
                   </div>
-                  {/* PASS FULL EXPERIENCE OBJECT HERE */}
+             
                   <Link
                     to="/add-experience"
                     state={{ id: exp.id, expData: exp }}
