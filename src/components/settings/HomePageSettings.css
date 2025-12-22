@@ -16,9 +16,7 @@
   border: 2px dashed rgba(255, 255, 255, 0.3);
   transition: 0.3s;
   position: relative;
-  /* Contain the absolute input */
   overflow: hidden;
-  /* Ensure input doesn't spill out */
 }
 
 .hero-image-upload:hover {
