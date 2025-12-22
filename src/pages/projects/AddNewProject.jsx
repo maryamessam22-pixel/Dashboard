@@ -165,91 +165,68 @@ const AddNewProject = () => {
 
         <div className="top-layout">
 
-          <div className="left-column" style={{ flex: '0 0 350px' }}>
-            {/* COVER IMAGE UPLOAD */}
-            <div className="section-card" style={{ background: 'rgba(255,255,255,0.05)', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
-              <h3 style={{ marginTop: 0, marginBottom: '15px' }}>Cover Image</h3>
+          <div className="left-column-custom">
+
+
+            <div className="section-card">
+              <h3 className="card-title">Cover Image</h3>
 
               <div
-                className="upload-box"
-                style={{
-                  border: '2px dashed rgba(255,255,255,0.2)',
-                  borderRadius: '8px',
-                  padding: '20px',
-                  textAlign: 'center',
-                  position: 'relative',
-                  cursor: 'pointer',
-                  background: project.coverImage ? 'rgba(0,0,0,0.2)' : 'transparent',
-                  transition: 'border-color 0.2s'
-                }}
+                className={`upload-box-custom ${project.coverImage ? 'upload-box-custom-active' : ''}`}
               >
                 <input
                   type="file"
                   accept="image/*"
                   onChange={handleCoverUpload}
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 5 }}
+                  className="file-input"
                 />
 
                 {uploading ? (
-                  <span style={{ color: '#aaa' }}>Uploading...</span>
+                  <span className="uploading-text">Uploading...</span>
                 ) : project.coverImage ? (
-                  <div style={{ position: 'relative' }}>
-                    <img src={project.coverImage} alt="Cover" style={{ width: '100%', borderRadius: '6px', display: 'block' }} />
-                    <div style={{ marginTop: '10px', color: '#4ade80', fontSize: '0.9rem' }}>Click or Drag to replace</div>
+                  <div className="cover-image-preview">
+                    <img src={project.coverImage} alt="Cover" className="cover-image" />
+                    <div className="replace-text">Click or Drag to replace</div>
                   </div>
                 ) : (
-                  <div style={{ color: '#ccc' }}>
-                    <div style={{ fontSize: '2rem', marginBottom: '10px' }}>🖼️</div>
-                    <p style={{ margin: 0, fontSize: '0.9rem' }}>Drag & drop or click to upload</p>
+                  <div className="upload-placeholder">
+                    <div className="upload-icon">🖼️</div>
+                    <p className="upload-hint">Drag & drop or click to upload</p>
                   </div>
                 )}
               </div>
             </div>
 
-            {/* GALLERY IMAGES UPLOAD */}
-            <div className="section-card" style={{ marginTop: '20px', background: 'rgba(255,255,255,0.05)', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
-              <h3 style={{ marginTop: 0, marginBottom: '15px' }}>Gallery Images</h3>
 
-              {/* Existing Images Grid */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))', gap: '10px', marginBottom: '15px' }}>
+            <div className="gallery-card">
+              <h3 className="card-title">Gallery Images</h3>
+
+
+              <div className="gallery-grid">
                 {project.images.map((img, i) => (
-                  <div key={i} style={{ position: 'relative', aspectRatio: '1/1', borderRadius: '6px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <img src={img} alt={`Gallery ${i}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <div key={i} className="gallery-item">
+                    <img src={img} alt={`Gallery ${i}`} className="gallery-image" />
                     <button
                       onClick={() => removeImage(i)}
-                      style={{
-                        position: 'absolute', top: '2px', right: '2px',
-                        background: 'rgba(0,0,0,0.6)', color: 'white',
-                        border: 'none', borderRadius: '50%', width: '20px', height: '20px',
-                        cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px'
-                      }}
+                      className="remove-image-btn"
                     >×</button>
                   </div>
                 ))}
               </div>
 
-              {/* Upload New Grid Item */}
-              <div
-                style={{
-                  border: '2px dashed rgba(255,255,255,0.2)',
-                  borderRadius: '8px',
-                  padding: '15px',
-                  textAlign: 'center',
-                  cursor: 'pointer',
-                  position: 'relative'
-                }}
-              >
+
+              <div className="gallery-upload-box">
                 <input
                   type="file"
                   accept="image/*"
                   multiple
                   onChange={handleGalleryUpload}
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 5 }}
+                  className="file-input"
                 />
                 {uploading ? (
-                  <span style={{ color: '#aaa', fontSize: '0.9rem' }}>Uploading...</span>
+                  <span className="gallery-upload-text">Uploading...</span>
                 ) : (
-                  <div style={{ color: '#ccc', fontSize: '0.9rem' }}>
+                  <div className="add-images-text">
                     <span>+ Add Images</span>
                   </div>
                 )}
@@ -258,7 +235,7 @@ const AddNewProject = () => {
           </div>
 
 
-          <div className="right-column" style={{ flex: 1 }}>
+          <div className="right-column-custom">
             <div className="project-info-grid">
               <div className="input-group">
                 <label>Project Title (EN)</label>
@@ -310,7 +287,7 @@ const AddNewProject = () => {
                 <select
                   value={project.status}
                   onChange={(e) => handleChange('status', e.target.value)}
-                  style={{ width: '100%', padding: '16px', background: 'var(--input-bg)', color: 'white', border: 'none', borderRadius: '8px', outline: 'none' }}
+                  className="status-select"
                 >
                   <option value="draft">Draft</option>
                   <option value="published">Published</option>
@@ -335,7 +312,7 @@ const AddNewProject = () => {
               </div>
             </div>
 
-            <div className="description-section" style={{ marginTop: '30px' }}>
+            <div className="description-section description-section-custom">
               <div className="editor-group">
                 <label>Project Overview / Description</label>
                 <div className="quill-wrapper">
@@ -348,7 +325,7 @@ const AddNewProject = () => {
                 </div>
               </div>
 
-              <div className="editor-group" style={{ marginTop: '20px' }}>
+              <div className="editor-group subtitle-group">
                 <label>Subtitle / Card Description</label>
                 <textarea
                   className="seo-textarea"
@@ -376,13 +353,13 @@ const AddNewProject = () => {
             </div>
 
 
-            <div className="seo-section" style={{ marginBottom: '30px' }}>
+            <div className="seo-section seo-section-spacing">
               <div className="seo-header"><h3>Process Steps (Design Process)</h3></div>
               <div className="seo-divider"></div>
               <div className="dynamic-list">
                 {project.processSteps.map((step, i) => (
-                  <div key={i} className="list-item-row" style={{ display: 'flex', gap: '8px', marginBottom: '8px', alignItems: 'center' }}>
-                    <div style={{ width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', color: '#dcb0ff', fontWeight: 'bold' }}>{i + 1}</div>
+                  <div key={i} className="list-item-row">
+                    <div className="step-number">{i + 1}</div>
                     <input
                       type="text"
                       className="seo-input"
@@ -390,10 +367,10 @@ const AddNewProject = () => {
                       onChange={(e) => updateProcessStep(i, e.target.value)}
                       placeholder={`Step ${i + 1}`}
                     />
-                    <button className="btn-remove" onClick={() => removeProcessStep(i)} style={{ background: 'none', border: 'none', color: '#ff2b5e', cursor: 'pointer', fontSize: '1.5rem' }}>×</button>
+                    <button className="remove-step-btn" onClick={() => removeProcessStep(i)}>×</button>
                   </div>
                 ))}
-                <button className="btn-publish" style={{ background: 'rgba(255,255,255,0.1)', marginTop: '10px', border: '1px solid rgba(255,255,255,0.2)', width: 'auto' }} onClick={addProcessStep}>+ Add Step</button>
+                <button className="btn-publish add-step-btn" onClick={addProcessStep}>+ Add Step</button>
               </div>
             </div>
 

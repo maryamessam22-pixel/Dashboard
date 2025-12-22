@@ -2,7 +2,7 @@
 
 :root {
   --bg-dark: #3a2e55;
-  --card-bg: #4a3b69; 
+  --card-bg: #4a3b69;
   --input-bg: #5d4d7a;
   --text-white: #ffffff;
   --text-muted: #d1c7e0;
@@ -19,7 +19,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #2e2344; 
+  background-color: #2e2344;
   font-family: 'Poppins', sans-serif;
   color: var(--text-white);
 }
@@ -32,11 +32,11 @@ body {
   margin-bottom: 10%;
 }
 
-.editor-container{
-    width: 100%;
-    max-width: 1450px;
-    margin-top: 3%;
-    position: relative;
+.editor-container {
+  width: 100%;
+  max-width: 1450px;
+  margin-top: 3%;
+  position: relative;
 }
 
 
@@ -87,8 +87,9 @@ body {
 
 .upload-box {
   width: 100%;
-  height: 300px;
-  background-color: #8c7ae6; 
+  min-height: 200px;
+  /* Adjusted to be more flexible */
+  background-color: #8c7ae6;
   background: linear-gradient(135deg, #9b72cf 0%, #7b61a3 100%);
   border-radius: 16px;
   display: flex;
@@ -97,7 +98,7 @@ body {
   justify-content: center;
   color: #fff;
   cursor: pointer;
-  border: 2px dashed rgba(255,255,255,0.3);
+  border: 2px dashed rgba(255, 255, 255, 0.3);
   transition: opacity 0.2s;
 }
 
@@ -121,7 +122,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  
+
 }
 
 .input-group label {
@@ -134,15 +135,15 @@ body {
   text-align: right;
 
   display: flex;
-    justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .input-group input {
-      width: 100%;
+  width: 100%;
   background-color: var(--input-bg);
   border: 1px solid transparent;
   border-radius: 8px;
-      padding: 16px 16px;
+  padding: 16px 16px;
   color: white;
   font-family: inherit;
   font-size: 0.95rem;
@@ -185,9 +186,9 @@ input[type="date"] {
 
 
 .quill-wrapper .ql-toolbar {
-  background-color: #4a3b69; 
+  background-color: #4a3b69;
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .quill-wrapper .ql-container {
@@ -202,20 +203,22 @@ input[type="date"] {
 .quill-wrapper .ql-stroke {
   stroke: #d1c7e0 !important;
 }
+
 .quill-wrapper .ql-fill {
   fill: #d1c7e0 !important;
 }
+
 .quill-wrapper .ql-picker {
   color: #d1c7e0 !important;
 }
 
 
 .tools-section {
-  background-color: rgba(255,255,255,0.05);
+  background-color: rgba(255, 255, 255, 0.05);
   padding: 20px;
   border-radius: 12px;
   margin-bottom: 30px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tools-section label {
@@ -235,7 +238,7 @@ input[type="date"] {
   border: 1px solid #6a5a8a;
   color: var(--text-muted);
   padding: 8px 20px;
-  border-radius: 8px; 
+  border-radius: 8px;
   cursor: pointer;
   font-family: inherit;
   font-size: 0.9rem;
@@ -248,8 +251,8 @@ input[type="date"] {
 }
 
 .tool.active {
-  background-color: #bfa5ff; 
-  color: #2e2344; 
+  background-color: #bfa5ff;
+  color: #2e2344;
   border-color: #bfa5ff;
   font-weight: 600;
 }
@@ -260,8 +263,8 @@ input[type="date"] {
   border-radius: 12px;
   padding: 25px;
   background-color: rgba(20, 10, 30, 0.3);
-  margin-bottom: 80px; 
-  box-shadow: 0 0 15px rgba(168, 45, 252, 0.15); 
+  margin-bottom: 80px;
+  box-shadow: 0 0 15px rgba(168, 45, 252, 0.15);
 }
 
 .seo-header {
@@ -303,7 +306,7 @@ input[type="date"] {
 .slug-input-wrapper {
   display: flex;
   align-items: center;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid transparent;
@@ -330,9 +333,10 @@ input[type="date"] {
   outline: none;
 }
 
-.seo-input, .seo-textarea {
+.seo-input,
+.seo-textarea {
   width: 100%;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   border: none;
   border-radius: 8px;
   padding: 12px 16px;
@@ -347,8 +351,9 @@ input[type="date"] {
   resize: vertical;
 }
 
-.seo-input:focus, .seo-textarea:focus {
-  background-color: rgba(255,255,255,0.15);
+.seo-input:focus,
+.seo-textarea:focus {
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 
@@ -364,7 +369,7 @@ input[type="date"] {
   justify-content: flex-end;
   gap: 15px;
   z-index: 10;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .btn-save {
@@ -379,7 +384,7 @@ input[type="date"] {
 }
 
 .btn-publish {
-  background-color: #d90dfc; 
+  background-color: #d90dfc;
   color: white;
   border: none;
   padding: 12px 24px;
@@ -442,4 +447,207 @@ input[type="date"] {
   .breadcrumb {
     font-size: 1rem;
   }
+}
+
+
+/* Extracted Styles */
+.left-column-custom {
+  flex: 0 0 350px;
+}
+
+.section-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gallery-card {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-title {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.upload-box-custom {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.upload-box-custom-active {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.uploading-text {
+  color: #aaa;
+}
+
+.cover-image-preview {
+  position: relative;
+}
+
+.cover-image {
+  width: 100%;
+  border-radius: 6px;
+  display: block;
+}
+
+.replace-text {
+  margin-top: 10px;
+  color: #4ade80;
+  font-size: 0.9rem;
+}
+
+.upload-placeholder {
+  color: #ccc;
+}
+
+.upload-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.upload-hint {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.gallery-item {
+  position: relative;
+  aspect-ratio: 1/1;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.gallery-upload-box {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.gallery-upload-text {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.add-images-text {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.right-column-custom {
+  flex: 1;
+}
+
+.status-select {
+  width: 100%;
+  padding: 16px;
+  background: var(--input-bg);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+}
+
+.description-section-custom {
+  margin-top: 30px;
+}
+
+.subtitle-group {
+  margin-top: 20px;
+}
+
+.seo-section-spacing {
+  margin-bottom: 30px;
+}
+
+.list-item-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.step-number {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: #dcb0ff;
+  font-weight: bold;
+}
+
+.remove-step-btn {
+  background: none;
+  border: none;
+  color: #ff2b5e;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.add-step-btn {
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: auto;
 }
