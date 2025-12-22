@@ -29,7 +29,7 @@ const Home = () => {
       {/* Sidebar */}
    <Layout/>
 
-      {/* Main Content */}
+    
       <main className="main-content">
 
         {/* Mobile Toggle Button */}
@@ -40,10 +40,10 @@ const Home = () => {
           ☰
         </button> */}
 
-        {/* Header */}
+    
           <Header title="Pages/ Dashboard" />
 
-        {/* Welcome Banner */}
+     
         <section className="welcome-banner">
           <div className="banner-content">
             <p className="sub-text">Welcome back,</p>
@@ -52,7 +52,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Overview Stats */}
+        
         <section className="overview-section">
           <h2>Overview <span className="date-tag">Last 7 days</span></h2>
           <div className="stats-grid">
@@ -90,7 +90,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Traffic Chart */}
+       
         <section className="traffic-section">
           <div className="section-header">
             <h2>Traffic overview</h2>
@@ -111,12 +111,12 @@ const Home = () => {
           </LineChart>
         </section>
 
-        {/* Most Viewed Projects */}
+       
         <section className="projects-section">
           <h2>Most Viewed Projects</h2>
           <div className="projects-grid">
 
-            {/* Card 1 */}
+           
             <div className="project-card purple-light">
               <div className="card-header">
                 <span className="badge">Web Design</span>
@@ -133,7 +133,7 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Card 2 */}
+           
             <div className="project-card purple-medium">
               <div className="card-header">
                 <span className="badge">UI/UX Design</span>
@@ -150,7 +150,7 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Card 3 */}
+           
             <div className="project-card purple-medium">
               <div className="card-header">
                 <span className="badge">Mobile App</span>
