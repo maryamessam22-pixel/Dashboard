@@ -10,7 +10,7 @@ const Categories = () => {
 
   const [categories, setCategories] = useState([]);
 
-  const [images, setImages] = useState(Array(6).fill(null)); 
+  const [images, setImages] = useState(Array(6).fill(null));
   const [uploadingImg, setUploadingImg] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -27,109 +27,141 @@ const Categories = () => {
     imageAlt: ''
   });
 
-  useEffect(() => {
-    async function getAllCategoriesAPI() {
-      try {
-        
-        const { data, error } = await supabase
-          .from("page_sections")
-          .select("*")
-          .eq("page", "home")
-          .eq("section", "category_sec") 
-          .single();
+  const fetchCategoriesData = async () => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from("page_sections")
+        .select("*")
+        .eq("id", 3)
+        .single();
 
-        if (error) {
-            console.warn("No data found or error fetching:", error.message);
-        }
-
-        if (data) {
-            const tagsArray = data.tags || [];
-
-            let parsedTags = tagsArray;
-            if (typeof tagsArray === 'string') {
-                try { parsedTags = JSON.parse(tagsArray); } catch(e) {}
-            }
-
-            setCategories(Array.isArray(parsedTags) ? parsedTags.map((tag, index) => ({
-                id: index,
-                name: tag,
-            })) : []);
-
-            setFormData({
-                titleEn: data.title || "",
-                titleAr: data.subtitle || "",
-                descEn: data.description || "",
-                descAr: data.description_ar || "", 
-            });
-   
-            if (data.images) {
-                let savedImages = data.images;
-                if (typeof savedImages === 'string') {
-                    try { savedImages = JSON.parse(savedImages); } catch(e) {}
-                }
-                
-                if (Array.isArray(savedImages)) {
-                    const fullImages = [...savedImages, ...Array(6 - savedImages.length).fill(null)];
-                    setImages(fullImages.slice(0, 6));
-                }
-            }
-
-            setSeoData({
-                slug: data.slug || "",
-                metaTitle: data.meta_title || "",
-                metaDescription: data.meta_description || "",
-                imageAlt: data.alt_text || ""
-            });
-        }
-
-      } catch (error) {
-        console.error("Unexpected Error:", error);
-      } finally {
-        setLoading(false);
+      if (error) {
+        console.warn("No data found or error fetching:", error.message);
       }
-    }
 
-    getAllCategoriesAPI();
+      if (data) {
+        const tagsArray = data.tags || [];
+
+        let parsedTags = tagsArray;
+        if (typeof tagsArray === 'string') {
+          try { parsedTags = JSON.parse(tagsArray); } catch (e) { }
+        }
+
+        setCategories(Array.isArray(parsedTags) ? parsedTags.map((tag, index) => ({
+          id: index,
+          name: tag,
+        })) : []);
+
+        setFormData({
+          titleEn: data.title || "",
+          titleAr: data.subtitle || "",
+          descEn: data.description || "",
+          descAr: data.description_ar || "",
+        });
+
+        if (data.images) {
+          let savedImages = data.images;
+          if (typeof savedImages === 'string') {
+            try { savedImages = JSON.parse(savedImages); } catch (e) { }
+          }
+
+          if (Array.isArray(savedImages)) {
+            const fullImages = [...savedImages, ...Array(6 - savedImages.length).fill(null)];
+            setImages(fullImages.slice(0, 6));
+          }
+        }
+
+        setSeoData({
+          slug: data.slug || "",
+          metaTitle: data.meta_title || "",
+          metaDescription: data.meta_description || ""
+        });
+      }
+
+    } catch (error) {
+      console.error("Unexpected Error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategoriesData();
   }, []);
+
+  const handleCancel = () => {
+    if (window.confirm("Discard changes and reload data?")) {
+      fetchCategoriesData();
+    }
+  };
 
 
   const handleImageUpload = async (e, index) => {
     try {
-        const file = e.target.files[0];
-        if (!file) return;
-        setUploadingImg(true);
+      const file = e.target.files[0];
+      if (!file) return;
+      setUploadingImg(true);
 
-        const fileName = `cat-${Date.now()}-${file.name.replace(/\s/g, '')}`;
-        const { error: uploadError } = await supabase.storage
-            .from("portfolio")
-            .upload(fileName, file);
+      const fileName = `cat-${Date.now()}-${file.name.replace(/\s/g, '')}`;
+      const { error: uploadError } = await supabase.storage
+        .from("portfolio-assets")
+        .upload(fileName, file);
 
-        if (uploadError) throw uploadError;
-       
-        const { data: urlData } = supabase.storage
-            .from("portfolio")
-            .getPublicUrl(fileName);
-       
-        const newImages = [...images];
-        newImages[index] = urlData.publicUrl;
-        setImages(newImages);
+      if (uploadError) throw uploadError;
+
+      const { data: urlData } = supabase.storage
+        .from("portfolio-assets")
+        .getPublicUrl(fileName);
+
+      const newImages = [...images];
+      newImages[index] = urlData.publicUrl;
+      setImages(newImages);
 
     } catch (error) {
-        console.error("Error uploading:", error);
-        alert("Upload failed! Check console.");
+      console.error("Error uploading:", error);
+      alert("Upload failed! Check console.");
     } finally {
-        setUploadingImg(false);
+      setUploadingImg(false);
     }
   };
 
 
   const handleDeleteImage = (index) => {
-      const newImages = [...images];
-      newImages[index] = null;
-      setImages(newImages);
+    const newImages = [...images];
+    newImages[index] = null;
+    setImages(newImages);
   };
 
- 
+  const handleAddNewCategory = async () => {
+    const newName = prompt("Enter new category name:");
+    if (newName) {
+      const updatedList = [...categories, { id: Date.now(), name: newName }];
+      setCategories(updatedList);
+      await updateSupabaseTags(updatedList);
+    }
+  };
+
+  const handleEditCategory = async (index) => {
+    const currentName = categories[index].name;
+    const newName = prompt("Edit category name:", currentName);
+    if (newName && newName.trim() !== "") {
+      const newCategories = [...categories];
+      newCategories[index].name = newName;
+      setCategories(newCategories);
+      await updateSupabaseTags(newCategories);
+    }
+  };
+
+  const handleDeleteCategory = async (index) => {
+    if (window.confirm("Are you sure you want to delete this category?")) {
+      const newCategories = categories.filter((_, i) => i !== index);
+      setCategories(newCategories);
+      await updateSupabaseTags(newCategories);
+    }
+  };
+
+
   const handleSave = async () => {
     try {
       const updatedTags = categories.map(c => c.name);
@@ -140,98 +172,111 @@ const Categories = () => {
         .update({
           title: formData.titleEn,
           subtitle: formData.titleAr,
-          
-          description: formData.descEn,     
-          description_ar: formData.descAr,  
-          
+
+          description: formData.descEn,
+          description_ar: formData.descAr,
+
           tags: updatedTags,
           images: validImages,
-          
+
           slug: seoData.slug,
           meta_title: seoData.metaTitle,
-          meta_description: seoData.metaDescription,
-          alt_text: seoData.imageAlt
+          meta_description: seoData.metaDescription
         })
-        .eq("page", "home")
-        .eq("section", "category_sec"); 
+        .eq("id", 3);
 
       if (!error) {
-          alert("Saved successfully! 🎉");
+        alert("Saved successfully! 🎉");
       } else {
-          throw error;
+        throw error;
       }
     } catch (err) {
       console.error("Error saving:", err);
-      alert("Error saving data");
+      alert("Error saving data: " + (err.message || "Unknown error"));
     }
   };
 
- if (loading) {
-  return (
-    <div className="loading-center">
-      <p>Loading...</p>
-    </div>
-  );
-}
+  const updateSupabaseTags = async (updatedList) => {
+    try {
+      const tagsToSave = updatedList.map(c => c.name);
+      const { error } = await supabase
+        .from("page_sections")
+        .update({ tags: tagsToSave })
+        .eq("id", 3);
+
+      if (error) throw error;
+    } catch (err) {
+      console.error("Error auto-saving tags:", err);
+      alert("Failed to auto-save category change: " + err.message);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="loading-center">
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
 
   return (
     <>
       <Layout>
-      <div className="categories-container">
-        <Header title="Pages / Taxonomy" />
-        <h2 className="page-main-title">Content Structure</h2>
+        <div className="categories-container">
+          <Header title="Pages / Taxonomy" />
+          <h2 className="page-main-title">Content Structure</h2>
 
-        <div className="main-grid">
-          
-          <div className="left-column">
-            
-            <div className="tabs-row">
+          <div className="main-grid">
+
+            <div className="left-column">
+
+              <div className="tabs-row">
                 <span className="tab active">Category</span>
                 <span className="tab">Tag</span>
                 <span className="tab">Static page</span>
-            </div>
-            
-            <div className="card-panel">
-              <h3 className="panel-title">Edit Category Section</h3>
-
-              <div className="form-row">
-                <div className="form-group">
-                  <label>Title (EN)</label>
-                  <input
-                    type="text"
-                    className="std-input"
-                    value={formData.titleEn}
-                    onChange={(e) => setFormData({ ...formData, titleEn: e.target.value })}
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="text-right">العنوان (AR)</label>
-                  <input
-                    type="text"
-                    className="std-input text-right"
-                    value={formData.titleAr}
-                    onChange={(e) => setFormData({ ...formData, titleAr: e.target.value })}
-                  />
-                </div>
               </div>
 
-              <div className="form-group">
-                <label>Description (EN)</label>
-                <RichTextEditor
-                  value={formData.descEn}
-                  onChange={(content) => {
-                    // Safety check: only update if changed
-                    setFormData(prev => {
-                      if (prev.descEn === content) return prev;
-                      return { ...prev, descEn: content };
-                    });
-                  }}
-                  placeholder="Description..."
-                />
-              </div>
+              <div className="card-panel">
+                <h3 className="panel-title">Edit Category Section</h3>
 
-              <div className="form-group">
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>Title (EN)</label>
+                    <input
+                      type="text"
+                      className="std-input"
+                      value={formData.titleEn}
+                      onChange={(e) => setFormData({ ...formData, titleEn: e.target.value })}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="text-right">العنوان (AR)</label>
+                    <input
+                      type="text"
+                      className="std-input text-right"
+                      value={formData.titleAr}
+                      onChange={(e) => setFormData({ ...formData, titleAr: e.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label>Description (EN)</label>
+                  <RichTextEditor
+                    value={formData.descEn}
+                    onChange={(content) => {
+                      // Safety check: only update if changed
+                      setFormData(prev => {
+                        if (prev.descEn === content) return prev;
+                        return { ...prev, descEn: content };
+                      });
+                    }}
+                    placeholder="Description..."
+                  />
+                </div>
+
+                <div className="form-group">
                   <label className="text-right">الوصف (AR)</label>
                   <div dir="rtl">
                     <RichTextEditor
@@ -243,67 +288,67 @@ const Categories = () => {
                           return { ...prev, descAr: content };
                         });
                       }}
-                      placeholder="وصف بالعربية..." 
+                      placeholder="وصف بالعربية..."
                     />
                   </div>
+                </div>
               </div>
-            </div>
 
-            
-            <label style={{fontWeight: "600", marginBottom: "10px", display: "block"}}>Category Images (Max 6)</label>
-            <div className="upload-grid2">
-               {images.map((imgUrl, index) => (
-                 <div 
-                    key={index} 
-                    className="upload-box-mini2" 
-                    style={{ 
-                        backgroundImage: imgUrl ? `url(${imgUrl})` : 'none',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        position: 'relative',
-                        border: imgUrl ? '1px solid #ccc' : '2px dashed #ddd'
+
+              <label style={{ fontWeight: "600", marginBottom: "10px", display: "block" }}>Category Images (Max 6)</label>
+              <div className="upload-grid2">
+                {images.map((imgUrl, index) => (
+                  <div
+                    key={index}
+                    className="upload-box-mini2"
+                    style={{
+                      backgroundImage: imgUrl ? `url(${imgUrl})` : 'none',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      position: 'relative',
+                      border: imgUrl ? '1px solid #ccc' : '2px dashed #ddd'
                     }}
-                 >
-                    <input 
-                        type="file" 
-                        accept="image/*"
-                        id={`file-upload-${index}`}
-                        style={{display: 'none'}}
-                        onChange={(e) => handleImageUpload(e, index)}
+                  >
+                    <input
+                      type="file"
+                      accept="image/*"
+                      id={`file-upload-${index}`}
+                      style={{ display: 'none' }}
+                      onChange={(e) => handleImageUpload(e, index)}
                     />
 
                     {imgUrl ? (
-                        <button 
-                            className="delete-img-btn"
-                            title="Delete Image"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                handleDeleteImage(index);
-                            }}
-                            style={{
-                                position: 'absolute', top: -8, right: -8, 
-                                background: '#ff4d4f', color: 'white', borderRadius: '50%', 
-                                border: 'none', width: '24px', height: '24px', cursor: 'pointer', zIndex: 10,
-                                display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold'
-                            }}
-                        >
-                            ×
-                        </button>
+                      <button
+                        className="delete-img-btn"
+                        title="Delete Image"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDeleteImage(index);
+                        }}
+                        style={{
+                          position: 'absolute', top: -8, right: -8,
+                          background: '#ff4d4f', color: 'white', borderRadius: '50%',
+                          border: 'none', width: '24px', height: '24px', cursor: 'pointer', zIndex: 10,
+                          display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold'
+                        }}
+                      >
+                        ×
+                      </button>
                     ) : (
-                        <label htmlFor={`file-upload-${index}`} style={{cursor: 'pointer', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                            <span className="camera-icon2">📷</span>
-                            <span className="upload-text2">{uploadingImg ? "..." : "Upload"}</span>
-                        </label>
+                      <label htmlFor={`file-upload-${index}`} style={{ cursor: 'pointer', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                        <span className="camera-icon2">📷</span>
+                        <span className="upload-text2">{uploadingImg ? "..." : "Upload"}</span>
+                      </label>
                     )}
-                 </div>
-               ))}
-            </div>
+                  </div>
+                ))}
+              </div>
 
-        
-            <div className="seo-section">
+
+              <div className="seo-section">
                 <div className="seo-header">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                  <h3>Category SEO</h3> 
+                  <h3>Category SEO</h3>
                   <span className="badge">Global Requirement</span>
                 </div>
                 <div className="seo-divider"></div>
@@ -311,77 +356,84 @@ const Categories = () => {
                 <div className="input-group">
                   <label className="seo-label">Slug/URL</label>
                   <div className="slug-input-wrapper">
-                      <span className="slug-prefix">mariamfarid.com/</span>
-                      <input
-                        type="text"
-                        placeholder="category-slug"
-                        value={seoData.slug}
-                        onChange={(e) => setSeoData({ ...seoData, slug: e.target.value })}
-                      />
+                    <span className="slug-prefix">mariamfarid.com/</span>
+                    <input
+                      type="text"
+                      placeholder="category-slug"
+                      value={seoData.slug}
+                      onChange={(e) => setSeoData({ ...seoData, slug: e.target.value })}
+                    />
                   </div>
                 </div>
 
                 <div className="input-group">
                   <label className="seo-label">Meta Title</label>
                   <input
-                      className="seo-input"
-                      type="text"
-                      placeholder="Page Title for Google"
-                      value={seoData.metaTitle}
-                      onChange={(e) => setSeoData({ ...seoData, metaTitle: e.target.value })}
+                    className="seo-input"
+                    type="text"
+                    placeholder="Page Title for Google"
+                    value={seoData.metaTitle}
+                    onChange={(e) => setSeoData({ ...seoData, metaTitle: e.target.value })}
                   />
                 </div>
 
                 <div className="input-group">
                   <label className="seo-label">Meta Description</label>
                   <textarea
-                      className="seo-textarea"
-                      placeholder="Summary for search engines..."
-                      value={seoData.metaDescription}
-                      onChange={(e) => setSeoData({ ...seoData, metaDescription: e.target.value })}
+                    className="seo-textarea"
+                    placeholder="Summary for search engines..."
+                    value={seoData.metaDescription}
+                    onChange={(e) => setSeoData({ ...seoData, metaDescription: e.target.value })}
                   />
                 </div>
 
-                <div className="input-group">
-                  <label className="seo-label">Alt Text</label>
-                  <input
-                      className="seo-input"
-                      type="text"
-                      placeholder="Image description for accessibility"
-                      value={seoData.imageAlt}
-                      onChange={(e) => setSeoData({ ...seoData, imageAlt: e.target.value })}
-                  />
-                </div>
+
+              </div>
+
+              <div className="action-buttons-row">
+                <button className="btn-cancel" onClick={handleCancel}>Cancel</button>
+                <button className="btn-save" onClick={handleSave}>Save changes</button>
+              </div>
             </div>
 
-            <div className="action-buttons-row">
-              <button className="btn-cancel">Cancel</button>
-              <button className="btn-save" onClick={handleSave}>Save changes</button>
-            </div>
-          </div>
 
-        
-          <div className="right-column">
-            <div className="list-header">
-              <h3>Current Categories</h3>
-              <button className="btn-add-small">+ Add New</button>
-            </div>
-            <div className="categories-list">
-              {categories.length > 0 ? categories.map((cat) => (
-                <div key={cat.id} className="category-item">
-                  <span>{cat.name}</span>
-                  <div className="item-actions">
-                    <i className="icon-edit" style={{cursor: 'pointer'}}>✎</i>
+            <div className="right-column">
+              <div className="list-header">
+                <h3>Current Categories</h3>
+                <button className="btn-add-small" onClick={handleAddNewCategory}>+ Add New</button>
+              </div>
+              <div className="categories-list">
+                {categories.length > 0 ? categories.map((cat, index) => (
+                  <div key={cat.id || index} className="category-item">
+                    <span>{cat.name}</span>
+                    <div className="item-actions">
+                      <i
+                        className="icon-edit"
+                        style={{ cursor: 'pointer', marginRight: '8px' }}
+                        onClick={() => handleEditCategory(index)}
+                        title="Edit"
+                      >
+                        ✎
+                      </i>
+                      <i
+                        className="icon-delete"
+                        style={{ cursor: 'pointer', color: '#ff4d4f', fontStyle: 'normal' }}
+                        onClick={() => handleDeleteCategory(index)}
+                        title="Delete"
+                      >
+                        🗑️
+                      </i>
+                    </div>
                   </div>
-                </div>
-              )) : <p style={{padding:'10px', color:'#999'}}>No categories found</p>}
+                )) : <p style={{ padding: '10px', color: '#999' }}>No categories found</p>}
+              </div>
             </div>
-          </div>
 
+          </div>
         </div>
-      </div>
       </Layout>
     </>
+
   );
 };
 
