@@ -97,15 +97,7 @@ const Messages = () => {
                   </div>
                   <button
                     onClick={() => handleDelete(selectedMessage.id)}
-                    style={{
-                      background: '#ff4d4f',
-                      color: 'white',
-                      border: 'none',
-                      padding: '8px 16px',
-                      borderRadius: '6px',
-                      cursor: 'pointer',
-                      fontSize: '14px'
-                    }}
+                    className="delete-msg-btn"
                   >
                     Delete
                   </button>
