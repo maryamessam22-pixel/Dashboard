@@ -10,7 +10,8 @@
 
 .messages-page-wrapper {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 
@@ -31,16 +32,14 @@
   display: flex;
   flex: 1;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   overflow: hidden;
-  align-items: flex-start
 }
 
 .messages-sidebar {
-
   border-right: 1px solid #342f5c;
   padding: 1rem;
-  overflow-y: auto;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   background-color: #131129;
@@ -81,6 +80,8 @@
   gap: 0.5rem;
   flex: 1;
   overflow-y: auto;
+  min-height: 0;
+  /* Important for flex child scrolling */
 }
 
 
