@@ -89,7 +89,7 @@ const EditBlog = () => {
             const fileExt = file.name.split('.').pop();
             const fileName = `${Math.random()}.${fileExt}`;
             const filePath = `${fileName}`;
-            // I Edit Bucket name: portfolio-assets
+            //I Add policy at supabase at Bucket name: portfolio-assets
             const { error: uploadError } = await supabase.storage.from('portfolio-assets').upload(filePath, file);
             if (uploadError) throw uploadError;
             const { data } = supabase.storage.from('portfolio-assets').getPublicUrl(filePath);
@@ -192,7 +192,7 @@ const EditBlog = () => {
             </div>
 
             <div className="split-layout">
-                {/* Left Side - Sidebar style */}
+                
                 <div className="left-panel">
                     <div className="panel-box image-box" style={{ position: 'relative' }}>
                         <label>Cover Image</label>
