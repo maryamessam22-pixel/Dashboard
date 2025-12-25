@@ -19,19 +19,34 @@ const GeneralSettings = () => {
     facebook_url: ""
   });
 
-  useEffect(() => {
-    async function getSettings() {
-      const res = await supabase.from("page_sections").select("*")
-        .order('id', { ascending: true })
-        .limit(1)
-        .single();
+  const fetchSettings = async () => {
+    setLoading(true);
+    const { data, error } = await supabase.from("page_sections")
+      .select("*")
+      .eq('page', 'Global')
+      .order('id', { ascending: false })
+      .limit(1);
 
-      if (res.data) {
-        setSettings(res.data);
-      }
-      setLoading(false);
+    if (error) {
+      console.error("Error fetching settings:", error);
     }
-    getSettings();
+
+    if (data && data.length > 0) {
+      const settingsData = data[0];
+      const processedData = { ...settingsData };
+      if (Array.isArray(settingsData.light_logo) && settingsData.light_logo.length > 0) {
+        processedData.light_logo = settingsData.light_logo[0];
+      }
+      if (Array.isArray(settingsData.dark_logo) && settingsData.dark_logo.length > 0) {
+        processedData.dark_logo = settingsData.dark_logo[0];
+      }
+      setSettings(processedData);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchSettings();
   }, []);
 
   const handleChange = (field, value) => {
@@ -67,9 +82,15 @@ const GeneralSettings = () => {
   const handleSave = async () => {
     try {
       setUploading(true);
-      const { id, created_at, ...updates } = settings; // Exclude id and created_at from updates if necessary, or just update fields
+      const { id, created_at, ...updates } = settings;
 
-      // If we are updating an existing row
+      if (updates.light_logo && typeof updates.light_logo === 'string') {
+        updates.light_logo = [updates.light_logo];
+      }
+      if (updates.dark_logo && typeof updates.dark_logo === 'string') {
+        updates.dark_logo = [updates.dark_logo];
+      }
+
       let error;
       if (settings.id) {
         const res = await supabase
@@ -78,13 +99,10 @@ const GeneralSettings = () => {
           .eq('id', settings.id);
         error = res.error;
       } else {
-        // If no settings exist yet (though limit(1) implies one might), insert new
-        // Ideally we should check if one exists or use upsert if ID is known/fixed
-        // But since we fetched single(), if it was empty, settings.id would be undefined.
-        // Let's assume update if ID exists, otherwise insert.
+        const newRecord = { ...updates, page: 'Global', section: 'settings' };
         const res = await supabase
           .from('page_sections')
-          .insert([settings]);
+          .insert([newRecord]);
         error = res.error;
       }
 
@@ -111,7 +129,7 @@ const GeneralSettings = () => {
 
       if (error) throw error;
 
-      setSettings({}); // Clear local state
+      setSettings({});
       alert("Settings deleted successfully.");
     } catch (err) {
       console.error("Error deleting settings:", err);
@@ -133,32 +151,25 @@ const GeneralSettings = () => {
     <div className="settings-form-container">
 
       <section className="form-section">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-          <h3 className="section-title" style={{ marginBottom: 0 }}>Site Identity</h3>
-          <div className="form-actions" style={{ marginTop: 0, border: 'none', padding: 0 }}>
-            <button className="btn-cancel" onClick={handleDelete} style={{ background: '#ef4444', color: 'white' }}>Delete</button>
-            <button className="btn-save" onClick={handleSave} disabled={uploading}>
-              {uploading ? "Saving..." : "Save Changes"}
-            </button>
-          </div>
+        <div className="settings-header">
+          <h3 className="section-title title-no-margin">Site Identity</h3>
         </div>
 
         <div className="form-row">
 
           <div className="form-group" >
             <label>Light Logo</label>
-            <div className="logo-upload-box light-mode" style={{ position: 'relative' }}>
+            <div className="logo-upload-box light-mode relative-box">
               <input
                 type="file"
                 accept="image/*"
-                className="hidden-file-input"
-                style={{ position: 'absolute', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 10 }}
+                className="hidden-file-input hidden-upload-input"
                 onChange={(e) => handleLogoUpload(e, 'light')}
               />
               {uploading ? (
                 <span>Uploading...</span>
               ) : settings.light_logo ? (
-                <img src={settings.light_logo} alt="Light Logo" style={{ maxWidth: '80%', maxHeight: '80%' }} />
+                <img src={settings.light_logo} alt="Light Logo" className="logo-preview" />
               ) : (
                 <span>Upload Light Logo</span>
               )}
@@ -168,18 +179,17 @@ const GeneralSettings = () => {
 
           <div className="form-group" >
             <label>Dark Logo</label>
-            <div className="logo-upload-box dark-mode" style={{ position: 'relative' }}>
+            <div className="logo-upload-box dark-mode relative-box">
               <input
                 type="file"
                 accept="image/*"
-                className="hidden-file-input"
-                style={{ position: 'absolute', width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 10 }}
+                className="hidden-file-input hidden-upload-input"
                 onChange={(e) => handleLogoUpload(e, 'dark')}
               />
               {uploading ? (
                 <span>Uploading...</span>
               ) : settings.dark_logo ? (
-                <img src={settings.dark_logo} alt="Dark Logo" style={{ maxWidth: '80%', maxHeight: '80%' }} />
+                <img src={settings.dark_logo} alt="Dark Logo" className="logo-preview" />
               ) : (
                 <span>Upload Dark Logo</span>
               )}
@@ -286,7 +296,8 @@ const GeneralSettings = () => {
       </section>
 
       <div className="form-actions">
-        <button className="btn-cancel" onClick={handleDelete} style={{ background: '#ef4444', color: 'white' }}>Delete</button>
+        <button className="btn-cancel" onClick={fetchSettings}>Cancel</button>
+        <button className="btn-delete" onClick={handleDelete}>Delete</button>
         <button className="btn-save" onClick={handleSave} disabled={uploading}>
           {uploading ? "Saving..." : "Save Changes"}
         </button>

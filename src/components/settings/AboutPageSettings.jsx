@@ -56,20 +56,20 @@ const AboutPageSettings = () => {
     }
   };
 
-  // Helper to update state
+
   const updateSection = (id, field, value) => {
     setSections(prev => prev.map(sec =>
       sec.id === id ? { ...sec, [field]: value } : sec
     ));
   };
 
-  // Image Upload Logic (ID 1)
   const handleLogoUpload = async (e, sectionId) => {
     const file = e.target.files[0];
     if (!file) return;
 
     try {
-      const fileName = `personal-${Date.now()}-${file.name.replace(/\s/g, '')}`;
+      const fileExt = file.name.split('.').pop();
+      const fileName = `personal_${Math.random()}.${fileExt}`;
 
       const { error: uploadError } = await supabase.storage
         .from('portfolio-assets')
