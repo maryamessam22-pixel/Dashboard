@@ -19,7 +19,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
   const navigate = useNavigate();   
 
-  // Logout function
+
   const handleLogout = () => {
    
     navigate("/");  

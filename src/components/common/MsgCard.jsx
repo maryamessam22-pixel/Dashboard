@@ -16,7 +16,7 @@ const MsgCard = ({ sender, email, msg, date, isActive, onClick }) => {
         </div>
         <p className="msg-role">{email}</p>
         <p className="msg-preview">{msg}</p>
-        {/* ?.message */}
+      
       </div>
     </div>
   );
