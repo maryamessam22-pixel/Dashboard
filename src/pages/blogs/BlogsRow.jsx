@@ -1,16 +1,9 @@
 import React from "react";
 import { Edit2, Trash2 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import "./BlogsRow.css"; 
+import { Link } from "react-router-dom";
+import "./BlogsRow.css";
 
 const BlogsRow = ({ id, img, title, date, category, status, views, published }) => {
-  const navigate = useNavigate();
-
-  const handleEdit = () => {
-   
-    navigate(`/edit-blog/${id}`);
-  };
-
   return (
     <div className="blog-row">
       <div className="row-info">
@@ -35,9 +28,9 @@ const BlogsRow = ({ id, img, title, date, category, status, views, published }) 
       <div className="row-cell date-text">{published}</div>
 
       <div className="row-actions">
-        <button className="action-btn edit-btn" onClick={handleEdit}>
+        <Link to={`/edit-blog/${id}`} className="action-btn edit-btn">
           <Edit2 size={16} /> Edit / تعديل
-        </button>
+        </Link>
         <button className="action-btn delete-btn">
           <Trash2 size={16} /> Delete / حذف
         </button>
