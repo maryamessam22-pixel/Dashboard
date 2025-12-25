@@ -6,28 +6,47 @@ import MsgCard from "../../components/common/MsgCard";
 import { supabase } from "../../config/Supabase";
 const Messages = () => {
   const [loading, setLoading] = useState(true);
-  const [Messages, setMessages] = useState(""); 
+  const [Messages, setMessages] = useState("");
   const [selectedMessage, setSelectedMessage] = useState(null);
 
   useEffect(() => {
     async function getAllMessagesAPI() {
       const res = await supabase.from("contact_messages").select("*");
       setMessages(res.data);
-       // console.log(res);
+      // console.log(res);
       setLoading(false);
     }
 
     getAllMessagesAPI();
   }, []);
 
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this message?")) {
+      try {
+        const { error } = await supabase
+          .from("contact_messages")
+          .delete()
+          .eq("id", id);
+
+        if (error) throw error;
+
+        setMessages(Messages.filter(msg => msg.id !== id));
+        setSelectedMessage(null);
+      } catch (error) {
+        console.error("Error deleting message:", error);
+        alert("Failed to delete message");
+      }
+    }
+  };
+
   // if (loading) return <p>Loading...</p>;
-if (loading) {
-  return (
-    <div className="loading-center">
-      <p>Loading...</p>
-    </div>
-  );
-}
+  if (loading) {
+    return (
+      <div className="loading-center">
+        <p>Loading...</p>
+      </div>
+    );
+  }
   return (
     <div className="messages-page-wrapper">
       <Layout />
@@ -36,7 +55,7 @@ if (loading) {
         <Header title="Pages / Messages" />
 
         <div className="messages-content">
-         
+
           <div className="messages-sidebar">
             <div className="messages-header">
               <h2>Inbox</h2>
@@ -51,31 +70,45 @@ if (loading) {
                   sender={msg.name}
                   email={msg.email}
                   date={msg.date}
-                  
 
-                  
-                  isActive={selectedMessage?.id === msg.id} 
-                  onClick={() => setSelectedMessage(msg)}  
+
+
+                  isActive={selectedMessage?.id === msg.id}
+                  onClick={() => setSelectedMessage(msg)}
                 />
               ))}
             </div>
           </div>
 
-        
- <div className="message-detail">    
+
+          <div className="message-detail">
             {selectedMessage ? (
               <div className="detail-container">
                 <div className="detail-header">
                   <div className="sender-info">
-                    <div className="avatar">{selectedMessage.sender?.charAt(0)}</div>
+                    <div className="avatar">{selectedMessage.sender?.charAt(0) || selectedMessage.name?.charAt(0)}</div>
                     <div>
-                      <h2>{selectedMessage.sender}</h2>
+                      <h2>{selectedMessage.sender || selectedMessage.name}</h2>
                       <div className="email-time">
                         <span className="email">{selectedMessage.email}</span> •{" "}
-                        <span>{selectedMessage.date}</span>
+                        <span>{new Date(selectedMessage.created_at || selectedMessage.date).toLocaleDateString()}</span>
                       </div>
                     </div>
                   </div>
+                  <button
+                    onClick={() => handleDelete(selectedMessage.id)}
+                    style={{
+                      background: '#ff4d4f',
+                      color: 'white',
+                      border: 'none',
+                      padding: '8px 16px',
+                      borderRadius: '6px',
+                      cursor: 'pointer',
+                      fontSize: '14px'
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
 
                 <div className="detail-content">
