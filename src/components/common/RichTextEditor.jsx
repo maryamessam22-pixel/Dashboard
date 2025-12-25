@@ -4,11 +4,11 @@ import "react-quill/dist/quill.snow.css";
 import "./RichTextEditor.css";
 
 const RichTextEditor = ({ value, onChange, placeholder }) => {
-  
+
   const modules = useMemo(() => ({
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }],
       ['link', 'clean']
     ],
   }), []);

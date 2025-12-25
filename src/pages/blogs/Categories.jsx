@@ -266,7 +266,6 @@ const Categories = () => {
                   <RichTextEditor
                     value={formData.descEn}
                     onChange={(content) => {
-                      // Safety check: only update if changed
                       setFormData(prev => {
                         if (prev.descEn === content) return prev;
                         return { ...prev, descEn: content };
@@ -282,7 +281,6 @@ const Categories = () => {
                     <RichTextEditor
                       value={formData.descAr}
                       onChange={(content) => {
-                        // Safety check: only update if changed
                         setFormData(prev => {
                           if (prev.descAr === content) return prev;
                           return { ...prev, descAr: content };
