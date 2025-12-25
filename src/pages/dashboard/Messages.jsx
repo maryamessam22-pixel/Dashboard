@@ -95,17 +95,23 @@ const Messages = () => {
                       </div>
                     </div>
                   </div>
+                </div>
+
+                <div className="detail-content">
+                  <h3>{selectedMessage.role || "Message"}</h3>
+                  <p>{selectedMessage.message}</p>
+                </div>
+
+                <div className="message-actions" style={{ marginTop: 'auto', paddingTop: '20px' }}>
+                  <a href={`mailto:${selectedMessage.email}`} className="reply-msg-btn">
+                    Reply
+                  </a>
                   <button
                     onClick={() => handleDelete(selectedMessage.id)}
                     className="delete-msg-btn"
                   >
                     Delete
                   </button>
-                </div>
-
-                <div className="detail-content">
-                  <h3>{selectedMessage.role || "Message"}</h3>
-                  <p>{selectedMessage.message}</p>
                 </div>
               </div>
             ) : (
