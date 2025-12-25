@@ -229,7 +229,7 @@ const Categories = () => {
 
           <div className="main-grid">
 
-            <div className="left-column">
+            <div className="left-column22">
 
               <div className="tabs-row">
                 <span className="tab active">Category</span>

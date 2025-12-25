@@ -42,7 +42,7 @@ const AddNewBlog = () => {
             const fileExt = file.name.split('.').pop();
             const fileName = `${Math.random()}.${fileExt}`;
             const filePath = `${fileName}`;
-            // Bucket name: portfolio-assets
+            //I add policy at supabase at  Bucket name: portfolio-assets
             const { error: uploadError } = await supabase.storage.from('portfolio-assets').upload(filePath, file);
             if (uploadError) throw uploadError;
             const { data } = supabase.storage.from('portfolio-assets').getPublicUrl(filePath);
