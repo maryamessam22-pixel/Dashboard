@@ -249,7 +249,6 @@ const EditorPage = () => {
             <div className="section-card section-card-custom mt-20">
               <h3 className="card-title">Gallery Images</h3>
 
-              {/* Existing Images Grid */}
               <div className="gallery-grid">
                 {project.images.map((img, i) => (
                   <div key={i} className="gallery-item">

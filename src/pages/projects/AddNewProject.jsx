@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import RichTextEditor from "../../components/common/RichTextEditor";
 import "./AddNewProject.css";
 import { supabase } from "../../config/Supabase";
 
@@ -317,11 +316,10 @@ const AddNewProject = () => {
               <div className="editor-group">
                 <label>Project Overview / Description</label>
                 <div className="quill-wrapper">
-                  <ReactQuill
-                    theme="snow"
+                  <RichTextEditor
                     value={project.description}
                     onChange={(content) => handleChange('description', content)}
-                    modules={{ toolbar: [['bold', 'italic', 'underline', 'strike'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], ['link', 'image', 'code-block']] }}
+                    placeholder="Write project description..."
                   />
                 </div>
               </div>
