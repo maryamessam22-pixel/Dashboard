@@ -66,7 +66,7 @@ const EditorPage = () => {
           images: data.images || [],
           processSteps: data.processSteps || [],
           tools: data.tools || [],
-          metaTitle: "",
+          metaTitle: data.meta_title || "",
           imageAlt: ""
         });
       } else {
@@ -165,6 +165,7 @@ const EditorPage = () => {
         description_EN: project.description,
         subtitle_out: project.subtitle,
         meta_dscription: project.metaDescription,
+        meta_title: project.metaTitle,
         status: finalStatus,
         cover_image: project.coverImage,
         images: project.images,
@@ -316,14 +317,7 @@ const EditorPage = () => {
                   onChange={(e) => handleChange('title', e.target.value)}
                 />
               </div>
-              <div className="input-group">
-                <label>Slug (URL)</label>
-                <input
-                  type="text"
-                  value={project.slug}
-                  onChange={(e) => handleChange('slug', e.target.value)}
-                />
-              </div>
+
 
               <div className="input-group">
                 <label>Category (Outside)</label>
@@ -449,6 +443,23 @@ const EditorPage = () => {
             <div className="seo-section">
               <div className="seo-header"><h3>SEO Meta</h3></div>
               <div className="seo-divider"></div>
+              <div className="input-group">
+                <label>Slug (URL)</label>
+                <input
+                  type="text"
+                  value={project.slug}
+                  placeholder="e.g. my-project-slug"
+                  onChange={(e) => handleChange('slug', e.target.value)}
+                />
+              </div>
+              <div className="input-group">
+                <label>Meta Title</label>
+                <input
+                  type="text"
+                  value={project.metaTitle}
+                  onChange={(e) => handleChange('metaTitle', e.target.value)}
+                />
+              </div>
               <div className="input-group">
                 <label>Meta Description</label>
                 <textarea
