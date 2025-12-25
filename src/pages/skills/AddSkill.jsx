@@ -85,7 +85,7 @@ const AddSkill = () => {
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
 
-      // I Add Bucket name: portfolio-assets
+      // I Add policy at supabase at Bucket name: portfolio-assets
       const { error: uploadError } = await supabase.storage
         .from('portfolio-assets')
         .upload(filePath, file);
