@@ -117,6 +117,22 @@ const AddNewProject = () => {
       const finalStatus = publishStatus || project.status;
       const publishedDate = finalStatus === 'published' ? new Date().toISOString().split('T')[0] : null;
 
+      const cleanDescription = (html) => {
+        if (!html) return '';
+        let cleaned = html.trim();
+        
+        // Remove surrounding <p> tags and their attributes
+        cleaned = cleaned.replace(/^<p[^>]*>/i, '').replace(/<\/p>$/i, '');
+        
+        // Remove <br> tags at the end
+        cleaned = cleaned.replace(/<br\s*\/?>/gi, '');
+        
+        // Clean up multiple spaces
+        cleaned = cleaned.trim();
+        
+        return cleaned;
+      };
+
       const res = await supabase.from('Projects').insert([
         {
           project_name_EN: project.title,
@@ -126,12 +142,13 @@ const AddNewProject = () => {
           Role: project.role,
           start_Date: project.startDate || null,
           end_Date: project.endDate || null,
-          description_EN: project.description,
+          description_EN: cleanDescription(project.description),
           subtitle_out: project.subtitle,
           meta_dscription: project.metaDescription,
           meta_title: project.metaTitle,
           status: finalStatus,
           cover_image: project.coverImage,
+          Thumbnail: project.coverImage,
           images: project.images,
           processSteps: project.processSteps,
           tools: project.tools,
