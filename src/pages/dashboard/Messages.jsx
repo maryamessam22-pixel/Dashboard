@@ -6,19 +6,48 @@ import MsgCard from "../../components/common/MsgCard";
 import { supabase } from "../../config/Supabase";
 const Messages = () => {
   const [loading, setLoading] = useState(true);
-  const [Messages, setMessages] = useState("");
+  const [Messages, setMessages] = useState([]);
   const [selectedMessage, setSelectedMessage] = useState(null);
 
   useEffect(() => {
     async function getAllMessagesAPI() {
       const res = await supabase.from("contact_messages").select("*");
-      setMessages(res.data);
+      if (res.error) {
+        console.error("Unable to load contact messages:", res.error);
+        window.alert(`Unable to load messages: ${res.error.message}`);
+      }
+      setMessages(res.data || []);
       // console.log(res);
       setLoading(false);
     }
 
     getAllMessagesAPI();
   }, []);
+
+  const handleSelectMessage = async (message) => {
+    setSelectedMessage(message);
+    if (message.read_at) return;
+
+    const readAt = new Date().toISOString();
+    const { data, error } = await supabase
+      .from("contact_messages")
+      .update({ read_at: readAt })
+      .eq("id", message.id)
+      .is("read_at", null)
+      .select("*")
+      .maybeSingle();
+
+    if (error) {
+      console.error("Unable to mark contact message as read:", error);
+      window.alert(`Unable to update message status: ${error.message}`);
+      return;
+    }
+
+    if (data) {
+      setMessages((current) => current.map((item) => item.id === message.id ? data : item));
+      setSelectedMessage(data);
+    }
+  };
 
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this message?")) {
@@ -74,7 +103,7 @@ const Messages = () => {
 
 
                   isActive={selectedMessage?.id === msg.id}
-                  onClick={() => setSelectedMessage(msg)}
+                  onClick={() => handleSelectMessage(msg)}
                 />
               ))}
             </div>

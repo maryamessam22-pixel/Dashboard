@@ -15,7 +15,8 @@ The dashboard and the portfolio are separate React apps that share the same Supa
 3. Ensure Storage has a public `portfolio-assets` bucket for the public image URLs used by both apps.
 4. Keep Row Level Security enabled. In `supabase/policies.sql`, replace `YOUR_ADMIN_USER_UUID` with the administrator's `auth.users.id`, review the policies against any existing policies, and run it in the Supabase SQL Editor. Do not leave any permissive anonymous write policies in place. Never use the service-role key in either frontend.
 5. To manage the portfolio Projects landing page, replace `YOUR_ADMIN_USER_UUID` in `supabase/project_page.sql` with the same administrator UUID and run that SQL in the Supabase SQL Editor. It creates the page settings and category tables, seeds the three initial cards, and grants public read access only to visible cards.
-6. In Authentication URL Configuration, add the deployed dashboard URL to the allowed site URLs.
+6. To enable live dashboard analytics, replace `YOUR_ADMIN_USER_UUID` in `supabase/dashboard_analytics.sql` with the same administrator UUID and run it in the SQL Editor. It enables CV-download and project-detail view tracking and adds `read_at` so opening a contact message marks it read. This migration does not modify existing project records.
+7. In Authentication URL Configuration, add the deployed dashboard URL to the allowed site URLs.
 
 The administrator's credentials are managed in Supabase; no dashboard password is stored in source code.
 
