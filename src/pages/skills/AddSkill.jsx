@@ -70,11 +70,6 @@ const AddSkill = () => {
     setPageContent(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSkillChange = (e) => {
-    const { name, value } = e.target;
-    setSkillData(prev => ({ ...prev, [name]: value }));
-  };
-
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;

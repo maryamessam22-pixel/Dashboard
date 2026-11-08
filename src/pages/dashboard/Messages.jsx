@@ -54,7 +54,7 @@ const Messages = () => {
       <div className="messages-container">
         <Header title="Pages / Messages" />
 
-        <div className="messages-content">
+        <div className={`messages-content ${selectedMessage ? "has-selection" : ""}`}>
 
           <div className="messages-sidebar">
             <div className="messages-header">
@@ -84,6 +84,13 @@ const Messages = () => {
           <div className="message-detail">
             {selectedMessage ? (
               <div className="detail-container">
+                <button
+                  type="button"
+                  className="back-to-messages"
+                  onClick={() => setSelectedMessage(null)}
+                >
+                  &larr; Back to inbox
+                </button>
                 <div className="detail-header">
                   <div className="sender-info">
                     <div className="avatar">{selectedMessage.sender?.charAt(0) || selectedMessage.name?.charAt(0)}</div>

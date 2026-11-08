@@ -187,7 +187,10 @@ const EditorPage = () => {
         Thumbnail: project.coverImage,
         images: project.images,
         processSteps: project.processSteps,
-        tools: project.tools
+        tools: project.tools,
+        puplished_date: finalStatus === 'published'
+          ? new Date().toISOString().split('T')[0]
+          : null
       };
 
       const { error } = await supabase
@@ -195,21 +198,13 @@ const EditorPage = () => {
         .update(updates)
         .eq('id', id);
 
-
-
-      let updateQuery = supabase.from('Projects').update(updates);
-
-      updateQuery = updateQuery.eq('id', id);
-
-      const res = await updateQuery;
-
-      if (res.error) throw res.error;
+      if (error) throw error;
 
       alert("Project updated successfully!");
       navigate("/projects");
     } catch (err) {
       console.error("Error updating project:", err);
-      alert("Error updating project. Check console.");
+      alert(`Error updating project: ${err.message || JSON.stringify(err)}`);
     } finally {
       setSaving(false);
     }

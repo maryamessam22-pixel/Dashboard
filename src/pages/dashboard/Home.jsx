@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Home.css';
 import Layout from "../../layouts/Layout";
 import Header from '../../layouts/Header';
@@ -13,8 +13,6 @@ import Img6 from "../../assets/6.png";
 
 
 const Home = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
   const data = [
     { name: 'Nov 1', uv: 400, pv: 240, amt: 2400 },
     { name: 'Nov 5', uv: 300, pv: 456, amt: 2400 },
@@ -32,15 +30,6 @@ const Home = () => {
     
       <main className="main-content">
 
-        {/* Mobile Toggle Button */}
-        {/* <button 
-          className="mobile-toggle" 
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-        >
-          ☰
-        </button> */}
-
-    
           <Header title="Pages/ Dashboard" />
 
      

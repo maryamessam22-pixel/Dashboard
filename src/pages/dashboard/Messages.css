@@ -11,34 +11,46 @@
 .messages-page-wrapper {
   display: flex;
   height: 100vh;
+  height: 100dvh;
+  min-height: 0;
   overflow: hidden;
 }
 
+.messages-page-wrapper > .layout-container {
+  flex: 0 0 0;
+  width: 0;
+  margin: 0;
+  padding: 0;
+}
 
 .messages-container {
-  margin-left: 247px;
+  margin-left: 260px;
   width: calc(100% - 260px);
-  padding: 30px 40px;
+  min-width: 0;
+  padding: clamp(16px, 2.5vw, 36px);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 0;
   background-color: #131129;
   color: white;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .messages-content {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
   flex: 1;
-  justify-content: center;
-  align-items: stretch;
+  min-height: 0;
+  min-width: 0;
   overflow: hidden;
 }
 
 .messages-sidebar {
   border-right: 1px solid #342f5c;
   padding: 1rem;
+  min-width: 0;
+  min-height: 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -86,7 +98,8 @@
 
 
 .message-detail {
-  flex: 1;
+  min-width: 0;
+  min-height: 0;
   background-color: #131129;
   display: flex;
   flex-direction: column;
@@ -94,14 +107,26 @@
   position: relative;
   padding: 1rem;
   overflow-y: auto;
-
 }
 
 .detail-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100%;
   animation: fadeIn 0.3s ease-out;
+}
+
+.back-to-messages {
+  display: none;
+  align-self: flex-start;
+  margin: 0 0 1rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid #342f5c;
+  border-radius: 0.6rem;
+  background: #1a1731;
+  color: #e0e0ff;
+  font: inherit;
+  cursor: pointer;
 }
 
 .detail-header {
@@ -263,8 +288,12 @@
 
 
 @media (max-width: 1024px) {
+  .messages-content {
+    grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+  }
+
   .messages-sidebar {
-    width: 300px;
+    padding: 0.75rem;
   }
 
   .detail-content h3 {
@@ -280,32 +309,49 @@
 }
 
 @media (max-width: 768px) {
-  .messages-container {
-    margin-left: 0;
-    padding: 80px 20px;
-    width: 100%;
-
+  .messages-page-wrapper {
+    overflow: hidden;
   }
 
-
+  .messages-container {
+    margin-left: 0;
+    width: 100%;
+    padding: 76px 16px 16px;
+  }
 
   .messages-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 0;
     flex-direction: column;
   }
 
   .messages-sidebar {
     width: 100%;
+    flex: 1;
     border-right: none;
-    border-bottom: 1px solid #342f5c;
-    max-height: 300px;
+    border-bottom: 0;
+    padding: 0;
+  }
+
+  .messages-content.has-selection .messages-sidebar {
+    display: none;
   }
 
   .message-detail {
-    margin-top: 10%;
-    min-height: 400px;
+    display: none;
+    flex: 1;
+    margin: 0;
+    padding: 0.5rem 0 0;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
+  .messages-content.has-selection .message-detail {
+    display: flex;
+  }
+
+  .back-to-messages {
+    display: inline-flex;
   }
 
   .detail-header {
@@ -325,11 +371,19 @@
 
 
   .messages-container {
-    padding: 0px;
+    padding: 76px 12px 12px;
   }
 
   .search-bar input {
-    width: 200px;
+    width: min(45vw, 200px);
+  }
+
+  .messages-header {
+    gap: 0.75rem;
+  }
+
+  .message-count {
+    flex-shrink: 0;
   }
 
   .sender-info h2 {

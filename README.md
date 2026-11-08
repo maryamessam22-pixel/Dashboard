@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Mariam Farid Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The dashboard and the portfolio are separate React apps that share the same Supabase project. Dashboard content is saved to Supabase; the portfolio reads published content from those tables.
 
-## Available Scripts
+## Run locally
 
-In the project directory, you can run:
+1. Copy `.env.example` to `.env.local`.
+2. Set `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY` from the Supabase project's API settings. The publishable/anon key is intended for browser apps; never use a service-role key here.
+3. Install dependencies with `npm install`, then run `npm start`.
 
-### `npm start`
+## Supabase setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. In Supabase Authentication, enable email/password sign-in and create the dashboard administrator account.
+2. Disable public sign-ups. The dashboard has no sign-up flow; users should be provisioned by the project owner. In Authentication → URL Configuration, allow `http://localhost:3000/reset-password` for local work and the deployed dashboard's `/reset-password` URL for production.
+3. Ensure Storage has a public `portfolio-assets` bucket for the public image URLs used by both apps.
+4. Keep Row Level Security enabled. In `supabase/policies.sql`, replace `YOUR_ADMIN_USER_UUID` with the administrator's `auth.users.id`, review the policies against any existing policies, and run it in the Supabase SQL Editor. Do not leave any permissive anonymous write policies in place. Never use the service-role key in either frontend.
+5. To manage the portfolio Projects landing page, replace `YOUR_ADMIN_USER_UUID` in `supabase/project_page.sql` with the same administrator UUID and run that SQL in the Supabase SQL Editor. It creates the page settings and category tables, seeds the three initial cards, and grants public read access only to visible cards.
+6. In Authentication URL Configuration, add the deployed dashboard URL to the allowed site URLs.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The administrator's credentials are managed in Supabase; no dashboard password is stored in source code.
 
-### `npm test`
+The Projects Page link in the dashboard lets the administrator edit the landing-page heading and cards, upload card images to `portfolio-assets`, change order and visibility, and add or delete categories. The portfolio reads that content from the same Supabase project.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deploy the apps to Vercel
 
-### `npm run build`
+Deploy each repository as its own Vercel project:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. In Vercel, import the `Dashboard` GitHub repository and name the project `mariam-farid-dashboard`. Use the repository root as the project root, Create React App as the framework, `npm run build` as the build command, and `build` as the output directory.
+2. Add `REACT_APP_SUPABASE_URL` and `REACT_APP_SUPABASE_ANON_KEY` under Project Settings → Environment Variables for Preview and Production.
+3. Deploy. The included `vercel.json` sends app routes to `index.html`, so refreshing dashboard routes continues to work.
+4. Import the `portfolio` GitHub repository into a separate Vercel project and set the same two Supabase environment variables there. Configure its build command and output directory the same way.
+5. Add both deployed URLs to the Supabase Authentication allowed site URLs. Pushes to the connected GitHub branches will trigger Vercel deployments.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The dashboard saves drafts and published records. Only records marked `published` should be visible on the public portfolio.

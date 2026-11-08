@@ -9,7 +9,6 @@ const EditBlog = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
-    const [uploading, setUploading] = useState(false);
 
     const [formData, setFormData] = useState({
         page_title: '',
@@ -84,7 +83,6 @@ const EditBlog = () => {
     const handleImageUpload = async (e, field) => {
         const file = e.target.files[0];
         if (!file) return;
-        setUploading(true);
         try {
             const fileExt = file.name.split('.').pop();
             const fileName = `${Math.random()}.${fileExt}`;
@@ -97,8 +95,6 @@ const EditBlog = () => {
         } catch (error) {
             console.error('Error uploading image:', error);
             alert('Error uploading image: ' + error.message);
-        } finally {
-            setUploading(false);
         }
     };
 

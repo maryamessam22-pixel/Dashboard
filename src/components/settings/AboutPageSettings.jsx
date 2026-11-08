@@ -136,7 +136,7 @@ const AboutPageSettings = () => {
                     <>
                       <img
                         src={section.images[0]}
-                        alt="Personal Image"
+                        alt="Profile portrait"
                       />
                       <button
                         onClick={(e) => handleDeleteLogo(e, section.id)}

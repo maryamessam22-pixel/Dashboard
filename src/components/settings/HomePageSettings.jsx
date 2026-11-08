@@ -122,11 +122,11 @@ const HomePageSettings = () => {
         const id = payload.id;
         delete payload.id;
 
-        if (id) {
-          await supabase.from('page_sections').update(payload).eq('id', id);
-        } else {
-          await supabase.from('page_sections').insert([payload]);
-        }
+        const { error } = id
+          ? await supabase.from('page_sections').update(payload).eq('id', id)
+          : await supabase.from('page_sections').insert([payload]);
+
+        if (error) throw error;
       }
 
       alert('Home settings saved successfully!');

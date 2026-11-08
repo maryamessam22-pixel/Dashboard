@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Form.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../../config/Supabase";
 
 const Form = () => {
   const navigate = useNavigate();
@@ -8,28 +9,38 @@ const Form = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = async (event) => {
+    event.preventDefault();
     if (!email || !password) {
       setError("Please enter both email and password.");
       return;
     }
 
-    if (email !== "maryamessam22@gmail.com" || password !== "123456") {
-      setError("Invalid email or password.");
-      return;
-    }
+    setError("");
+    setLoading(true);
+    try {
+      const { error: loginError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    navigate("/home");
+      if (loginError) throw loginError;
+      navigate("/home", { replace: true });
+    } catch (loginError) {
+      setError(loginError.message || "Unable to sign in.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="login-container">
-      <div className="login-card">
+      <form className="login-card" onSubmit={handleLogin}>
         <h2 className="login-title">Welcome back</h2>
         <p className="login-subtitle">Portfolio Dashboard</p>
 
-        {/* Error message */}
         {error && <p className="error-text">{error}</p>}
 
         <div className="form-group">
@@ -38,6 +49,7 @@ const Form = () => {
             placeholder="Email"
             className="login-input"
             value={email}
+            autoComplete="username"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -48,27 +60,24 @@ const Form = () => {
             placeholder="Password"
             className="login-input"
             value={password}
+            autoComplete="current-password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
         <div className="options-row">
-          <label className="remember-box">
-            <input type="checkbox" /> Remember me
-          </label>
-
-          <a href="#" className="forgot-link">Forgot password?</a>
+          <Link to="/forgot-password" className="forgot-link">
+            Forgot password?
+          </Link>
         </div>
 
-        <button className="login-btn" onClick={handleLogin}>
-          Login
+        <button className="login-btn" type="submit" disabled={loading}>
+          {loading ? "Signing in..." : "Login"}
         </button>
-      </div>
+      </form>
     </div>
   );
 };
 
 export default Form;
-
-
 

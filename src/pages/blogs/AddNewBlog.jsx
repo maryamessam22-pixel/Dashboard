@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { X, Plus, Trash2, ArrowLeft, Save, Upload } from 'lucide-react';
+import { X, Plus, Trash2, Save, Upload } from 'lucide-react';
 import './AddNewBlog.css';
 import { supabase } from '../../config/Supabase';
 
 const AddNewBlog = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
-    const [uploading, setUploading] = useState(false);
-
-
     const [formData, setFormData] = useState({
         page_title: '',
         page_subtitle: '',
@@ -37,7 +34,6 @@ const AddNewBlog = () => {
     const handleImageUpload = async (e, field) => {
         const file = e.target.files[0];
         if (!file) return;
-        setUploading(true);
         try {
             const fileExt = file.name.split('.').pop();
             const fileName = `${Math.random()}.${fileExt}`;
@@ -50,8 +46,6 @@ const AddNewBlog = () => {
         } catch (error) {
             console.error('Error uploading image:', error);
             alert('Error uploading image: ' + error.message);
-        } finally {
-            setUploading(false);
         }
     };
 

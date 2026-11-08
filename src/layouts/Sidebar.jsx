@@ -14,15 +14,20 @@ import blogsIcon from '../assets/blogs.png'
 import contentIcon from '../assets/content.png'
 
 import { NavLink, useNavigate } from 'react-router-dom';
+import { supabase } from '../config/Supabase';
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate();   
+  const handleLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error('Error signing out:', error);
+      window.alert(`Unable to log out: ${error.message}`);
+      return;
+    }
 
-
-  const handleLogout = () => {
-   
-    navigate("/");  
+    navigate("/", { replace: true });
   };
 
   return (
@@ -114,6 +119,18 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               </NavLink>
             </li>
 
+           <li>
+             <NavLink
+               to="/projects-page"
+               className={({ isActive }) =>
+                 isActive ? 'nav-item active' : 'nav-item'
+               }
+             >
+               <img src={projectsIcon} className="nav-icon" alt="" />
+               Projects Page
+             </NavLink>
+           </li>
+
 
            <li>
               <NavLink
@@ -170,4 +187,3 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 };
 
 export default Sidebar;
-
